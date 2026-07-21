@@ -20,7 +20,6 @@ jobs:
         uses: astral-sh/setup-uv@v4
         with:
           version: "0.11.0"
-          enable-cache: true
 
       - name: Run backend validation
         working-directory: apps/api/control-plane
