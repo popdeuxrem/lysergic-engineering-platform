@@ -421,9 +421,9 @@ artifacts:
       - metrics platform
       - distributed tracing
     next_artifact:
-      id: TBD
-      title: TBD
-      status: TBD
+      id: LEP-RP-v0.1.0-M2.0
+      title: Execution Model Foundation
+      status: validated
     files:
       - docs/validation/reports/M1-acceptance.md
     validation_artifacts:
@@ -433,3 +433,55 @@ artifacts:
       - docs/validation/artifacts/M1-A/docker-build.txt
       - docs/validation/artifacts/M1-A/artifact-inventory.txt
       - docs/validation/artifacts/M1-A/architecture-review.txt
+  - artifact:
+      id: LEP-RP-v0.1.0-M2.0
+      title: Execution Model Foundation
+      state: validated
+    implementation:
+      status: complete
+      commit: TBD
+    validation:
+      status: complete
+      evidence_commit: TBD
+    acceptance:
+      status: validated
+      date: 2026-07-21
+    enabled_capabilities:
+      - execution domain aggregate
+      - lifecycle state machine
+      - execution repository abstraction
+      - persistence-backed execution storage
+      - execution use cases
+      - execution API contract
+    blocked_until_next_gate:
+      - workflow execution
+      - agent execution
+      - AI orchestration
+      - asynchronous processing
+      - external integrations
+    next_artifact:
+      id: TBD
+      title: TBD
+      status: TBD
+    files:
+      - apps/api/control-plane/src/domain/execution.py
+      - apps/api/control-plane/src/domain/execution_status.py
+      - apps/api/control-plane/src/domain/repository.py
+      - apps/api/control-plane/src/application/execution_dto.py
+      - apps/api/control-plane/src/application/execution_use_cases.py
+      - apps/api/control-plane/src/infrastructure/database/execution_model.py
+      - apps/api/control-plane/src/infrastructure/database/execution_repository.py
+      - apps/api/control-plane/alembic/versions/a1b2c3d4e5f6_create_executions_table.py
+      - apps/api/control-plane/src/api/v1/schemas/execution.py
+      - apps/api/control-plane/src/api/v1/routers/execution.py
+      - apps/api/control-plane/src/api/router.py
+      - apps/api/control-plane/tests/test_execution_lifecycle.py
+      - apps/api/control-plane/tests/test_execution_persistence.py
+    validation_artifacts:
+      - docs/validation/artifacts/M2.0/pytest.txt
+      - docs/validation/artifacts/M2.0/lifecycle-tests.txt
+      - docs/validation/artifacts/M2.0/persistence-tests.txt
+      - docs/validation/artifacts/M2.0/architecture-tests.txt
+      - docs/validation/artifacts/M2.0/ruff.txt
+      - docs/validation/artifacts/M2.0/mypy.txt
+      - docs/validation/artifacts/M2.0/docker-build.txt

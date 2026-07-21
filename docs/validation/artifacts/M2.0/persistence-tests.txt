@@ -1,0 +1,18 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.1, pytest-9.1.1, pluggy-1.6.0 -- /workspaces/lysergic-engineering-platform/apps/api/control-plane/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /workspaces/lysergic-engineering-platform/apps/api/control-plane
+configfile: pyproject.toml
+plugins: anyio-4.14.2
+collecting ... collected 8 items
+
+tests/test_execution_persistence.py::test_repository_saves_execution PASSED [ 12%]
+tests/test_execution_persistence.py::test_repository_retrieves_execution PASSED [ 25%]
+tests/test_execution_persistence.py::test_repository_returns_none_for_missing PASSED [ 37%]
+tests/test_execution_persistence.py::test_repository_persists_status_transition PASSED [ 50%]
+tests/test_execution_persistence.py::test_repository_persists_completed_state PASSED [ 62%]
+tests/test_execution_persistence.py::test_repository_persists_failed_state PASSED [ 75%]
+tests/test_execution_persistence.py::test_repository_updates_existing_record PASSED [ 87%]
+tests/test_execution_persistence.py::test_repository_round_trip_preserves_fields PASSED [100%]
+
+============================== 8 passed in 0.44s ===============================

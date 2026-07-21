@@ -1,0 +1,19 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.1, pytest-9.1.1, pluggy-1.6.0 -- /workspaces/lysergic-engineering-platform/apps/api/control-plane/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /workspaces/lysergic-engineering-platform/apps/api/control-plane
+configfile: pyproject.toml
+plugins: anyio-4.14.2
+collecting ... collected 9 items
+
+tests/test_execution_lifecycle.py::test_execution_created_with_initial_state PASSED [ 11%]
+tests/test_execution_lifecycle.py::test_execution_start_transition PASSED [ 22%]
+tests/test_execution_lifecycle.py::test_execution_complete_transition PASSED [ 33%]
+tests/test_execution_lifecycle.py::test_execution_fail_transition PASSED [ 44%]
+tests/test_execution_lifecycle.py::test_execution_rejects_created_to_completed PASSED [ 55%]
+tests/test_execution_lifecycle.py::test_execution_rejects_completed_to_running PASSED [ 66%]
+tests/test_execution_lifecycle.py::test_execution_rejects_failed_to_running PASSED [ 77%]
+tests/test_execution_lifecycle.py::test_execution_created_at_is_set PASSED [ 88%]
+tests/test_execution_lifecycle.py::test_execution_updated_at_changes_on_transition PASSED [100%]
+
+============================== 9 passed in 0.02s ===============================
