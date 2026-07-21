@@ -601,9 +601,9 @@ artifacts:
       - distributed execution
       - external integrations
     next_artifact:
-      id: TBD
-      title: TBD
-      status: TBD
+      id: LEP-RP-v0.1.0-M2.4
+      title: Build Automation Foundation
+      status: validated
     files:
       - apps/api/control-plane/src/application/audit/__init__.py
       - apps/api/control-plane/src/application/audit/execution_audit.py
@@ -617,3 +617,46 @@ artifacts:
       - docs/validation/artifacts/M2.3/mypy.txt
       - docs/validation/artifacts/M2.3/docker-build.txt
       - docs/validation/artifacts/M2.3/consistency-validation.txt
+  - artifact:
+      id: LEP-RP-v0.1.0-M2.4
+      title: Build Automation Foundation
+      state: validated
+    implementation:
+      status: complete
+      commit: TBD
+    validation:
+      status: complete
+      evidence_commit: TBD
+    acceptance:
+      status: validated
+      date: 2026-07-21
+    enabled_capabilities:
+      - deterministic validation entry point
+      - evidence collection
+      - manifest validation checks
+      - tooling test suite
+      - automation documentation
+    blocked_until_next_gate:
+      - autonomous agents
+      - AI generation pipeline
+      - CI workflow changes
+      - deployment automation
+      - automated acceptance decisions
+    next_artifact:
+      id: TBD
+      title: TBD
+      status: TBD
+    files:
+      - scripts/validate.sh
+      - scripts/capture-evidence.sh
+      - scripts/validate-manifest.py
+      - docs/automation/validation-workflow.md
+      - tests/tooling/__init__.py
+      - tests/tooling/test_validation_runner.py
+    validation_artifacts:
+      - docs/validation/artifacts/M2.4/repository-status.txt
+      - docs/validation/artifacts/M2.4/pytest.txt
+      - docs/validation/artifacts/M2.4/ruff.txt
+      - docs/validation/artifacts/M2.4/mypy.txt
+      - docs/validation/artifacts/M2.4/docker-build.txt
+      - docs/validation/artifacts/M2.4/manifest-validation.txt

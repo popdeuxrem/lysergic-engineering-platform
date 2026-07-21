@@ -1,0 +1,3 @@
+Validating manifest: /workspaces/lysergic-engineering-platform/docs/manifests/artifacts.yaml
+Found 13 artifacts
+All artifacts valid
