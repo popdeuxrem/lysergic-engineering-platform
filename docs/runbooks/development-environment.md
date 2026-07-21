@@ -62,3 +62,20 @@ docker compose exec redis redis-cli ping
 ```
 
 Evidence artifacts are captured in `docs/validation/artifacts/M0.5/`.
+
+## CI Validation
+
+The repository includes a GitHub Actions workflow at `.github/workflows/validation.yml`.
+
+Workflow triggers:
+
+- `push` to `main`
+- `pull_request` to `main`
+
+Jobs:
+
+- `backend` — uv sync, pytest, ruff, mypy
+- `frontend` — pnpm install, lint, typecheck, test, build
+- `docker-compose` — compose config, build, up, health checks, down
+
+Evidence artifacts are captured in `docs/validation/artifacts/M0.6/`.
