@@ -29,7 +29,7 @@ artifacts:
     next_artifact:
       id: LEP-RP-v0.1.0-M0.4
       title: Operations Console Bootstrap
-      status: ready_for_contract_generation
+      status: implemented
     files:
       - apps/api/control-plane/src/main.py
       - apps/api/control-plane/src/api/__init__.py
@@ -55,3 +55,56 @@ artifacts:
       - docs/validation/artifacts/M0.3/mypy.txt
       - docs/validation/artifacts/M0.3/docker-build.txt
       - docs/validation/artifacts/M0.3/endpoint-verification.txt
+  - artifact:
+      id: LEP-RP-v0.1.0-M0.4
+      title: Operations Console Bootstrap
+      state: implemented
+    implementation:
+      status: complete
+      commit: TBD
+    validation:
+      status: complete
+    enabled_capabilities:
+      - Next.js runtime
+      - TypeScript configuration
+      - application shell
+      - root page
+      - frontend testing
+      - linting
+      - type checking
+      - production build validation
+      - Docker build
+      - service documentation
+      - validation evidence
+    blocked_until_next_gate:
+      - backend integration
+      - API clients
+      - authentication
+      - state management
+      - dashboards
+      - workflows
+      - agents
+      - intelligence interfaces
+      - runtime orchestration
+    files:
+      - apps/web/operations-console/package.json
+      - apps/web/operations-console/tsconfig.json
+      - apps/web/operations-console/next.config.ts
+      - apps/web/operations-console/next-env.d.ts
+      - apps/web/operations-console/eslint.config.mjs
+      - apps/web/operations-console/jest.config.mjs
+      - apps/web/operations-console/jest.setup.ts
+      - apps/web/operations-console/Dockerfile
+      - apps/web/operations-console/README.md
+      - apps/web/operations-console/src/app/globals.css
+      - apps/web/operations-console/src/app/layout.tsx
+      - apps/web/operations-console/src/app/page.tsx
+      - apps/web/operations-console/tests/page.test.tsx
+    validation_artifacts:
+      - docs/validation/artifacts/M0.4/runtime.txt
+      - docs/validation/artifacts/M0.4/pnpm-install.txt
+      - docs/validation/artifacts/M0.4/pnpm-lint.txt
+      - docs/validation/artifacts/M0.4/pnpm-typecheck.txt
+      - docs/validation/artifacts/M0.4/pnpm-test.txt
+      - docs/validation/artifacts/M0.4/pnpm-build.txt
+      - docs/validation/artifacts/M0.4/docker-build.txt

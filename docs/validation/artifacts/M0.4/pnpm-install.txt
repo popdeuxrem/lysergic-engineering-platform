@@ -1,0 +1,4 @@
+ WARN  Cannot switch to pnpm@10: "10" is not a valid version
+Scope: all 2 workspace projects
+
+Done in 1.6s using pnpm v10.32.1

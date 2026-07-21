@@ -1,0 +1,20 @@
+ WARN  Cannot switch to pnpm@10: "10" is not a valid version
+
+> operations-console@0.1.0 test /workspaces/lysergic-engineering-platform/apps/web/operations-console
+> jest
+
+jest-haste-map: Haste module naming collision: operations-console
+  The following files share their name; please adjust your hasteImpl:
+    * <rootDir>/package.json
+    * <rootDir>/.next/standalone/apps/web/operations-console/package.json
+
+PASS tests/page.test.tsx
+  HomePage
+    ✓ renders the operations console title (121 ms)
+    ✓ renders the platform version (24 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       2 passed, 2 total
+Snapshots:   0 total
+Time:        5.701 s
+Ran all test suites.

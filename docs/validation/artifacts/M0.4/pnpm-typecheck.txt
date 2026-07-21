@@ -1,0 +1,5 @@
+ WARN  Cannot switch to pnpm@10: "10" is not a valid version
+
+> operations-console@0.1.0 typecheck /workspaces/lysergic-engineering-platform/apps/web/operations-console
+> tsc --noEmit
+

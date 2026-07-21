@@ -1,0 +1,97 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 303B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/node:22-slim
+#2 DONE 0.4s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/6] FROM docker.io/library/node:22-slim@sha256:6c74791e557ce11fc957704f6d4fe134a7bc8d6f5ca4403205b2966bd488f6b3
+#4 resolve docker.io/library/node:22-slim@sha256:6c74791e557ce11fc957704f6d4fe134a7bc8d6f5ca4403205b2966bd488f6b3 0.0s done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 37.19MB 0.6s done
+#5 DONE 0.6s
+
+#6 [2/6] WORKDIR /app
+#6 CACHED
+
+#7 [3/6] COPY package.json pnpm-lock.yaml* ./
+#7 CACHED
+
+#8 [4/6] RUN corepack enable && corepack prepare pnpm@latest --activate     && pnpm install --no-frozen-lockfile --ignore-scripts
+#8 CACHED
+
+#9 [5/6] COPY . .
+#9 DONE 1.0s
+
+#10 [6/6] RUN pnpm build
+#10 1.829 ? Verifying lockfile against supply-chain policies (660 entries)...
+#10 1.843 Lockfile is up to date, resolution step is skipped
+#10 2.284 Already up to date
+#10 7.974 ✓ Lockfile passes supply-chain policies (660 entries in 6.1s)
+#10 8.111 
+#10 8.111 dependencies:
+#10 8.111 + next 16.2.10
+#10 8.111 + react 19.2.7
+#10 8.111 + react-dom 19.2.7
+#10 8.111 
+#10 8.111 devDependencies:
+#10 8.111 + @testing-library/jest-dom 7.0.0
+#10 8.111 + @testing-library/react 16.3.2
+#10 8.111 + @testing-library/user-event 14.6.1
+#10 8.111 + @types/jest 29.5.14
+#10 8.111 + @types/node 20.19.43
+#10 8.111 + @types/react 19.2.17
+#10 8.111 + @types/react-dom 19.2.3
+#10 8.111 + eslint 9.39.5
+#10 8.111 + eslint-config-next 16.2.10
+#10 8.111 + jest 29.7.0
+#10 8.111 + jest-environment-jsdom 29.7.0
+#10 8.111 + ts-jest 29.4.11
+#10 8.111 + typescript 5.9.3
+#10 8.111 
+#10 8.140 Done in 7s using pnpm v11.15.1
+#10 8.222 $ next build
+#10 9.159 Attention: Next.js now collects completely anonymous telemetry regarding usage.
+#10 9.159 This information is used to shape Next.js' roadmap and prioritize features.
+#10 9.159 You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+#10 9.159 https://nextjs.org/telemetry
+#10 9.159 
+#10 9.579 ▲ Next.js 16.2.10 (Turbopack)
+#10 9.579 
+#10 9.664   Creating an optimized production build ...
+#10 17.53 ✓ Compiled successfully in 7.6s
+#10 17.55   Running TypeScript ...
+#10 21.97   Finished TypeScript in 4.4s ...
+#10 21.98   Collecting page data using 1 worker ...
+#10 22.38   Generating static pages using 1 worker (0/3) ...
+#10 22.52 ✓ Generating static pages using 1 worker (3/3) in 157ms
+#10 22.53   Finalizing page optimization ...
+#10 22.92 
+#10 22.93 Route (app)
+#10 22.93 ┌ ○ /
+#10 22.93 └ ○ /_not-found
+#10 22.93 
+#10 22.93 
+#10 22.93 ○  (Static)  prerendered as static content
+#10 22.93 
+#10 DONE 23.4s
+
+#11 exporting to image
+#11 exporting layers
+#11 exporting layers 6.1s done
+#11 exporting manifest sha256:8d22acf0cf9b3e175d5bdf635ce486c4a45c96ddfbba3504962784368059ffef done
+#11 exporting config sha256:0ec4c47170977a5edb4f449f659607764a06b97a57ef6f96c9edcd1cdff68450 done
+#11 exporting attestation manifest sha256:1aeb2eb609f39db7bf492f84da893bdc8bb267fe6db72a457e97e729705e6a4e 0.0s done
+#11 exporting manifest list sha256:8346fc700599f6f070afa114b3d9ccec63046815928067e35261e1c2fcd76629 done
+#11 naming to moby-dangling@sha256:8346fc700599f6f070afa114b3d9ccec63046815928067e35261e1c2fcd76629 done
+#11 unpacking to moby-dangling@sha256:8346fc700599f6f070afa114b3d9ccec63046815928067e35261e1c2fcd76629
+#11 unpacking to moby-dangling@sha256:8346fc700599f6f070afa114b3d9ccec63046815928067e35261e1c2fcd76629 25.4s done
+#11 DONE 31.6s
