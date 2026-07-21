@@ -1,0 +1,29 @@
+artifacts:
+  - milestone: LEP-RP-v0.1.0-M0.3
+    name: Control Plane Bootstrap
+    state: implemented
+    files:
+      - apps/api/control-plane/src/main.py
+      - apps/api/control-plane/src/api/__init__.py
+      - apps/api/control-plane/src/api/router.py
+      - apps/api/control-plane/src/api/health.py
+      - apps/api/control-plane/src/application/__init__.py
+      - apps/api/control-plane/src/application/app.py
+      - apps/api/control-plane/src/config/__init__.py
+      - apps/api/control-plane/src/config/settings.py
+      - apps/api/control-plane/src/dependencies/__init__.py
+      - apps/api/control-plane/src/domain/__init__.py
+      - apps/api/control-plane/src/infrastructure/__init__.py
+      - apps/api/control-plane/src/observability/__init__.py
+      - apps/api/control-plane/src/observability/configure_logging.py
+      - apps/api/control-plane/tests/__init__.py
+      - apps/api/control-plane/tests/test_health.py
+      - apps/api/control-plane/pyproject.toml
+      - apps/api/control-plane/Dockerfile
+      - apps/api/control-plane/README.md
+    validation_artifacts:
+      - docs/validation/artifacts/M0.3/pytest.txt
+      - docs/validation/artifacts/M0.3/ruff.txt
+      - docs/validation/artifacts/M0.3/mypy.txt
+      - docs/validation/artifacts/M0.3/docker-build.txt
+      - docs/validation/artifacts/M0.3/endpoint-verification.txt

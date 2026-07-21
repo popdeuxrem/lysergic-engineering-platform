@@ -1,0 +1,14 @@
+/workspaces/lysergic-engineering-platform/apps/api/control-plane/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+{"timestamp": "2026-07-21T12:00:16.874426+00:00", "level": "INFO", "service": "lep-control-plane", "version": "0.1.0", "logger": "httpx", "message": "HTTP Request: GET http://testserver/ \"HTTP/1.1 200 OK\""}
+{"timestamp": "2026-07-21T12:00:16.877596+00:00", "level": "INFO", "service": "lep-control-plane", "version": "0.1.0", "logger": "httpx", "message": "HTTP Request: GET http://testserver/health \"HTTP/1.1 200 OK\""}
+{"timestamp": "2026-07-21T12:00:16.879592+00:00", "level": "INFO", "service": "lep-control-plane", "version": "0.1.0", "logger": "httpx", "message": "HTTP Request: GET http://testserver/version \"HTTP/1.1 200 OK\""}
+{"timestamp": "2026-07-21T12:00:16.882181+00:00", "level": "INFO", "service": "lep-control-plane", "version": "0.1.0", "logger": "httpx", "message": "HTTP Request: GET http://testserver/api/v1/health \"HTTP/1.1 200 OK\""}
+/: 200
+  body: {'service': 'lep-control-plane', 'message': 'LEP Control Plane'}
+/health: 200
+  body: {'service': 'lep-control-plane', 'status': 'healthy', 'version': '0.1.0'}
+/version: 200
+  body: {'service': 'lep-control-plane', 'version': '0.1.0', 'environment': 'development'}
+/api/v1/health: 200
+  body: {'service': 'lep-control-plane', 'status': 'healthy', 'version': '0.1.0'}
