@@ -320,7 +320,7 @@ artifacts:
     next_artifact:
       id: LEP-RP-v0.1.0-M1.4
       title: Observability Expansion
-      status: validated
+      status: accepted
     files:
       - apps/api/control-plane/src/api/errors.py
       - apps/api/control-plane/src/api/exceptions.py
@@ -344,15 +344,15 @@ artifacts:
   - artifact:
       id: LEP-RP-v0.1.0-M1.4
       title: Observability Expansion
-      state: validated
+      state: accepted
     implementation:
       status: complete
-      commit: TBD
+      commit: 709fd63
     validation:
       status: complete
-      evidence_commit: TBD
+      evidence_commit: 3a5d00e
     acceptance:
-      status: validated
+      status: accepted
       date: 2026-07-21
     enabled_capabilities:
       - request lifecycle visibility
@@ -370,9 +370,9 @@ artifacts:
       - policies
       - production capabilities
     next_artifact:
-      id: TBD
-      title: TBD
-      status: TBD
+      id: LEP-RP-v0.1.0-M1-A
+      title: M1 Acceptance
+      status: ready_for_contract_generation
     files:
       - apps/api/control-plane/src/observability/context.py
       - apps/api/control-plane/src/observability/middleware.py
