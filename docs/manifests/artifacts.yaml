@@ -423,7 +423,7 @@ artifacts:
     next_artifact:
       id: LEP-RP-v0.1.0-M2.0
       title: Execution Model Foundation
-      status: validated
+      status: accepted
     files:
       - docs/validation/reports/M1-acceptance.md
     validation_artifacts:
@@ -436,15 +436,15 @@ artifacts:
   - artifact:
       id: LEP-RP-v0.1.0-M2.0
       title: Execution Model Foundation
-      state: validated
+      state: accepted
     implementation:
       status: complete
-      commit: TBD
+      commit: 0acba04
     validation:
       status: complete
-      evidence_commit: TBD
+      evidence_commit: 8eef508
     acceptance:
-      status: validated
+      status: accepted
       date: 2026-07-21
     enabled_capabilities:
       - execution domain aggregate
