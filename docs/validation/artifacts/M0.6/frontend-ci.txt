@@ -1,0 +1,52 @@
+ WARN  Cannot switch to pnpm@10: "10" is not a valid version
+Scope: all 2 workspace projects
+
+Done in 2s using pnpm v10.32.1
+ WARN  Cannot switch to pnpm@10: "10" is not a valid version
+
+> operations-console@0.1.0 lint /workspaces/lysergic-engineering-platform/apps/web/operations-console
+> eslint .
+
+ WARN  Cannot switch to pnpm@10: "10" is not a valid version
+
+> operations-console@0.1.0 typecheck /workspaces/lysergic-engineering-platform/apps/web/operations-console
+> tsc --noEmit
+
+ WARN  Cannot switch to pnpm@10: "10" is not a valid version
+
+> operations-console@0.1.0 test /workspaces/lysergic-engineering-platform/apps/web/operations-console
+> jest
+
+PASS tests/page.test.tsx
+  HomePage
+    ✓ renders the operations console title (82 ms)
+    ✓ renders the platform version (5 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       2 passed, 2 total
+Snapshots:   0 total
+Time:        1.805 s, estimated 2 s
+Ran all test suites.
+ WARN  Cannot switch to pnpm@10: "10" is not a valid version
+
+> operations-console@0.1.0 build /workspaces/lysergic-engineering-platform/apps/web/operations-console
+> next build
+
+▲ Next.js 16.2.10 (Turbopack)
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 7.8s
+  Running TypeScript ...
+  Finished TypeScript in 3.5s ...
+  Collecting page data using 1 worker ...
+  Generating static pages using 1 worker (0/3) ...
+✓ Generating static pages using 1 worker (3/3) in 149ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+└ ○ /_not-found
+
+
+○  (Static)  prerendered as static content
+

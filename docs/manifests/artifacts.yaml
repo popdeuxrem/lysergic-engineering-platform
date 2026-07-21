@@ -140,7 +140,7 @@ artifacts:
     next_artifact:
       id: LEP-RP-v0.1.0-M0.6
       title: CI Validation
-      status: ready_for_contract_generation
+      status: validated
     files:
       - docker-compose.yml
       - .env.example
@@ -154,3 +154,38 @@ artifacts:
       - docs/validation/artifacts/M0.5/web-runtime.txt
       - docs/validation/artifacts/M0.5/postgres-health.txt
       - docs/validation/artifacts/M0.5/redis-health.txt
+  - artifact:
+      id: LEP-RP-v0.1.0-M0.6
+      title: CI Validation
+      state: validated
+    implementation:
+      status: complete
+      commit: 10d824b
+    validation:
+      status: complete
+    enabled_capabilities:
+      - automated validation pipeline
+      - backend CI checks
+      - frontend CI checks
+      - container CI checks
+      - push trigger validation
+      - pull request trigger validation
+    blocked_until_next_gate:
+      - backend implementation changes
+      - frontend implementation changes
+      - runtime architecture changes
+      - deployment automation
+      - production infrastructure
+      - M1 capabilities
+    next_artifact:
+      id: LEP-RP-v0.1.0-M1.0
+      title: Platform Integration
+      status: ready_for_contract_generation
+    files:
+      - .github/workflows/validation.yml
+      - docs/runbooks/development-environment.md
+    validation_artifacts:
+      - docs/validation/artifacts/M0.6/backend-ci.txt
+      - docs/validation/artifacts/M0.6/frontend-ci.txt
+      - docs/validation/artifacts/M0.6/docker-ci.txt
+      - docs/validation/artifacts/M0.6/workflow-run.txt
