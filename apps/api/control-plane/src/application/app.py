@@ -1,5 +1,3 @@
-from uuid import uuid4
-
 from fastapi import FastAPI, Request, status
 from fastapi.exceptions import HTTPException
 from fastapi.responses import JSONResponse
@@ -9,6 +7,7 @@ from src.api.router import v1_router
 from src.api.exceptions import build_error_response
 from src.config.settings import get_settings
 from src.observability.configure_logging import configure_logging
+from src.observability.middleware import request_context_middleware
 
 def create_app() -> FastAPI:
     settings = get_settings()
@@ -20,12 +19,7 @@ def create_app() -> FastAPI:
         version=settings.version,
     )
 
-    @app.middleware("http")
-    async def set_request_id(request: Request, call_next):  # type: ignore[no-untyped-def]
-        if not hasattr(request.state, "request_id"):
-            request.state.request_id = str(uuid4())
-        response = await call_next(request)
-        return response
+    app.middleware("http")(request_context_middleware)
 
     @app.exception_handler(HTTPException)
     async def http_exception_handler(request: Request, exc: HTTPException) -> JSONResponse:

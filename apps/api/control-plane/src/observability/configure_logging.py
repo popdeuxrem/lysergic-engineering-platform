@@ -21,6 +21,11 @@ class JsonFormatter(logging.Formatter):
             "message": record.getMessage(),
         }
 
+        for key in ("request_id", "correlation_id", "method", "path", "status_code", "duration_ms"):
+            value = getattr(record, key, None)
+            if value is not None:
+                payload[key] = value
+
         return json.dumps(payload)
 
 def configure_logging(settings: Settings) -> None:
