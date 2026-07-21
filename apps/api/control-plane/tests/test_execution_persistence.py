@@ -1,24 +1,9 @@
-import pytest
-from sqlalchemy import create_engine
-from sqlalchemy.orm import Session, sessionmaker
+from sqlalchemy.orm import Session
 
 from src.domain.execution import Execution
 from src.domain.execution_status import ExecutionStatus
-from src.infrastructure.database.base import Base
 from src.infrastructure.database.execution_model import ExecutionModel
 from src.infrastructure.database.execution_repository import SqlAlchemyExecutionRepository
-
-
-@pytest.fixture
-def db_session() -> Session:
-    engine = create_engine("sqlite:///:memory:")
-    Base.metadata.create_all(engine)
-    TestSession = sessionmaker(bind=engine)
-    session = TestSession()
-    try:
-        yield session
-    finally:
-        session.close()
 
 
 def test_repository_saves_execution(db_session: Session) -> None:

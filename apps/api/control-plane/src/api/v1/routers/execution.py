@@ -3,10 +3,10 @@ from sqlalchemy.orm import Session
 
 from src.api.v1.schemas.execution import (
     CreateExecutionResponse,
-    GetExecutionResponse,
     TransitionExecutionRequest,
     TransitionExecutionResponse,
 )
+from src.application.dto.execution_projection import ExecutionProjection
 from src.application.execution_service import ExecutionService
 from src.infrastructure.database.execution_repository import SqlAlchemyExecutionRepository
 from src.infrastructure.database.session import SessionLocal
@@ -32,17 +32,12 @@ def create_execution() -> CreateExecutionResponse:
         session.close()
 
 
-@router.get("/{execution_id}", response_model=GetExecutionResponse)
-def get_execution(execution_id: str) -> GetExecutionResponse:
+@router.get("/{execution_id}", response_model=ExecutionProjection)
+def get_execution(execution_id: str) -> ExecutionProjection:
     session = SessionLocal()
     try:
         result = _get_service(session).get(execution_id)
-        return GetExecutionResponse(
-            execution_id=result.execution_id,
-            status=result.status,
-            created_at=result.created_at,
-            updated_at=result.updated_at,
-        )
+        return result
     finally:
         session.close()
 
