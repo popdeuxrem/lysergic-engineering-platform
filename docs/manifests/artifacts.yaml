@@ -554,7 +554,7 @@ artifacts:
     next_artifact:
       id: LEP-RP-v0.1.0-M2.3
       title: Execution Lifecycle Audit and Consistency Boundary
-      status: validated
+      status: accepted
     files:
       - apps/api/control-plane/src/application/dto/__init__.py
       - apps/api/control-plane/src/application/dto/execution_projection.py
@@ -577,15 +577,15 @@ artifacts:
   - artifact:
       id: LEP-RP-v0.1.0-M2.3
       title: Execution Lifecycle Audit and Consistency Boundary
-      state: validated
+      state: accepted
     implementation:
       status: complete
-      commit: TBD
+      commit: 2642133
     validation:
       status: complete
-      evidence_commit: TBD
+      evidence_commit: 122f90c
     acceptance:
-      status: validated
+      status: accepted
       date: 2026-07-21
     enabled_capabilities:
       - lifecycle consistency verification
