@@ -114,6 +114,7 @@ def test_application_package_exports() -> None:
     from src.application import (  # noqa: F401
         BaseDTO,
         Command,
+        ExecutionService,
         Query,
         Repository,
         Result,
@@ -122,7 +123,34 @@ def test_application_package_exports() -> None:
 
     assert BaseDTO is not None
     assert Command is not None
+    assert ExecutionService is not None
     assert Query is not None
     assert Repository is not None
     assert Result is not None
     assert UseCase is not None
+
+
+def test_application_layer_does_not_import_infrastructure_extended() -> None:
+    application_modules = {
+        "src.application.exceptions",
+        "src.application.dto",
+        "src.application.interfaces",
+        "src.application.execution_dto",
+        "src.application.execution_use_cases",
+        "src.application.execution_service",
+    }
+    for mod in application_modules:
+        source = importlib.import_module(mod)
+        if source.__file__ is None:
+            continue
+        tree = ast.parse(Path(source.__file__).read_text())
+        for node in ast.walk(tree):
+            if isinstance(node, ast.ImportFrom):
+                assert node.module is None or not node.module.startswith(
+                    "src.infrastructure"
+                ), f"{mod} imports from infrastructure layer: {node.module}"
+            elif isinstance(node, ast.Import):
+                for alias in node.names:
+                    assert not alias.name.startswith(
+                        "src.infrastructure"
+                    ), f"{mod} imports from infrastructure layer: {alias.name}"
