@@ -182,9 +182,9 @@ artifacts:
       - production infrastructure
       - M1 capabilities
     next_artifact:
-      id: LEP-RP-v0.1.0-M1.0
-      title: Platform Integration
-      status: ready_for_contract_generation
+      id: LEP-RP-v0.1.0-M1.1
+      title: Persistence Boundary
+      status: validated
     files:
       - .github/workflows/validation.yml
       - docs/runbooks/development-environment.md
@@ -193,3 +193,47 @@ artifacts:
       - docs/validation/artifacts/M0.6/frontend-ci.txt
       - docs/validation/artifacts/M0.6/docker-ci.txt
       - docs/validation/artifacts/M0.6/workflow-run.txt
+  - artifact:
+      id: LEP-RP-v0.1.0-M1.1
+      title: Persistence Boundary
+      state: validated
+    implementation:
+      status: complete
+      commit: 9c48cc3
+    validation:
+      status: complete
+    enabled_capabilities:
+      - database configuration boundary
+      - SQLAlchemy infrastructure boundary
+      - Alembic migration framework
+      - database session dependency boundary
+    blocked_until_next_gate:
+      - ORM entities
+      - business tables
+      - application repositories
+      - CRUD operations
+      - domain models
+      - persistence-backed API routes
+    next_artifact:
+      id: LEP-RP-v0.1.0-M1.2
+      title: Application Domain Layer Foundation
+      status: ready_for_contract_generation
+    files:
+      - apps/api/control-plane/src/config/settings.py
+      - apps/api/control-plane/src/infrastructure/database/engine.py
+      - apps/api/control-plane/src/infrastructure/database/session.py
+      - apps/api/control-plane/src/infrastructure/database/base.py
+      - apps/api/control-plane/src/infrastructure/database/__init__.py
+      - apps/api/control-plane/alembic/env.py
+      - apps/api/control-plane/alembic.ini
+      - apps/api/control-plane/alembic/versions/eb25d0cd0861_initial.py
+      - apps/api/control-plane/tests/test_database_config.py
+      - apps/api/control-plane/tests/test_database_infrastructure.py
+      - apps/api/control-plane/pyproject.toml
+    validation_artifacts:
+      - docs/validation/artifacts/M1.1/pytest.txt
+      - docs/validation/artifacts/M1.1/ruff.txt
+      - docs/validation/artifacts/M1.1/mypy.txt
+      - docs/validation/artifacts/M1.1/alembic-upgrade.txt
+      - docs/validation/artifacts/M1.1/postgres-health.txt
+      - docs/validation/artifacts/M1.1/docker-build.txt
