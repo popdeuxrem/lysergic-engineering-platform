@@ -84,7 +84,7 @@ artifacts:
     next_artifact:
       id: LEP-RP-v0.1.0-M0.5
       title: Runtime Validation
-      status: validated
+      status: accepted
     files:
       - apps/web/operations-console/package.json
       - apps/web/operations-console/tsconfig.json
@@ -110,12 +110,16 @@ artifacts:
   - artifact:
       id: LEP-RP-v0.1.0-M0.5
       title: Runtime Validation
-      state: validated
+      state: accepted
     implementation:
       status: complete
-      commit: TBD
+      commit: 65cacc6
     validation:
       status: complete
+      evidence_commit: 65cacc6
+    acceptance:
+      status: accepted
+      date: 2026-07-21
     enabled_capabilities:
       - container orchestration correctness
       - service networking
