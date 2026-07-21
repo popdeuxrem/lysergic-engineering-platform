@@ -9,7 +9,7 @@ from src.api.v1.schemas.execution import (
 from src.application.dto.execution_projection import ExecutionProjection
 from src.application.execution_service import ExecutionService
 from src.infrastructure.database.execution_repository import SqlAlchemyExecutionRepository
-from src.infrastructure.database.session import SessionLocal
+from src.infrastructure.database.session import create_session
 
 router = APIRouter(prefix="/executions", tags=["executions"])
 
@@ -20,7 +20,7 @@ def _get_service(session: Session) -> ExecutionService:
 
 @router.post("", response_model=CreateExecutionResponse, status_code=status.HTTP_201_CREATED)
 def create_execution() -> CreateExecutionResponse:
-    session = SessionLocal()
+    session = create_session()
     try:
         result = _get_service(session).create()
         return CreateExecutionResponse(
@@ -34,7 +34,7 @@ def create_execution() -> CreateExecutionResponse:
 
 @router.get("/{execution_id}", response_model=ExecutionProjection)
 def get_execution(execution_id: str) -> ExecutionProjection:
-    session = SessionLocal()
+    session = create_session()
     try:
         result = _get_service(session).get(execution_id)
         return result
@@ -46,7 +46,7 @@ def get_execution(execution_id: str) -> ExecutionProjection:
 def transition_execution(
     execution_id: str, body: TransitionExecutionRequest
 ) -> TransitionExecutionResponse:
-    session = SessionLocal()
+    session = create_session()
     try:
         result = _get_service(session).transition(execution_id, body.target_status)
         return TransitionExecutionResponse(

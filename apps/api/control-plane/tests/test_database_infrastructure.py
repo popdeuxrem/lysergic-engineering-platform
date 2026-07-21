@@ -1,7 +1,7 @@
 from src.infrastructure.database import (
     Base,
-    SessionLocal,
     create_database_engine,
+    create_session,
     database_session,
     get_engine,
 )
@@ -9,7 +9,7 @@ from src.infrastructure.database import (
 
 def test_database_infrastructure_imports() -> None:
     assert Base is not None
-    assert SessionLocal is not None
+    assert create_session is not None
     assert create_database_engine is not None
     assert database_session is not None
     assert get_engine is not None
