@@ -1,7 +1,35 @@
 artifacts:
-  - milestone: LEP-RP-v0.1.0-M0.3
-    name: Control Plane Bootstrap
-    state: validated
+  - artifact:
+      id: LEP-RP-v0.1.0-M0.3
+      title: Control Plane Bootstrap
+      state: accepted
+    implementation:
+      status: complete
+      commit: 3c0e374
+    validation:
+      status: complete
+      evidence_commit: 06c87ec
+    acceptance:
+      status: accepted
+      date: 2026-07-21
+    enabled_capabilities:
+      - FastAPI service foundation
+      - application factory
+      - configuration boundary
+      - structured logging foundation
+      - health contract
+      - version contract
+      - validation evidence pipeline
+    blocked_until_next_gate:
+      - M1 capabilities
+      - autonomous systems
+      - workflows
+      - persistence
+      - orchestration expansion
+    next_artifact:
+      id: LEP-RP-v0.1.0-M0.4
+      title: Operations Console Bootstrap
+      status: ready_for_contract_generation
     files:
       - apps/api/control-plane/src/main.py
       - apps/api/control-plane/src/api/__init__.py
