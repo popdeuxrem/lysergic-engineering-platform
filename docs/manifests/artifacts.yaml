@@ -140,7 +140,7 @@ artifacts:
     next_artifact:
       id: LEP-RP-v0.1.0-M0.6
       title: CI Validation
-      status: validated
+      status: accepted
     files:
       - docker-compose.yml
       - .env.example
@@ -157,12 +157,16 @@ artifacts:
   - artifact:
       id: LEP-RP-v0.1.0-M0.6
       title: CI Validation
-      state: validated
+      state: accepted
     implementation:
       status: complete
       commit: 10d824b
     validation:
       status: complete
+      evidence_commit: 8b28fac
+    acceptance:
+      status: accepted
+      date: 2026-07-21
     enabled_capabilities:
       - automated validation pipeline
       - backend CI checks
