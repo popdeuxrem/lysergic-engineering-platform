@@ -1,0 +1,99 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.1, pytest-9.1.1, pluggy-1.6.0
+rootdir: /workspaces/lysergic-engineering-platform/apps/api/control-plane
+configfile: pyproject.toml
+plugins: anyio-4.14.2
+collected 63 items
+
+tests/test_api_contracts.py ......                                       [  9%]
+tests/test_architecture.py ......                                        [ 19%]
+tests/test_database_config.py ...                                        [ 23%]
+tests/test_database_infrastructure.py ....                               [ 30%]
+tests/test_dependency_composition.py ...                                 [ 34%]
+tests/test_execution_lifecycle.py .........                              [ 49%]
+tests/test_execution_persistence.py ........                             [ 61%]
+tests/test_execution_service.py EEEEEEEE                                 [ 74%]
+tests/test_health.py .....                                               [ 82%]
+tests/test_observability.py ...........                                  [100%]
+
+==================================== ERRORS ====================================
+_______________ ERROR at setup of test_service_creates_execution _______________
+file /workspaces/lysergic-engineering-platform/apps/api/control-plane/tests/test_execution_service.py, line 6
+  def test_service_creates_execution(db_session) -> None:
+E       fixture 'db_session' not found
+>       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+/workspaces/lysergic-engineering-platform/apps/api/control-plane/tests/test_execution_service.py:6
+________________ ERROR at setup of test_service_gets_execution _________________
+file /workspaces/lysergic-engineering-platform/apps/api/control-plane/tests/test_execution_service.py, line 16
+  def test_service_gets_execution(db_session) -> None:
+E       fixture 'db_session' not found
+>       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+/workspaces/lysergic-engineering-platform/apps/api/control-plane/tests/test_execution_service.py:16
+_____________ ERROR at setup of test_service_transitions_execution _____________
+file /workspaces/lysergic-engineering-platform/apps/api/control-plane/tests/test_execution_service.py, line 27
+  def test_service_transitions_execution(db_session) -> None:
+E       fixture 'db_session' not found
+>       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+/workspaces/lysergic-engineering-platform/apps/api/control-plane/tests/test_execution_service.py:27
+______________ ERROR at setup of test_service_completes_execution ______________
+file /workspaces/lysergic-engineering-platform/apps/api/control-plane/tests/test_execution_service.py, line 38
+  def test_service_completes_execution(db_session) -> None:
+E       fixture 'db_session' not found
+>       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+/workspaces/lysergic-engineering-platform/apps/api/control-plane/tests/test_execution_service.py:38
+________________ ERROR at setup of test_service_fails_execution ________________
+file /workspaces/lysergic-engineering-platform/apps/api/control-plane/tests/test_execution_service.py, line 50
+  def test_service_fails_execution(db_session) -> None:
+E       fixture 'db_session' not found
+>       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+/workspaces/lysergic-engineering-platform/apps/api/control-plane/tests/test_execution_service.py:50
+__________ ERROR at setup of test_service_rejects_invalid_transition ___________
+file /workspaces/lysergic-engineering-platform/apps/api/control-plane/tests/test_execution_service.py, line 62
+  def test_service_rejects_invalid_transition(db_session) -> None:
+E       fixture 'db_session' not found
+>       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+/workspaces/lysergic-engineering-platform/apps/api/control-plane/tests/test_execution_service.py:62
+______ ERROR at setup of test_service_returns_error_for_missing_execution ______
+file /workspaces/lysergic-engineering-platform/apps/api/control-plane/tests/test_execution_service.py, line 76
+  def test_service_returns_error_for_missing_execution(db_session) -> None:
+E       fixture 'db_session' not found
+>       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+/workspaces/lysergic-engineering-platform/apps/api/control-plane/tests/test_execution_service.py:76
+____ ERROR at setup of test_service_uses_same_repository_for_all_operations ____
+file /workspaces/lysergic-engineering-platform/apps/api/control-plane/tests/test_execution_service.py, line 88
+  def test_service_uses_same_repository_for_all_operations(db_session) -> None:
+E       fixture 'db_session' not found
+>       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+/workspaces/lysergic-engineering-platform/apps/api/control-plane/tests/test_execution_service.py:88
+=============================== warnings summary ===============================
+.venv/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /workspaces/lysergic-engineering-platform/apps/api/control-plane/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+ERROR tests/test_execution_service.py::test_service_creates_execution
+ERROR tests/test_execution_service.py::test_service_gets_execution
+ERROR tests/test_execution_service.py::test_service_transitions_execution
+ERROR tests/test_execution_service.py::test_service_completes_execution
+ERROR tests/test_execution_service.py::test_service_fails_execution
+ERROR tests/test_execution_service.py::test_service_rejects_invalid_transition
+ERROR tests/test_execution_service.py::test_service_returns_error_for_missing_execution
+ERROR tests/test_execution_service.py::test_service_uses_same_repository_for_all_operations
+=================== 55 passed, 1 warning, 8 errors in 1.14s ====================

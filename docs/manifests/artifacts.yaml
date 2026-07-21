@@ -460,9 +460,9 @@ artifacts:
       - asynchronous processing
       - external integrations
     next_artifact:
-      id: TBD
-      title: TBD
-      status: TBD
+      id: LEP-RP-v0.1.0-M2.1
+      title: Execution Service Layer
+      status: validated
     files:
       - apps/api/control-plane/src/domain/execution.py
       - apps/api/control-plane/src/domain/execution_status.py
@@ -485,3 +485,45 @@ artifacts:
       - docs/validation/artifacts/M2.0/ruff.txt
       - docs/validation/artifacts/M2.0/mypy.txt
       - docs/validation/artifacts/M2.0/docker-build.txt
+  - artifact:
+      id: LEP-RP-v0.1.0-M2.1
+      title: Execution Service Layer
+      state: validated
+    implementation:
+      status: complete
+      commit: TBD
+    validation:
+      status: complete
+      evidence_commit: TBD
+    acceptance:
+      status: validated
+      date: 2026-07-21
+    enabled_capabilities:
+      - execution application service boundary
+      - command/query handling
+      - dependency composition
+      - service orchestration
+    blocked_until_next_gate:
+      - workflow execution
+      - agent execution
+      - AI orchestration
+      - asynchronous processing
+      - external integrations
+    next_artifact:
+      id: TBD
+      title: TBD
+      status: TBD
+    files:
+      - apps/api/control-plane/src/application/execution_service.py
+      - apps/api/control-plane/src/api/v1/routers/execution.py
+      - apps/api/control-plane/tests/test_execution_service.py
+      - apps/api/control-plane/tests/test_dependency_composition.py
+      - apps/api/control-plane/tests/test_architecture.py
+    validation_artifacts:
+      - docs/validation/artifacts/M2.1/pytest.txt
+      - docs/validation/artifacts/M2.1/service-tests.txt
+      - docs/validation/artifacts/M2.1/dependency-tests.txt
+      - docs/validation/artifacts/M2.1/architecture-tests.txt
+      - docs/validation/artifacts/M2.1/ruff.txt
+      - docs/validation/artifacts/M2.1/mypy.txt
+      - docs/validation/artifacts/M2.1/docker-build.txt
