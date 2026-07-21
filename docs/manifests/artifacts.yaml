@@ -58,10 +58,10 @@ artifacts:
   - artifact:
       id: LEP-RP-v0.1.0-M0.4
       title: Operations Console Bootstrap
-      state: implemented
+      state: validated
     implementation:
       status: complete
-      commit: TBD
+      commit: 6fc21a4
     validation:
       status: complete
     enabled_capabilities:
