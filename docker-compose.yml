@@ -1,0 +1,28 @@
+services:
+  api:
+    build:
+      context: ./apps/api/control-plane
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+
+  web:
+    build:
+      context: ./apps/web/operations-console
+    ports:
+      - "3000:3000"
+
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: lep
+      POSTGRES_USER: lep
+      POSTGRES_PASSWORD: lep
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"

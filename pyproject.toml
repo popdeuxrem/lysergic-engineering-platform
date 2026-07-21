@@ -1,0 +1,11 @@
+[project]
+name = "lysergic-engineering-platform"
+version = "0.1.0"
+description = "LEP Reference Platform"
+requires-python = ">=3.12"
+
+[tool.ruff]
+line-length = 88
+
+[tool.mypy]
+strict = true
