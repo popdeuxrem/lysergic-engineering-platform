@@ -118,7 +118,7 @@ Directory: `docs/validation/artifacts/M1-A/`
 
 ## Decision
 
-- **Status:** validated
+- **Status:** accepted
 - **Date:** 2026-07-21
 - **Reviewer:** LEP Governance
 
@@ -127,4 +127,4 @@ Directory: `docs/validation/artifacts/M1-A/`
 - [x] draft
 - [x] implemented
 - [x] validated
-- [ ] accepted
+- [x] accepted

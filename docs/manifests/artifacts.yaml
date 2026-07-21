@@ -390,15 +390,15 @@ artifacts:
   - artifact:
       id: LEP-RP-v0.1.0-M1-A
       title: M1 Acceptance
-      state: validated
+      state: accepted
     implementation:
       status: complete
       commit: TBD
     validation:
       status: complete
-      evidence_commit: TBD
+      evidence_commit: e41b873
     acceptance:
-      status: validated
+      status: accepted
       date: 2026-07-21
     enabled_capabilities:
       - M1 phase completion
