@@ -1,7 +1,7 @@
 artifacts:
   - milestone: LEP-RP-v0.1.0-M0.3
     name: Control Plane Bootstrap
-    state: implemented
+    state: validated
     files:
       - apps/api/control-plane/src/main.py
       - apps/api/control-plane/src/api/__init__.py
