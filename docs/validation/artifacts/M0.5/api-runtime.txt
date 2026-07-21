@@ -1,0 +1,16 @@
+GET /
+200
+GET /health
+200
+GET /version
+200
+GET /api/v1/health
+200
+GET / body
+{"service":"lep-control-plane","message":"LEP Control Plane"}
+GET /health body
+{"service":"lep-control-plane","status":"healthy","version":"0.1.0"}
+GET /version body
+{"service":"lep-control-plane","version":"0.1.0","environment":"development"}
+GET /api/v1/health body
+{"service":"lep-control-plane","status":"healthy","version":"0.1.0"}

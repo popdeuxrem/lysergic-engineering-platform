@@ -1,0 +1,60 @@
+name: lysergic-engineering-platform
+services:
+  api:
+    build:
+      context: /workspaces/lysergic-engineering-platform/apps/api/control-plane
+      dockerfile: Dockerfile
+    environment:
+      API_PORT: "8000"
+      APP_ENV: development
+      POSTGRES_DB: lep
+      POSTGRES_HOST: localhost
+      POSTGRES_PASSWORD: lep
+      POSTGRES_PORT: "5432"
+      POSTGRES_USER: lep
+      REDIS_HOST: localhost
+      REDIS_PORT: "6379"
+      WEB_PORT: "3000"
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 8000
+        published: "8000"
+        protocol: tcp
+  postgres:
+    environment:
+      POSTGRES_DB: lep
+      POSTGRES_PASSWORD: lep
+      POSTGRES_USER: lep
+    image: postgres:16
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 5432
+        published: "5432"
+        protocol: tcp
+  redis:
+    image: redis:7
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 6379
+        published: "6379"
+        protocol: tcp
+  web:
+    build:
+      context: /workspaces/lysergic-engineering-platform/apps/web/operations-console
+      dockerfile: Dockerfile
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 3000
+        published: "3000"
+        protocol: tcp
+networks:
+  default:
+    name: lysergic-engineering-platform_default

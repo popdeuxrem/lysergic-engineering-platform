@@ -84,7 +84,7 @@ artifacts:
     next_artifact:
       id: LEP-RP-v0.1.0-M0.5
       title: Runtime Validation
-      status: ready_for_contract_generation
+      status: validated
     files:
       - apps/web/operations-console/package.json
       - apps/web/operations-console/tsconfig.json
@@ -107,3 +107,46 @@ artifacts:
       - docs/validation/artifacts/M0.4/pnpm-test.txt
       - docs/validation/artifacts/M0.4/pnpm-build.txt
       - docs/validation/artifacts/M0.4/docker-build.txt
+  - artifact:
+      id: LEP-RP-v0.1.0-M0.5
+      title: Runtime Validation
+      state: validated
+    implementation:
+      status: complete
+      commit: TBD
+    validation:
+      status: complete
+    enabled_capabilities:
+      - container orchestration correctness
+      - service networking
+      - environment configuration
+      - database container availability
+      - redis container availability
+      - local runtime reproducibility
+      - compose validation evidence
+    blocked_until_next_gate:
+      - persistence models
+      - migrations
+      - API integration
+      - authentication
+      - workflows
+      - agents
+      - intelligence features
+      - CI configuration
+    next_artifact:
+      id: LEP-RP-v0.1.0-M0.6
+      title: CI Validation
+      status: ready_for_contract_generation
+    files:
+      - docker-compose.yml
+      - .env.example
+      - docs/runbooks/development-environment.md
+    validation_artifacts:
+      - docs/validation/artifacts/M0.5/compose-config.txt
+      - docs/validation/artifacts/M0.5/compose-build.txt
+      - docs/validation/artifacts/M0.5/compose-up.txt
+      - docs/validation/artifacts/M0.5/containers.txt
+      - docs/validation/artifacts/M0.5/api-runtime.txt
+      - docs/validation/artifacts/M0.5/web-runtime.txt
+      - docs/validation/artifacts/M0.5/postgres-health.txt
+      - docs/validation/artifacts/M0.5/redis-health.txt

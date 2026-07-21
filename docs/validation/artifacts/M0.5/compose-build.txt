@@ -1,0 +1,112 @@
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.15kB done
+#1 DONE 0.0s
+
+#2 [web internal] load build definition from Dockerfile
+#2 transferring dockerfile: 303B 0.0s done
+#2 DONE 0.0s
+
+#3 [api internal] load build definition from Dockerfile
+#3 transferring dockerfile: 289B 0.0s done
+#3 DONE 0.1s
+
+#4 [auth] library/node:pull token for registry-1.docker.io
+#4 DONE 0.0s
+
+#5 [web internal] load metadata for docker.io/library/node:22-slim
+#5 ...
+
+#6 [auth] library/python:pull token for registry-1.docker.io
+#6 DONE 0.0s
+
+#5 [web internal] load metadata for docker.io/library/node:22-slim
+#5 DONE 0.5s
+
+#7 [api internal] load metadata for docker.io/library/python:3.12-slim
+#7 DONE 0.6s
+
+#8 [web internal] load .dockerignore
+#8 transferring context: 2B done
+#8 DONE 0.0s
+
+#9 [web 1/6] FROM docker.io/library/node:22-slim@sha256:6c74791e557ce11fc957704f6d4fe134a7bc8d6f5ca4403205b2966bd488f6b3
+#9 resolve docker.io/library/node:22-slim@sha256:6c74791e557ce11fc957704f6d4fe134a7bc8d6f5ca4403205b2966bd488f6b3 0.0s done
+#9 DONE 0.0s
+
+#10 [api internal] load .dockerignore
+#10 transferring context: 2B done
+#10 DONE 0.0s
+
+#11 [web internal] load build context
+#11 ...
+
+#12 [api internal] load build context
+#12 transferring context: 2.57kB 0.0s done
+#12 DONE 0.1s
+
+#11 [web internal] load build context
+#11 ...
+
+#13 [api 1/5] FROM docker.io/library/python:3.12-slim@sha256:57cd7c3a7a273101a6485ba99423ee568157882804b1124b4dd04266317710de
+#13 resolve docker.io/library/python:3.12-slim@sha256:57cd7c3a7a273101a6485ba99423ee568157882804b1124b4dd04266317710de 0.4s done
+#13 DONE 0.4s
+
+#14 [api 2/5] WORKDIR /app
+#14 CACHED
+
+#15 [api 3/5] COPY pyproject.toml .
+#15 CACHED
+
+#16 [api 4/5] RUN pip install --upgrade pip     && pip install uv     && uv pip install --system .
+#16 CACHED
+
+#17 [api 5/5] COPY src ./src
+#17 CACHED
+
+#11 [web internal] load build context
+#11 transferring context: 278.55kB 0.7s done
+#11 DONE 0.7s
+
+#18 [web 3/6] COPY package.json pnpm-lock.yaml* ./
+#18 CACHED
+
+#19 [web 5/6] COPY . .
+#19 CACHED
+
+#20 [web 2/6] WORKDIR /app
+#20 CACHED
+
+#21 [web 4/6] RUN corepack enable && corepack prepare pnpm@latest --activate     && pnpm install --no-frozen-lockfile --ignore-scripts
+#21 CACHED
+
+#22 [web 6/6] RUN pnpm build
+#22 CACHED
+
+#23 [web] exporting to image
+#23 exporting layers 0.0s done
+#23 exporting manifest sha256:52e7aeec71c7f8269fcdecb0554e92900b9729a1da3357bcadad6ac6399b0b3a 0.1s done
+#23 exporting config sha256:b93f73e28e38615abbe74fb4455c17f7cb74b80599b72ea95c721da609f5de7f done
+#23 exporting attestation manifest sha256:a14c9e131450732846a534e9f6684da11254551eb7a5d76afdf7c98d6199d163
+#23 exporting attestation manifest sha256:a14c9e131450732846a534e9f6684da11254551eb7a5d76afdf7c98d6199d163 0.0s done
+#23 exporting manifest list sha256:72c2d04db3d9b114b1964a979adabe3741a3ae9cfbac3f2a228e6be29a0eca17 0.0s done
+#23 naming to docker.io/library/lysergic-engineering-platform-web:latest done
+#23 unpacking to docker.io/library/lysergic-engineering-platform-web:latest 0.0s done
+#23 DONE 0.3s
+
+#24 [api] exporting to image
+#24 exporting layers 0.1s done
+#24 exporting manifest sha256:ea118bd84c19b30f76f221f1f5fade529074fe8bb1fbfda341cd00f73ea635d9 0.0s done
+#24 exporting config sha256:b5bdd2054aee388225d30a057aa6aa935af2afd2b93b38ffb43828b9a1ef9284 0.0s done
+#24 exporting attestation manifest sha256:1ea5e27cd7baecefeb91ad3eeee48ba555dacaea735ae0e305ad6b7ccb5433f2 0.1s done
+#24 exporting manifest list sha256:24c576fa435e3f3bd772b50cf724646614b9dfdaafe6ec2ed740b2b32b1c508a 0.0s done
+#24 naming to docker.io/library/lysergic-engineering-platform-api:latest done
+#24 unpacking to docker.io/library/lysergic-engineering-platform-api:latest 0.0s done
+#24 DONE 0.4s
+
+#25 [api] resolving provenance for metadata file
+#25 DONE 0.0s
+
+#26 [web] resolving provenance for metadata file
+#26 DONE 0.0s
+ lysergic-engineering-platform-web  Built
+ lysergic-engineering-platform-api  Built
