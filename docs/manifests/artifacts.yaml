@@ -603,7 +603,7 @@ artifacts:
     next_artifact:
       id: LEP-RP-v0.1.0-M2.4
       title: Build Automation Foundation
-      status: validated
+      status: accepted
     files:
       - apps/api/control-plane/src/application/audit/__init__.py
       - apps/api/control-plane/src/application/audit/execution_audit.py
@@ -620,15 +620,15 @@ artifacts:
   - artifact:
       id: LEP-RP-v0.1.0-M2.4
       title: Build Automation Foundation
-      state: validated
+      state: accepted
     implementation:
       status: complete
-      commit: TBD
+      commit: 63559b3
     validation:
       status: complete
-      evidence_commit: TBD
+      evidence_commit: 6572290
     acceptance:
-      status: validated
+      status: accepted
       date: 2026-07-21
     enabled_capabilities:
       - deterministic validation entry point
