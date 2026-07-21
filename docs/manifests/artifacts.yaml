@@ -223,7 +223,7 @@ artifacts:
     next_artifact:
       id: LEP-RP-v0.1.0-M1.2
       title: Application / Domain Layer Foundation
-      status: ready_for_contract_generation
+      status: validated
     files:
       - apps/api/control-plane/src/config/settings.py
       - apps/api/control-plane/src/infrastructure/database/engine.py
@@ -243,3 +243,49 @@ artifacts:
       - docs/validation/artifacts/M1.1/alembic-upgrade.txt
       - docs/validation/artifacts/M1.1/postgres-health.txt
       - docs/validation/artifacts/M1.1/docker-build.txt
+  - artifact:
+      id: LEP-RP-v0.1.0-M1.2
+      title: Application / Domain Layer Foundation
+      state: validated
+    implementation:
+      status: complete
+      commit: 7825e28
+    validation:
+      status: complete
+    enabled_capabilities:
+      - domain entity foundation
+      - domain value object pattern
+      - domain exception hierarchy
+      - application DTO patterns
+      - application use case patterns
+      - repository protocol
+      - dependency direction enforcement
+      - architecture validation tests
+    blocked_until_next_gate:
+      - business entities
+      - business use cases
+      - concrete repositories
+      - API endpoints
+      - authentication
+      - workflows
+      - agents
+    next_artifact:
+      id: LEP-RP-v0.1.0-M1.3
+      title: API Contract Standards
+      status: ready_for_contract_generation
+    files:
+      - apps/api/control-plane/src/domain/exceptions.py
+      - apps/api/control-plane/src/domain/value_objects.py
+      - apps/api/control-plane/src/domain/entities.py
+      - apps/api/control-plane/src/domain/__init__.py
+      - apps/api/control-plane/src/application/exceptions.py
+      - apps/api/control-plane/src/application/dto.py
+      - apps/api/control-plane/src/application/interfaces.py
+      - apps/api/control-plane/src/application/__init__.py
+      - apps/api/control-plane/tests/test_architecture.py
+    validation_artifacts:
+      - docs/validation/artifacts/M1.2/pytest.txt
+      - docs/validation/artifacts/M1.2/ruff.txt
+      - docs/validation/artifacts/M1.2/mypy.txt
+      - docs/validation/artifacts/M1.2/docker-build.txt
+      - docs/validation/artifacts/M1.2/architecture-tests.txt
