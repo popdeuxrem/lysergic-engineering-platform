@@ -223,7 +223,7 @@ artifacts:
     next_artifact:
       id: LEP-RP-v0.1.0-M1.2
       title: Application / Domain Layer Foundation
-      status: validated
+      status: accepted
     files:
       - apps/api/control-plane/src/config/settings.py
       - apps/api/control-plane/src/infrastructure/database/engine.py
@@ -246,12 +246,16 @@ artifacts:
   - artifact:
       id: LEP-RP-v0.1.0-M1.2
       title: Application / Domain Layer Foundation
-      state: validated
+      state: accepted
     implementation:
       status: complete
       commit: 7825e28
     validation:
       status: complete
+      evidence_commit: cf03f7c
+    acceptance:
+      status: accepted
+      date: 2026-07-21
     enabled_capabilities:
       - domain entity foundation
       - domain value object pattern
