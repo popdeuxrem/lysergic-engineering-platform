@@ -512,7 +512,7 @@ artifacts:
     next_artifact:
       id: LEP-RP-v0.1.0-M2.2
       title: Execution Query and State Projection
-      status: validated
+      status: accepted
     files:
       - apps/api/control-plane/src/application/execution_service.py
       - apps/api/control-plane/src/api/v1/routers/execution.py
@@ -530,15 +530,15 @@ artifacts:
   - artifact:
       id: LEP-RP-v0.1.0-M2.2
       title: Execution Query and State Projection
-      state: validated
+      state: accepted
     implementation:
       status: complete
-      commit: TBD
+      commit: 2d1e2fd
     validation:
       status: complete
-      evidence_commit: TBD
+      evidence_commit: 7f3a940
     acceptance:
-      status: validated
+      status: accepted
       date: 2026-07-21
     enabled_capabilities:
       - query-side application conventions
