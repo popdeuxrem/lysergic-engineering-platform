@@ -6,6 +6,7 @@ from src.api.v1.schemas.execution import (
     TransitionExecutionRequest,
     TransitionExecutionResponse,
 )
+from src.application.audit.handlers.execution_audit_handler import ExecutionAuditHandler
 from src.application.dto.execution_projection import ExecutionProjection
 from src.application.execution_service import ExecutionService
 from src.infrastructure.database.execution_repository import SqlAlchemyExecutionRepository
@@ -54,5 +55,19 @@ def transition_execution(
             status=result.status,
             updated_at=result.updated_at,
         )
+    finally:
+        session.close()
+
+
+@router.get("/{execution_id}/audit")
+def audit_execution(execution_id: str) -> dict[str, object]:
+    session = create_session()
+    try:
+        repo = SqlAlchemyExecutionRepository(session)
+        handler = ExecutionAuditHandler(repo)
+        result = handler.audit_by_id(execution_id)
+        if result is None:
+            return {"execution_id": execution_id, "valid": False, "issues": ["not found"]}
+        return result.model_dump()
     finally:
         session.close()
