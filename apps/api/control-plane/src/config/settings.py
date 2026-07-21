@@ -9,6 +9,12 @@ class Settings(BaseSettings):
     version: str = "0.1.0"
     environment: str = "development"
 
+    postgres_host: str = "localhost"
+    postgres_port: int = 5432
+    postgres_db: str = "lep"
+    postgres_user: str = "lep"
+    postgres_password: str = "lep"
+
 @lru_cache
 def get_settings() -> Settings:
     return Settings()
