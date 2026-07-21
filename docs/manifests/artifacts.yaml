@@ -276,7 +276,7 @@ artifacts:
     next_artifact:
       id: LEP-RP-v0.1.0-M1.3
       title: API Contract Standards
-      status: ready_for_contract_generation
+      status: accepted
     files:
       - apps/api/control-plane/src/domain/exceptions.py
       - apps/api/control-plane/src/domain/value_objects.py
@@ -293,3 +293,51 @@ artifacts:
       - docs/validation/artifacts/M1.2/mypy.txt
       - docs/validation/artifacts/M1.2/docker-build.txt
       - docs/validation/artifacts/M1.2/architecture-tests.txt
+  - artifact:
+      id: LEP-RP-v0.1.0-M1.3
+      title: API Contract Standards
+      state: accepted
+    implementation:
+      status: complete
+      commit: TBD
+    validation:
+      status: complete
+      evidence_commit: TBD
+    acceptance:
+      status: accepted
+      date: 2026-07-21
+    enabled_capabilities:
+      - API version boundary
+      - typed request/response schemas
+      - centralized error handling
+      - request context dependencies
+      - OpenAPI contract generation
+    blocked_until_next_gate:
+      - business endpoints
+      - authentication
+      - workflows
+      - agents
+    next_artifact:
+      id: TBD
+      title: TBD
+      status: TBD
+    files:
+      - apps/api/control-plane/src/api/errors.py
+      - apps/api/control-plane/src/api/exceptions.py
+      - apps/api/control-plane/src/api/dependencies.py
+      - apps/api/control-plane/src/api/v1/__init__.py
+      - apps/api/control-plane/src/api/v1/schemas/__init__.py
+      - apps/api/control-plane/src/api/v1/schemas/common.py
+      - apps/api/control-plane/src/api/v1/schemas/health.py
+      - apps/api/control-plane/src/api/v1/routers/__init__.py
+      - apps/api/control-plane/src/api/v1/routers/health.py
+      - apps/api/control-plane/src/api/router.py
+      - apps/api/control-plane/src/application/app.py
+      - apps/api/control-plane/tests/test_api_contracts.py
+    validation_artifacts:
+      - docs/validation/artifacts/M1.3/pytest.txt
+      - docs/validation/artifacts/M1.3/api-contract-tests.txt
+      - docs/validation/artifacts/M1.3/ruff.txt
+      - docs/validation/artifacts/M1.3/mypy.txt
+      - docs/validation/artifacts/M1.3/openapi.txt
+      - docs/validation/artifacts/M1.3/docker-build.txt
