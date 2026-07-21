@@ -1,0 +1,17 @@
+/workspaces/lysergic-engineering-platform/apps/api/control-plane/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+{"timestamp": "2026-07-21T13:52:30.702616+00:00", "level": "INFO", "service": "lep-control-plane", "version": "0.1.0", "logger": "lep.observability.middleware", "message": "request.started", "request_id": "c1dfb573-83b7-4a89-b26d-80203a2e56bd", "correlation_id": "runtime-test-correlation", "method": "GET", "path": "/api/v1/health"}
+{"timestamp": "2026-07-21T13:52:30.706038+00:00", "level": "INFO", "service": "lep-control-plane", "version": "0.1.0", "logger": "lep.observability.middleware", "message": "request.completed", "request_id": "c1dfb573-83b7-4a89-b26d-80203a2e56bd", "correlation_id": "runtime-test-correlation", "method": "GET", "path": "/api/v1/health", "status_code": 200, "duration_ms": 3}
+{"timestamp": "2026-07-21T13:52:30.707605+00:00", "level": "INFO", "service": "lep-control-plane", "version": "0.1.0", "logger": "httpx", "message": "HTTP Request: GET http://testserver/api/v1/health \"HTTP/1.1 200 OK\""}
+Traceback (most recent call last):
+  File "<string>", line 19, in <module>
+  File "/home/codespace/.python/current/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.python/current/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.python/current/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Captured 1 log lines

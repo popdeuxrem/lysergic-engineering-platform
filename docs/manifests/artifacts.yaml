@@ -318,9 +318,9 @@ artifacts:
       - workflows
       - agents
     next_artifact:
-      id: TBD
-      title: TBD
-      status: TBD
+      id: LEP-RP-v0.1.0-M1.4
+      title: Observability Expansion
+      status: validated
     files:
       - apps/api/control-plane/src/api/errors.py
       - apps/api/control-plane/src/api/exceptions.py
@@ -341,3 +341,49 @@ artifacts:
       - docs/validation/artifacts/M1.3/mypy.txt
       - docs/validation/artifacts/M1.3/openapi.txt
       - docs/validation/artifacts/M1.3/docker-build.txt
+  - artifact:
+      id: LEP-RP-v0.1.0-M1.4
+      title: Observability Expansion
+      state: validated
+    implementation:
+      status: complete
+      commit: TBD
+    validation:
+      status: complete
+      evidence_commit: TBD
+    acceptance:
+      status: validated
+      date: 2026-07-21
+    enabled_capabilities:
+      - request lifecycle visibility
+      - correlation propagation
+      - structured application logging
+      - execution context conventions
+      - observability validation workflow
+    blocked_until_next_gate:
+      - authentication
+      - authorization
+      - business APIs
+      - CRUD capabilities
+      - workflows
+      - agents
+      - policies
+      - production capabilities
+    next_artifact:
+      id: TBD
+      title: TBD
+      status: TBD
+    files:
+      - apps/api/control-plane/src/observability/context.py
+      - apps/api/control-plane/src/observability/middleware.py
+      - apps/api/control-plane/src/observability/configure_logging.py
+      - apps/api/control-plane/src/application/app.py
+      - apps/api/control-plane/src/api/dependencies.py
+      - apps/api/control-plane/tests/test_observability.py
+    validation_artifacts:
+      - docs/validation/artifacts/M1.4/pytest.txt
+      - docs/validation/artifacts/M1.4/observability-tests.txt
+      - docs/validation/artifacts/M1.4/ruff.txt
+      - docs/validation/artifacts/M1.4/mypy.txt
+      - docs/validation/artifacts/M1.4/docker-build.txt
+      - docs/validation/artifacts/M1.4/runtime.txt
