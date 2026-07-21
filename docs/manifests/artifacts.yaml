@@ -510,9 +510,9 @@ artifacts:
       - asynchronous processing
       - external integrations
     next_artifact:
-      id: TBD
-      title: TBD
-      status: TBD
+      id: LEP-RP-v0.1.0-M2.2
+      title: Execution Query and State Projection
+      status: validated
     files:
       - apps/api/control-plane/src/application/execution_service.py
       - apps/api/control-plane/src/api/v1/routers/execution.py
@@ -527,3 +527,50 @@ artifacts:
       - docs/validation/artifacts/M2.1/ruff.txt
       - docs/validation/artifacts/M2.1/mypy.txt
       - docs/validation/artifacts/M2.1/docker-build.txt
+  - artifact:
+      id: LEP-RP-v0.1.0-M2.2
+      title: Execution Query and State Projection
+      state: validated
+    implementation:
+      status: complete
+      commit: TBD
+    validation:
+      status: complete
+      evidence_commit: TBD
+    acceptance:
+      status: validated
+      date: 2026-07-21
+    enabled_capabilities:
+      - query-side application conventions
+      - typed execution projection DTO
+      - read-only query behavior
+      - projection response model
+    blocked_until_next_gate:
+      - workflow execution
+      - agent execution
+      - AI orchestration
+      - asynchronous processing
+      - external integrations
+    next_artifact:
+      id: TBD
+      title: TBD
+      status: TBD
+    files:
+      - apps/api/control-plane/src/application/dto/__init__.py
+      - apps/api/control-plane/src/application/dto/execution_projection.py
+      - apps/api/control-plane/src/application/queries/__init__.py
+      - apps/api/control-plane/src/application/queries/execution_queries.py
+      - apps/api/control-plane/src/application/queries/handlers/__init__.py
+      - apps/api/control-plane/src/application/queries/handlers/execution_query_handler.py
+      - apps/api/control-plane/src/application/execution_service.py
+      - apps/api/control-plane/src/api/v1/routers/execution.py
+      - apps/api/control-plane/tests/conftest.py
+      - apps/api/control-plane/tests/test_execution_queries.py
+      - apps/api/control-plane/tests/test_execution_persistence.py
+    validation_artifacts:
+      - docs/validation/artifacts/M2.2/pytest.txt
+      - docs/validation/artifacts/M2.2/query-tests.txt
+      - docs/validation/artifacts/M2.2/ruff.txt
+      - docs/validation/artifacts/M2.2/mypy.txt
+      - docs/validation/artifacts/M2.2/docker-build.txt
+      - docs/validation/artifacts/M2.2/projection-validation.txt
