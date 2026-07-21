@@ -552,9 +552,9 @@ artifacts:
       - asynchronous processing
       - external integrations
     next_artifact:
-      id: TBD
-      title: TBD
-      status: TBD
+      id: LEP-RP-v0.1.0-M2.3
+      title: Execution Lifecycle Audit and Consistency Boundary
+      status: validated
     files:
       - apps/api/control-plane/src/application/dto/__init__.py
       - apps/api/control-plane/src/application/dto/execution_projection.py
@@ -574,3 +574,46 @@ artifacts:
       - docs/validation/artifacts/M2.2/mypy.txt
       - docs/validation/artifacts/M2.2/docker-build.txt
       - docs/validation/artifacts/M2.2/projection-validation.txt
+  - artifact:
+      id: LEP-RP-v0.1.0-M2.3
+      title: Execution Lifecycle Audit and Consistency Boundary
+      state: validated
+    implementation:
+      status: complete
+      commit: TBD
+    validation:
+      status: complete
+      evidence_commit: TBD
+    acceptance:
+      status: validated
+      date: 2026-07-21
+    enabled_capabilities:
+      - lifecycle consistency verification
+      - typed audit projection
+      - read-only audit boundary
+      - audit API contract
+    blocked_until_next_gate:
+      - workflow engine
+      - autonomous agents
+      - LLM execution
+      - background execution
+      - event bus
+      - distributed execution
+      - external integrations
+    next_artifact:
+      id: TBD
+      title: TBD
+      status: TBD
+    files:
+      - apps/api/control-plane/src/application/audit/__init__.py
+      - apps/api/control-plane/src/application/audit/execution_audit.py
+      - apps/api/control-plane/src/application/audit/handlers/__init__.py
+      - apps/api/control-plane/src/application/audit/handlers/execution_audit_handler.py
+      - apps/api/control-plane/src/api/v1/routers/execution.py
+    validation_artifacts:
+      - docs/validation/artifacts/M2.3/pytest.txt
+      - docs/validation/artifacts/M2.3/audit-tests.txt
+      - docs/validation/artifacts/M2.3/ruff.txt
+      - docs/validation/artifacts/M2.3/mypy.txt
+      - docs/validation/artifacts/M2.3/docker-build.txt
+      - docs/validation/artifacts/M2.3/consistency-validation.txt

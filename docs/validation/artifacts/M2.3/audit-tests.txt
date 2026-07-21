@@ -1,0 +1,18 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.1, pytest-9.1.1, pluggy-1.6.0 -- /workspaces/lysergic-engineering-platform/apps/api/control-plane/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /workspaces/lysergic-engineering-platform/apps/api/control-plane
+configfile: pyproject.toml
+plugins: anyio-4.14.2
+collecting ... collected 8 items
+
+tests/test_execution_audit.py::test_audit_handler_returns_valid_for_created_execution PASSED [ 12%]
+tests/test_execution_audit.py::test_audit_handler_returns_valid_for_completed_execution PASSED [ 25%]
+tests/test_execution_audit.py::test_audit_handler_returns_valid_for_failed_execution PASSED [ 37%]
+tests/test_execution_audit.py::test_audit_handler_returns_none_for_missing_execution PASSED [ 50%]
+tests/test_execution_audit.py::test_audit_does_not_mutate_execution PASSED [ 62%]
+tests/test_execution_audit.py::test_audit_projection_has_required_fields PASSED [ 75%]
+tests/test_execution_audit.py::test_audit_is_deterministic PASSED        [ 87%]
+tests/test_execution_audit.py::test_audit_handler_uses_repository_only PASSED [100%]
+
+============================== 8 passed in 0.07s ===============================
