@@ -299,10 +299,10 @@ artifacts:
       state: accepted
     implementation:
       status: complete
-      commit: TBD
+      commit: 4bb8795
     validation:
       status: complete
-      evidence_commit: TBD
+      evidence_commit: d1a922c
     acceptance:
       status: accepted
       date: 2026-07-21
@@ -387,3 +387,49 @@ artifacts:
       - docs/validation/artifacts/M1.4/mypy.txt
       - docs/validation/artifacts/M1.4/docker-build.txt
       - docs/validation/artifacts/M1.4/runtime.txt
+  - artifact:
+      id: LEP-RP-v0.1.0-M1-A
+      title: M1 Acceptance
+      state: validated
+    implementation:
+      status: complete
+      commit: TBD
+    validation:
+      status: complete
+      evidence_commit: TBD
+    acceptance:
+      status: validated
+      date: 2026-07-21
+    enabled_capabilities:
+      - M1 phase completion
+      - aggregate architecture validation
+      - artifact inventory verification
+      - governance acceptance
+      - regression validation
+    blocked_until_next_gate:
+      - M2 capabilities
+      - authentication
+      - authorization
+      - business workflows
+      - agents
+      - autonomous execution
+      - policy engine
+      - knowledge service
+      - event bus
+      - messaging infrastructure
+      - production deployment
+      - metrics platform
+      - distributed tracing
+    next_artifact:
+      id: TBD
+      title: TBD
+      status: TBD
+    files:
+      - docs/validation/reports/M1-acceptance.md
+    validation_artifacts:
+      - docs/validation/artifacts/M1-A/pytest.txt
+      - docs/validation/artifacts/M1-A/ruff.txt
+      - docs/validation/artifacts/M1-A/mypy.txt
+      - docs/validation/artifacts/M1-A/docker-build.txt
+      - docs/validation/artifacts/M1-A/artifact-inventory.txt
+      - docs/validation/artifacts/M1-A/architecture-review.txt

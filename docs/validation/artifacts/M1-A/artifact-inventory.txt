@@ -1,0 +1,10 @@
+=== Artifact Inventory ===
+M0.3: implementation=complete validation=complete acceptance=accepted
+M0.4: implementation=complete validation=complete acceptance=accepted
+M0.5: implementation=complete validation=complete acceptance=accepted
+M0.6: implementation=complete validation=complete acceptance=accepted
+M1.1: implementation=complete validation=complete acceptance=accepted
+M1.2: implementation=complete validation=complete acceptance=accepted
+M1.3: implementation=complete validation=complete acceptance=accepted
+M1.4: implementation=complete validation=complete acceptance=accepted
+Status: ALL PASS
