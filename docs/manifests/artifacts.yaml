@@ -29,7 +29,7 @@ artifacts:
     next_artifact:
       id: LEP-RP-v0.1.0-M0.4
       title: Operations Console Bootstrap
-      status: implemented
+      status: accepted
     files:
       - apps/api/control-plane/src/main.py
       - apps/api/control-plane/src/api/__init__.py
@@ -58,34 +58,33 @@ artifacts:
   - artifact:
       id: LEP-RP-v0.1.0-M0.4
       title: Operations Console Bootstrap
-      state: validated
+      state: accepted
     implementation:
       status: complete
       commit: 6fc21a4
     validation:
       status: complete
+      evidence_commit: 55cd6b8
+    acceptance:
+      status: accepted
+      date: 2026-07-21
     enabled_capabilities:
-      - Next.js runtime
-      - TypeScript configuration
-      - application shell
-      - root page
-      - frontend testing
-      - linting
-      - type checking
-      - production build validation
-      - Docker build
-      - service documentation
-      - validation evidence
+      - Next.js application boundary
+      - TypeScript frontend foundation
+      - frontend validation workflow
+      - production build verification
+      - frontend evidence capture
     blocked_until_next_gate:
+      - dashboard functionality
       - backend integration
-      - API clients
       - authentication
-      - state management
-      - dashboards
       - workflows
-      - agents
-      - intelligence interfaces
-      - runtime orchestration
+      - agent interfaces
+      - operational controls
+    next_artifact:
+      id: LEP-RP-v0.1.0-M0.5
+      title: Runtime Validation
+      status: ready_for_contract_generation
     files:
       - apps/web/operations-console/package.json
       - apps/web/operations-console/tsconfig.json
