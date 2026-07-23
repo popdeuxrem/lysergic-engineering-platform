@@ -47,9 +47,9 @@ checks:
     check: "L0 schema references only built-in vocabularies"
     required: true
   - id: "IDENTITY-009"
-    description: "Registered in schema-registry.yaml"
+    description: "Registered in registry/schemas.yaml"
     scope: registry
-    check: "entry exists with status != pending"
+    check: "entry exists with status == accepted"
     required: true
   - id: "IDENTITY-010"
     description: "immutable: true enforced with const"

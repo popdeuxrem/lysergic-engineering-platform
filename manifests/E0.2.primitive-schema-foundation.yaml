@@ -31,11 +31,13 @@ primitives:
       title: "Identity Primitive Specification"
       level: L0
       depends_on: []
-      state: DRAFT
+      state: ACCEPTED
+      decision: "DEC-ECP-E0.2.1-0001"
     - id: "ECP-RP-v0.1.0-E0.2.2"
       title: "Reference Primitive Specification"
       level: L0
       depends_on: ["identity"]
+      state: READY_TO_START
     - id: "ECP-RP-v0.1.0-E0.2.3"
       title: "Ownership Primitive Specification"
       level: L1
@@ -83,7 +85,23 @@ deliverables:
     required: true
     status: complete
   schema_registry:
-    path: "docs/specifications/registry/schema-registry.yaml"
+    path: "docs/specifications/registry/schemas.yaml"
+    required: true
+    status: complete
+  artifact_registry:
+    path: "docs/specifications/registry/artifacts.yaml"
+    required: true
+    status: complete
+  primitive_registry:
+    path: "docs/specifications/registry/primitives.yaml"
+    required: true
+    status: complete
+  profile_registry:
+    path: "docs/specifications/registry/profiles.yaml"
+    required: true
+    status: complete
+  capability_registry:
+    path: "docs/specifications/registry/capabilities.yaml"
     required: true
     status: complete
   identity_specification:
@@ -102,6 +120,18 @@ deliverables:
     path: "docs/specifications/primitives/identity/conformance.yaml"
     required: true
     status: complete
+  identity_evidence:
+    path: "evidence/ECP-RP-v0.1.0-E0.2.1.acceptance.yaml"
+    required: true
+    status: complete
+  identity_judgment:
+    path: "judgments/JUD-ECP-E0.2.1-0001.yaml"
+    required: true
+    status: complete
+  identity_decision:
+    path: "decisions/DEC-ECP-E0.2.1-0001.yaml"
+    required: true
+    status: complete
 dependencies:
   - artifact: "ECP-RP-v0.1.0-E0.1"
     type: constitutional
@@ -115,6 +145,7 @@ dependencies:
   - artifact: "LEPRA-ER-v1.0"
     type: constitutional
 next_artifact:
-  id: "ECP-RP-v0.1.0-E0.2.1"
-  title: "Identity Primitive Specification"
-  state: DRAFT
+  id: "ECP-RP-v0.1.0-E0.2.2"
+  title: "Reference Primitive Specification"
+  state: READY_TO_START
+  unlocked_by: "DEC-ECP-E0.2.1-0001"

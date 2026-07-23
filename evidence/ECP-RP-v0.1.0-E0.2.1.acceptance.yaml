@@ -1,0 +1,119 @@
+# ==============================================================================
+# ECP ACCEPTANCE & EVIDENCE PACKAGE
+# Artifact ID: ECP-RP-v0.1.0-E0.2.1
+# Artifact Type: Acceptance and Evidence Package
+# Purpose: Governance evidence supporting readiness for acceptance
+# ==============================================================================
+package_version: "1.0.0"
+identity:
+  id: "ECP-RP-v0.1.0-E0.2.1-ACCEPTANCE"
+  artifact: "ECP-RP-v0.1.0-E0.2.1"
+  uri: "https://specs.lysergic.dev/ecp/evidence/ECP-RP-v0.1.0-E0.2.1-ACCEPTANCE"
+  immutable: true
+artifact:
+  id: "ECP-RP-v0.1.0-E0.2.1"
+  title: "Identity Primitive Specification"
+  program: "Engineering Control Plane"
+  domain: "Shared Specifications"
+  version: "0.1.0"
+  parent: "ECP-RP-v0.1.0-E0.2"
+authority:
+  evaluation_role: "AcceptanceEvaluator"
+  decision_role: "PortfolioAuthority"
+governing_documents:
+  schema_architecture: "ECP-RP-v0.1.0-E0.1"
+  reference_architecture: "LEPRA-RA-v1.0"
+  governance_model: "LEPRA-GM-v1.0"
+  evolution_rules: "LEPRA-ER-v1.0"
+constitutional_properties:
+  - "Dual identity model (id/uri)"
+  - "Orthogonal versioning"
+  - "Immutability (const: true)"
+  - "Lineage tracking"
+  - "Canonical URI template"
+deliverables:
+  specification:
+    path: "docs/specifications/primitives/identity/E0.2.1-identity-primitive.md"
+    required: true
+    present: true
+    status: complete
+  json_schema:
+    path: "docs/specifications/primitives/identity/identity.schema.json"
+    required: true
+    present: true
+    status: complete
+  governance_manifest:
+    path: "docs/specifications/primitives/identity/manifest.yaml"
+    required: true
+    present: true
+    status: complete
+  conformance_profile:
+    path: "docs/specifications/primitives/identity/conformance.yaml"
+    required: true
+    present: true
+    status: complete
+validation:
+  executed: true
+  profile:
+    id: "ECP-CP-v0.1.0-IDENTITY"
+  results:
+    IDENTITY-001_specification_exists: PASS
+    IDENTITY-002_json_schema_exists: PASS
+    IDENTITY-003_governance_manifest_exists: PASS
+    IDENTITY-004_conformance_profile_exists: PASS
+    IDENTITY-005_valid_draft_2020_12: PASS
+    IDENTITY-006_canonical_id_uri: PASS
+    IDENTITY-007_zero_external_dependencies: PASS
+    IDENTITY-008_L0_level_constraint: PASS
+    IDENTITY-009_registry_entry_present: PASS
+    IDENTITY-010_immutable_const_enforced: PASS
+    IDENTITY-011_id_and_uri_required: PASS
+    IDENTITY-012_lineage_model_declared: PASS
+  overall_validation: PASS
+  validated_by: "EvaluationEngine"
+evaluation:
+  evaluator: "AcceptanceEvaluator"
+  recommendation: "READY_FOR_ACCEPTANCE"
+  rationale:
+    - "All 12 conformance checks PASS"
+    - "Five constitutional properties established and verified"
+    - "Zero external dependencies — L0 isolation confirmed"
+    - "Canonical $id URI matches registry entry"
+    - "immutable: true enforced via const constraint"
+    - "Dual identity model (id/uri) both required"
+    - "Explicit lineage model with parent/supersedes/superseded_by"
+    - "Pydantic v2 mapping guidance documented"
+    - "Registry entry present and verified"
+judgment:
+  id: "JUD-ECP-E0.2.1-0001"
+  produced_by: "EvaluationEngine"
+  recommendation: "READY_FOR_ACCEPTANCE"
+  judgment_record: "judgments/JUD-ECP-E0.2.1-0001.yaml"
+decision:
+  status: "ACCEPTED"
+  constitutional_rule:
+    "Computation may produce judgments. Authority alone may produce decisions."
+  decision_record: "decisions/DEC-ECP-E0.2.1-0001.yaml"
+  decision_id: "DEC-ECP-E0.2.1-0001"
+  effective_date: "2026-07-23"
+status:
+  artifact_state: "ACCEPTED"
+  implementation_authorization: true
+  next_artifact: "ECP-RP-v0.1.0-E0.2.2"
+  progression_rule:
+    "E0.2.1 ACCEPTED. E0.2.2 (Reference Primitive) is now authorized for implementation."
+evidence_bundle:
+  immutable: true
+  provenance:
+    generated_from:
+      - "docs/specifications/primitives/identity/E0.2.1-identity-primitive.md"
+      - "docs/specifications/primitives/identity/identity.schema.json"
+      - "docs/specifications/primitives/identity/manifest.yaml"
+      - "docs/specifications/primitives/identity/conformance.yaml"
+    generated_at: "2026-07-23T21:52:55Z"
+    generation_method: "Governance Evidence Package"
+constitutional_assertion:
+  statement: >
+    This package contains evidence and judgments only.
+    It performs no governance mutation.
+    Acceptance remains exclusively the responsibility of Portfolio Authority.

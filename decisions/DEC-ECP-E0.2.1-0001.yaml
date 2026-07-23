@@ -1,0 +1,39 @@
+# ==============================================================================
+# PORTFOLIO AUTHORITY DECISION
+# Decision ID: DEC-ECP-E0.2.1-0001
+# ==============================================================================
+decision:
+  id: "DEC-ECP-E0.2.1-0001"
+  type: acceptance
+  authority: "PortfolioAuthority"
+  produced_by:
+    entity: "PortfolioAuthority"
+    role: "GovernanceAuthority"
+    authority: constitutional
+  subject:
+    artifact: "ECP-RP-v0.1.0-E0.2.1"
+    title: "Identity Primitive Specification"
+    parent: "ECP-RP-v0.1.0-E0.2"
+  inputs:
+    evidence_bundle: "ECP-RP-v0.1.0-E0.2.1-ACCEPTANCE"
+    judgment: "JUD-ECP-E0.2.1-0001"
+    recommendation: "READY_FOR_ACCEPTANCE"
+  outcome: "ACCEPTED"
+  effective_date: "2026-07-23"
+  constitutional_invariants:
+    dual_identity: satisfied
+    orthogonal_versioning: satisfied
+    immutability: satisfied
+    lineage: satisfied
+    canonical_uri_template: satisfied
+  rationale:
+    - "All 12 conformance checks pass"
+    - "Five constitutional properties established and verified"
+    - "Zero external dependencies — L0 isolation confirmed"
+    - "Judgment from EvaluationEngine confirms READY_FOR_ACCEPTANCE"
+    - "Identity primitive establishes foundation for all downstream schemas"
+    - "Constitutional invariants: all satisfied"
+  progression:
+    next_artifact: "ECP-RP-v0.1.0-E0.2.2"
+    next_title: "Reference Primitive Specification"
+    authorization: true

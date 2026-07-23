@@ -1,0 +1,7 @@
+# ==============================================================================
+# ECP CAPABILITY REGISTRY
+# Registry ID: ECP-REG-v0.1.0-CAPABILITIES
+# Purpose: Register all capability contracts
+# ==============================================================================
+registry_version: "0.1.0"
+capabilities: {}

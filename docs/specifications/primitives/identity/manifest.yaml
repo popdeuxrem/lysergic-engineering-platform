@@ -13,9 +13,11 @@ identity:
   uri: "https://specs.lysergic.dev/ecp/E0.2.1"
   parent: "ECP-RP-v0.1.0-E0.2"
 lifecycle:
-  state: DRAFT
+  state: ACCEPTED
   transitions:
     DRAFT: 2026-07-23
+    READY_FOR_ACCEPTANCE: 2026-07-23
+    ACCEPTED: 2026-07-23
 governance:
   governing_documents:
     schema_architecture: "ECP-RP-v0.1.0-E0.1"
@@ -53,7 +55,15 @@ deliverables:
   acceptance_evidence:
     path: "evidence/ECP-RP-v0.1.0-E0.2.1.acceptance.yaml"
     required: true
-    status: pending
+    status: complete
+  judgment:
+    path: "judgments/JUD-ECP-E0.2.1-0001.yaml"
+    required: true
+    status: complete
+  decision:
+    path: "decisions/DEC-ECP-E0.2.1-0001.yaml"
+    required: true
+    status: complete
 dependencies: []
 acceptance_criteria:
   - "Valid Draft 2020-12 schema"
@@ -71,4 +81,5 @@ acceptance_criteria:
 next_artifact:
   id: "ECP-RP-v0.1.0-E0.2.2"
   title: "Reference Primitive Specification"
-  state: BLOCKED
+  state: READY_TO_START
+  unlocked_by: "DEC-ECP-E0.2.1-0001"

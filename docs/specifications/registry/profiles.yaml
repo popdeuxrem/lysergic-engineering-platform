@@ -1,0 +1,19 @@
+# ==============================================================================
+# ECP PROFILE REGISTRY
+# Registry ID: ECP-REG-v0.1.0-PROFILES
+# Purpose: Register all conformance profiles in the portfolio
+# ==============================================================================
+registry_version: "0.1.0"
+profiles:
+  ECP-CP-v0.1.0-SCHEMA-CONFORMANCE:
+    title: "Schema Architecture Conformance"
+    version: "0.1.0"
+    artifact: "ECP-RP-v0.1.0-E0.1"
+    checks: 12
+    status: active
+  ECP-CP-v0.1.0-IDENTITY:
+    title: "Identity Primitive Conformance"
+    version: "0.1.0"
+    artifact: "ECP-RP-v0.1.0-E0.2.1"
+    checks: 12
+    status: active

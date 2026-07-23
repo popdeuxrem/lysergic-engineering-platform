@@ -1,0 +1,43 @@
+# ==============================================================================
+# ECP GOVERNANCE JUDGMENT
+# Judgment ID: JUD-ECP-E0.2.1-0001
+# Subject: ECP-RP-v0.1.0-E0.2.1 (Identity Primitive Specification)
+# ==============================================================================
+judgment:
+  id: "JUD-ECP-E0.2.1-0001"
+  type: acceptance_recommendation
+  subject:
+    artifact: "ECP-RP-v0.1.0-E0.2.1"
+    title: "Identity Primitive Specification"
+  produced_by:
+    entity: "EvaluationEngine"
+    role: "ComputationEngine"
+    authority: none
+  inputs:
+    evidence_bundle: "ECP-RP-v0.1.0-E0.2.1-ACCEPTANCE"
+    conformance_profile: "ECP-CP-v0.1.0-IDENTITY"
+  results:
+    all_checks: PASS
+    passed: 12
+    failed: 0
+    total: 12
+  recommendation: "READY_FOR_ACCEPTANCE"
+  rationale:
+    - "Constitutional property: dual identity model ✓"
+    - "Constitutional property: orthogonal versioning ✓"
+    - "Constitutional property: immutability (const: true) ✓"
+    - "Constitutional property: lineage tracking ✓"
+    - "Constitutional property: canonical URI template ✓"
+    - "Zero external $ref dependencies ✓"
+    - "Valid Draft 2020-12 schema ✓"
+    - "Canonical $id URI established ✓"
+    - "Pydantic v2 model generation guidance provided ✓"
+    - "Registry entry present ✓"
+  constitutional_limit:
+    statement: >
+      This judgment is a computational artifact. It evaluates conformance
+      against the defined profile and produces a recommendation. It cannot
+      and does not constitute a governance decision. Acceptance requires
+      Portfolio Authority decision authority.
+    source: "LEPRA-GM-v1.0 — Constitutional Law 0"
+  effective_date: "2026-07-23"

@@ -1,0 +1,78 @@
+# ==============================================================================
+# ECP ARTIFACT REGISTRY
+# Registry ID: ECP-REG-v0.1.0-ARTIFACTS
+# Purpose: Register all governed artifacts in the ECP portfolio
+# ==============================================================================
+registry_version: "0.1.0"
+artifacts:
+  ECP-RP-v0.1.0-E0.1:
+    title: "Schema Architecture Foundation"
+    type: specification
+    domain: architecture
+    version: "0.1.0"
+    state: ACCEPTED
+    decision: "DEC-ECP-E0.1-0001"
+    uri: "https://specs.lysergic.dev/ecp/E0.1"
+  ECP-RP-v0.1.0-E0.2:
+    title: "Primitive Schema Foundation"
+    type: specification
+    domain: primitives
+    version: "0.1.0"
+    state: DRAFT
+    parent: "ECP-RP-v0.1.0-E0.1"
+    uri: "https://specs.lysergic.dev/ecp/E0.2"
+  ECP-RP-v0.1.0-E0.2.1:
+    title: "Identity Primitive Specification"
+    type: primitive
+    domain: primitives
+    version: "0.1.0"
+    state: ACCEPTED
+    parent: "ECP-RP-v0.1.0-E0.2"
+    decision: "DEC-ECP-E0.2.1-0001"
+    schema: "https://specs.lysergic.dev/primitives/v1/identity.schema.json"
+    uri: "https://specs.lysergic.dev/ecp/E0.2.1"
+  ECP-RP-v0.1.0-E0.2.2:
+    title: "Reference Primitive Specification"
+    type: primitive
+    domain: primitives
+    version: "0.1.0"
+    state: READY_TO_START
+    parent: "ECP-RP-v0.1.0-E0.2"
+    depends_on: ["identity"]
+    uri: "https://specs.lysergic.dev/ecp/E0.2.2"
+  ECP-RP-v0.1.0-E0.2.3:
+    title: "Ownership Primitive Specification"
+    type: primitive
+    domain: primitives
+    version: "0.1.0"
+    state: BLOCKED
+    parent: "ECP-RP-v0.1.0-E0.2"
+    depends_on: ["identity"]
+    uri: "https://specs.lysergic.dev/ecp/E0.2.3"
+  ECP-RP-v0.1.0-E0.2.4:
+    title: "Lifecycle Primitive Specification"
+    type: primitive
+    domain: primitives
+    version: "0.1.0"
+    state: BLOCKED
+    parent: "ECP-RP-v0.1.0-E0.2"
+    depends_on: ["identity"]
+    uri: "https://specs.lysergic.dev/ecp/E0.2.4"
+  ECP-RP-v0.1.0-E0.2.5:
+    title: "Metadata Primitive Specification"
+    type: primitive
+    domain: primitives
+    version: "0.1.0"
+    state: BLOCKED
+    parent: "ECP-RP-v0.1.0-E0.2"
+    depends_on: ["identity", "reference"]
+    uri: "https://specs.lysergic.dev/ecp/E0.2.5"
+  ECP-RP-v0.1.0-E0.2.6:
+    title: "Artifact Primitive Specification"
+    type: primitive
+    domain: primitives
+    version: "0.1.0"
+    state: BLOCKED
+    parent: "ECP-RP-v0.1.0-E0.2"
+    depends_on: ["identity", "reference", "ownership", "lifecycle", "metadata"]
+    uri: "https://specs.lysergic.dev/ecp/E0.2.6"

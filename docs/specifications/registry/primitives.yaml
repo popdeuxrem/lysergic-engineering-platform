@@ -1,0 +1,37 @@
+# ==============================================================================
+# ECP PRIMITIVE REGISTRY
+# Registry ID: ECP-REG-v0.1.0-PRIMITIVES
+# Purpose: Register all primitive schema definitions and their levels
+# ==============================================================================
+registry_version: "0.1.0"
+primitives:
+  identity:
+    level: L0
+    status: accepted
+    schema: "https://specs.lysergic.dev/primitives/v1/identity.schema.json"
+    artifact: "ECP-RP-v0.1.0-E0.2.1"
+  reference:
+    level: L0
+    status: pending
+    artifact: "ECP-RP-v0.1.0-E0.2.2"
+    depends_on: ["identity"]
+  ownership:
+    level: L1
+    status: pending
+    artifact: "ECP-RP-v0.1.0-E0.2.3"
+    depends_on: ["identity"]
+  lifecycle:
+    level: L1
+    status: pending
+    artifact: "ECP-RP-v0.1.0-E0.2.4"
+    depends_on: ["identity"]
+  metadata:
+    level: L1
+    status: pending
+    artifact: "ECP-RP-v0.1.0-E0.2.5"
+    depends_on: ["identity", "reference"]
+  artifact:
+    level: L2
+    status: pending
+    artifact: "ECP-RP-v0.1.0-E0.2.6"
+    depends_on: ["identity", "reference", "ownership", "lifecycle", "metadata"]
