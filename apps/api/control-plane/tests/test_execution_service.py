@@ -1,6 +1,8 @@
 from src.application.execution_service import ExecutionService
 from src.domain.execution_status import ExecutionStatus
-from src.infrastructure.database.execution_repository import SqlAlchemyExecutionRepository
+from src.infrastructure.database.execution_repository import (
+    SqlAlchemyExecutionRepository,
+)
 
 
 def test_service_creates_execution(db_session) -> None:

@@ -2,12 +2,13 @@ from fastapi import FastAPI, Request, status
 from fastapi.exceptions import HTTPException
 from fastapi.responses import JSONResponse
 
+from src.api.exceptions import build_error_response
 from src.api.health import router as health_router
 from src.api.router import v1_router
-from src.api.exceptions import build_error_response
 from src.config.settings import get_settings
 from src.observability.configure_logging import configure_logging
 from src.observability.middleware import request_context_middleware
+
 
 def create_app() -> FastAPI:
     settings = get_settings()

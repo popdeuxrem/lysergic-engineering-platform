@@ -1,4 +1,4 @@
-from datetime import datetime, timezone
+from datetime import UTC, datetime, timezone
 
 from sqlalchemy.orm import Session
 
@@ -23,7 +23,7 @@ class SqlAlchemyExecutionRepository:
             self._session.add(model)
         else:
             model.status = execution.status.value
-            model.updated_at = datetime.now(timezone.utc)
+            model.updated_at = datetime.now(UTC)
         self._session.commit()
 
     def get_by_id(self, execution_id: str) -> Execution | None:

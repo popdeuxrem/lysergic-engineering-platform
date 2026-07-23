@@ -5,9 +5,9 @@ from src.infrastructure.database.session import create_session, database_session
 
 __all__ = [
     "Base",
+    "ExecutionModel",
     "create_database_engine",
     "create_session",
     "database_session",
-    "ExecutionModel",
     "get_engine",
 ]

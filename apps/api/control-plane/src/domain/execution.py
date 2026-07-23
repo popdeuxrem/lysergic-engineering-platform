@@ -1,4 +1,4 @@
-from datetime import datetime, timezone
+from datetime import UTC, datetime, timezone
 from uuid import uuid4
 
 from src.domain.entities import Entity
@@ -9,7 +9,7 @@ class Execution(Entity):
     def __init__(self, execution_id: str | None = None) -> None:
         self._id = execution_id or str(uuid4())
         self._status: ExecutionStatus = ExecutionStatus.CREATED
-        self._created_at: datetime = datetime.now(timezone.utc)
+        self._created_at: datetime = datetime.now(UTC)
         self._updated_at: datetime = self._created_at
 
     @property
@@ -60,7 +60,7 @@ class Execution(Entity):
                 target=target,
             )
         self._status = target
-        self._updated_at = datetime.now(timezone.utc)
+        self._updated_at = datetime.now(UTC)
 
 
 class InvalidExecutionTransition(Exception):

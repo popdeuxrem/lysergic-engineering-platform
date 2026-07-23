@@ -1,9 +1,13 @@
 from src.application.dto.execution_projection import ExecutionProjection
 from src.application.queries.execution_queries import GetExecutionQuery
-from src.application.queries.handlers.execution_query_handler import ExecutionQueryHandler
+from src.application.queries.handlers.execution_query_handler import (
+    ExecutionQueryHandler,
+)
 from src.domain.execution import Execution
 from src.domain.execution_status import ExecutionStatus
-from src.infrastructure.database.execution_repository import SqlAlchemyExecutionRepository
+from src.infrastructure.database.execution_repository import (
+    SqlAlchemyExecutionRepository,
+)
 
 
 def test_query_handler_retrieves_execution(db_session) -> None:

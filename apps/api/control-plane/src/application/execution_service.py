@@ -10,7 +10,9 @@ from src.application.execution_use_cases import (
     TransitionExecutionStateUseCase,
 )
 from src.application.queries.execution_queries import GetExecutionQuery
-from src.application.queries.handlers.execution_query_handler import ExecutionQueryHandler
+from src.application.queries.handlers.execution_query_handler import (
+    ExecutionQueryHandler,
+)
 from src.domain.execution_status import ExecutionStatus
 from src.domain.repository import ExecutionRepository
 

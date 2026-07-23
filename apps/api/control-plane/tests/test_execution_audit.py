@@ -1,7 +1,9 @@
 from src.application.audit.handlers.execution_audit_handler import ExecutionAuditHandler
 from src.domain.execution import Execution
 from src.domain.execution_status import ExecutionStatus
-from src.infrastructure.database.execution_repository import SqlAlchemyExecutionRepository
+from src.infrastructure.database.execution_repository import (
+    SqlAlchemyExecutionRepository,
+)
 
 
 def test_audit_handler_returns_valid_for_created_execution(db_session) -> None:
@@ -75,6 +77,7 @@ def test_audit_does_not_mutate_execution(db_session) -> None:
 
 def test_audit_projection_has_required_fields(db_session) -> None:
     from pydantic import TypeAdapter
+
     from src.application.audit.execution_audit import ExecutionAuditProjection
 
     adapter = TypeAdapter(ExecutionAuditProjection)
@@ -108,6 +111,5 @@ def test_audit_handler_uses_repository_only(db_session) -> None:
     source = Path(__file__).parent.parent / "src" / "application" / "audit" / "handlers" / "execution_audit_handler.py"
     tree = ast.parse(source.read_text())
     for node in ast.walk(tree):
-        if isinstance(node, ast.ImportFrom):
-            if node.module:
+        if isinstance(node, ast.ImportFrom) and node.module:
                 assert not node.module.startswith("sqlalchemy"), "Handler imports sqlalchemy"

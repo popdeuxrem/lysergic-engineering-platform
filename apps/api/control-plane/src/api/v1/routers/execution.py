@@ -9,7 +9,9 @@ from src.api.v1.schemas.execution import (
 from src.application.audit.handlers.execution_audit_handler import ExecutionAuditHandler
 from src.application.dto.execution_projection import ExecutionProjection
 from src.application.execution_service import ExecutionService
-from src.infrastructure.database.execution_repository import SqlAlchemyExecutionRepository
+from src.infrastructure.database.execution_repository import (
+    SqlAlchemyExecutionRepository,
+)
 from src.infrastructure.database.session import create_session
 
 router = APIRouter(prefix="/executions", tags=["executions"])

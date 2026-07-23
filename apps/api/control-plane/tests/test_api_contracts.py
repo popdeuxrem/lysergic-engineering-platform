@@ -1,8 +1,8 @@
 from fastapi.testclient import TestClient
 
-from src.main import app
 from src.api.v1.schemas.common import ErrorResponse
 from src.api.v1.schemas.health import HealthResponse, VersionResponse
+from src.main import app
 
 client = TestClient(app)
 

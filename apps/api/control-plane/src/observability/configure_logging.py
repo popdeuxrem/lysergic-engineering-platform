@@ -1,9 +1,10 @@
 import json
 import logging
 import sys
-from datetime import datetime, timezone
+from datetime import UTC, datetime, timezone
 
 from src.config.settings import Settings
+
 
 class JsonFormatter(logging.Formatter):
     def __init__(self, service_name: str, version: str) -> None:
@@ -13,7 +14,7 @@ class JsonFormatter(logging.Formatter):
 
     def format(self, record: logging.LogRecord) -> str:
         payload = {
-            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "timestamp": datetime.now(UTC).isoformat(),
             "level": record.levelname,
             "service": self.service_name,
             "version": self.version,

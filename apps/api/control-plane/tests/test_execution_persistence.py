@@ -3,7 +3,9 @@ from sqlalchemy.orm import Session
 from src.domain.execution import Execution
 from src.domain.execution_status import ExecutionStatus
 from src.infrastructure.database.execution_model import ExecutionModel
-from src.infrastructure.database.execution_repository import SqlAlchemyExecutionRepository
+from src.infrastructure.database.execution_repository import (
+    SqlAlchemyExecutionRepository,
+)
 
 
 def test_repository_saves_execution(db_session: Session) -> None:

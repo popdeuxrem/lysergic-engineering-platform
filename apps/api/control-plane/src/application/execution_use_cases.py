@@ -1,6 +1,4 @@
-from src.domain.execution import Execution
-from src.domain.execution_status import ExecutionStatus
-from src.domain.repository import ExecutionRepository
+from src.application.exceptions import ServiceError
 from src.application.execution_dto import (
     CreateExecutionCommand,
     CreateExecutionResult,
@@ -9,7 +7,9 @@ from src.application.execution_dto import (
     TransitionExecutionCommand,
     TransitionExecutionResult,
 )
-from src.application.exceptions import ServiceError
+from src.domain.execution import Execution
+from src.domain.execution_status import ExecutionStatus
+from src.domain.repository import ExecutionRepository
 
 
 class CreateExecutionUseCase:
