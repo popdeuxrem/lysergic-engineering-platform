@@ -1,0 +1,18 @@
+contract:
+  id: urn:ecp:contract:graph.semantic-validator
+  version: 0.1.0
+engine:
+  responsibility:
+    - invariant_validation
+    - relationship_resolution
+    - cardinality_enforcement
+inputs:
+  graph:
+    required: true
+outputs:
+  validation_result:
+    required: true
+supported_invariants:
+  - urn:ecp:graph-invariant:acyclicity
+  - urn:ecp:graph-invariant:target-resolution
+  - urn:ecp:graph-invariant:identity-uniqueness

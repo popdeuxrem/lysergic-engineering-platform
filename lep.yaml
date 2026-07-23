@@ -1,0 +1,21 @@
+platform:
+  name: Lysergic Engineering Platform
+  identifier: lep
+  version: 0.1.0
+architecture:
+  baseline:
+    id: LEP-ARCH-v0.1.0
+    status: frozen
+metamodel:
+  ecp:
+    version: 0.1.0
+    status: baseline
+runtime:
+  execution_model:
+    enabled: true
+validation:
+  schema:
+    dialect: draft2020-12
+governance:
+  artifact_lifecycle:
+    enabled: true

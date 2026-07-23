@@ -1,0 +1,11 @@
+contract:
+  id: urn:lep:contract:runtime-bootstrap
+  version: 0.1.0
+requirements:
+  - environment_detection
+  - dependency_resolution
+  - configuration_loading
+  - validation_execution
+execution:
+  deterministic: true
+  idempotent: true

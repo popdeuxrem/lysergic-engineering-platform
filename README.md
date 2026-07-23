@@ -1,38 +1,44 @@
-# Lysergic Engineering Platform (LEP)
+# Lysergic Engineering Platform
+Version: 0.1.0
 
-LEP is a governed engineering intelligence platform designed to coordinate engineering workflows, preserve evidence, and provide controlled intelligence-assisted engineering capabilities.
+## Purpose
+LEP is a reproducible engineering operating platform providing:
+- automated workstation provisioning
+- AI-assisted engineering workflows
+- governance-aware execution
+- reusable engineering assets
+- deterministic environments
+
+## Architecture Status
+Architecture baseline: LEP-ARCH-v0.1.0  
+Status: Frozen
+
+## Core Principles
+- Determinism
+- Idempotency
+- Modularity
+- Portability
+- Security by default
+- Observability
+- Automation
+- Documentation-first engineering
 
 ## Repository Structure
+```
+docs/
+  architecture/
+  specifications/
+schemas/
+contracts/
+profiles/
+runtime/
+bootstrap/
+scripts/
+tests/
+```
 
-- `apps/` application services
-- `services/` domain services
-- `packages/` shared libraries and contracts
-- `database/` migrations and seeds
-- `infrastructure/` deployment definitions
-- `docs/` architecture and operational documentation
-
-## M0 Repository Foundation
-
-The initial milestone establishes:
-
-- repository topology
-- development tooling
-- runtime foundation
-- validation framework
-- shared contracts boundary
-
-Excluded from M0:
-
-- autonomous agents
-- intelligence orchestration
-- workflow execution
-- production mutation
-
-## Development
-
-### Start runtime
-
-```sh
-docker compose up
-Validate repository
-make validate
+## Validation
+All governed artifacts must pass:
+1. JSON Schema validation
+2. Graph semantic validation
+3. Governance lifecycle validation

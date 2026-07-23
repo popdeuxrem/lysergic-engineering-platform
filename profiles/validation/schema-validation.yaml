@@ -1,0 +1,9 @@
+profile:
+  id: lep.validation.schema
+  version: 0.1.0
+validator:
+  contract: urn:ecp:contract:json-schema:draft2020-12
+rules:
+  - id: validate_schema_dialect
+  - id: reject_unknown_properties
+  - id: validate_required_fields
