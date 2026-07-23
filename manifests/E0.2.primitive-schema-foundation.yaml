@@ -37,7 +37,8 @@ primitives:
       title: "Reference Primitive Specification"
       level: L0
       depends_on: ["identity"]
-      state: DRAFT
+      state: ACCEPTED
+      decision: "DEC-ECP-E0.2.2-0001"
     - id: "ECP-RP-v0.1.0-E0.2.3"
       title: "Ownership Primitive Specification"
       level: L1

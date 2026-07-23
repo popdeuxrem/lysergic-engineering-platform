@@ -36,9 +36,10 @@ artifacts:
     type: primitive
     domain: primitives
     version: "0.1.0"
-    state: DRAFT
+    state: ACCEPTED
     parent: "ECP-RP-v0.1.0-E0.2"
     depends_on: ["identity"]
+    decision: "DEC-ECP-E0.2.2-0001"
     schema: "https://specs.lysergic.dev/primitives/v1/reference.schema.json"
     uri: "https://specs.lysergic.dev/ecp/E0.2.2"
   ECP-RP-v0.1.0-E0.2.3:

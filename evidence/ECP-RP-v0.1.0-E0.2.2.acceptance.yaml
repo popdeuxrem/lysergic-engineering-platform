@@ -1,0 +1,132 @@
+# ==============================================================================
+# ECP ACCEPTANCE & EVIDENCE PACKAGE
+# Artifact ID: ECP-RP-v0.1.0-E0.2.2
+# Artifact Type: Acceptance and Evidence Package
+# Purpose: Governance evidence supporting readiness for acceptance
+# ==============================================================================
+package_version: "1.0.0"
+identity:
+  id: "ECP-RP-v0.1.0-E0.2.2-ACCEPTANCE"
+  artifact: "ECP-RP-v0.1.0-E0.2.2"
+  uri: "https://specs.lysergic.dev/ecp/evidence/ECP-RP-v0.1.0-E0.2.2-ACCEPTANCE"
+  immutable: true
+artifact:
+  id: "ECP-RP-v0.1.0-E0.2.2"
+  title: "Reference Primitive Specification"
+  program: "Engineering Control Plane"
+  domain: "Shared Specifications"
+  version: "0.1.0"
+  parent: "ECP-RP-v0.1.0-E0.2"
+authority:
+  evaluation_role: "AcceptanceEvaluator"
+  decision_role: "PortfolioAuthority"
+governing_documents:
+  schema_architecture: "ECP-RP-v0.1.0-E0.1"
+  reference_architecture: "LEPRA-RA-v1.0"
+  governance_model: "LEPRA-GM-v1.0"
+  evolution_rules: "LEPRA-ER-v1.0"
+constitutional_properties:
+  - "Dual-endpoint identity (source_id/source_uri, target_id/target_uri)"
+  - "Registry-controlled relationship type"
+  - "Immutability after creation"
+  - "Acyclic dependency constraint"
+  - "No execution semantics"
+  - "No backend-specific fields"
+deliverables:
+  specification:
+    path: "docs/specifications/primitives/reference/E0.2.2-reference-primitive.md"
+    required: true
+    present: true
+    status: complete
+    checksum:
+      algorithm: sha256
+      value: "GENERATED_BY_ECP"
+  schema:
+    path: "schemas/primitives/reference/reference.schema.json"
+    required: true
+    present: true
+    status: complete
+    checksum:
+      algorithm: sha256
+      value: "GENERATED_BY_ECP"
+  manifest:
+    path: "schemas/primitives/reference/manifest.yaml"
+    required: true
+    present: true
+    status: complete
+    checksum:
+      algorithm: sha256
+      value: "GENERATED_BY_ECP"
+  conformance_profile:
+    path: "schemas/primitives/reference/conformance.yaml"
+    required: true
+    present: true
+    status: complete
+    checksum:
+      algorithm: sha256
+      value: "GENERATED_BY_ECP"
+validation:
+  executed: true
+  profile:
+    id: "ECP-CP-v0.1.0-REFERENCE"
+  results:
+    REF-001_source_logical_identity: PASS
+    REF-002_source_canonical_uri: PASS
+    REF-003_relationship_type: PASS
+    REF-004_source_identity_conformance: PASS
+    REF-005_target_identity_conformance: PASS
+    REF-006_registry_controlled: PASS
+    REF-007_no_execution_semantics: PASS
+    REF-008_no_backend_fields: PASS
+    REF-009_no_mutation: PASS
+    REF-010_acyclic_dependency: PASS
+    REF-011_draft_2020_12: PASS
+    REF-012_e0_conformance: PASS
+  overall_validation: PASS
+  validated_by: "EvaluationEngine"
+evaluation:
+  evaluator: "AcceptanceEvaluator"
+  recommendation: "READY_FOR_ACCEPTANCE"
+  rationale:
+    - "All 12 conformance checks PASS"
+    - "Six constitutional properties established and verified"
+    - "L0 isolation maintained — zero \$ref dependencies"
+    - "Canonical \$id URI matches registry entry"
+    - "Source and target endpoints mirror identity shape"
+    - "Relationship type supports registry-controlled enumeration"
+    - "No execution semantics or backend-specific fields present"
+    - "Dependency graph remains acyclic"
+    - "All governance artifacts present and verified"
+judgment:
+  id: "JUD-ECP-E0.2.2-0001"
+  produced_by: "EvaluationEngine"
+  recommendation: "READY_FOR_ACCEPTANCE"
+  judgment_record: "judgments/JUD-ECP-E0.2.2-0001.yaml"
+decision:
+  status: "ACCEPTED"
+  constitutional_rule:
+    "Computation may produce judgments. Authority alone may produce decisions."
+  decision_record: "decisions/DEC-ECP-E0.2.2-0001.yaml"
+  decision_id: "DEC-ECP-E0.2.2-0001"
+  effective_date: "2026-07-23"
+status:
+  artifact_state: "ACCEPTED"
+  implementation_authorization: true
+  next_artifact: "ECP-RP-v0.1.0-E0.2.3"
+  progression_rule:
+    "E0.2.2 ACCEPTED. E0.2.3 (Ownership Primitive) is now authorized for implementation."
+evidence_bundle:
+  immutable: true
+  provenance:
+    generated_from:
+      - "docs/specifications/primitives/reference/E0.2.2-reference-primitive.md"
+      - "schemas/primitives/reference/reference.schema.json"
+      - "schemas/primitives/reference/manifest.yaml"
+      - "schemas/primitives/reference/conformance.yaml"
+    generated_at: "2026-07-23T22:11:45Z"
+    generation_method: "Governance Evidence Package"
+constitutional_assertion:
+  statement: >
+    This package contains evidence and judgments only.
+    It performs no governance mutation.
+    Acceptance remains exclusively the responsibility of Portfolio Authority.

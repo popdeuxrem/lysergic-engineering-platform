@@ -1,0 +1,45 @@
+# ==============================================================================
+# ECP GOVERNANCE JUDGMENT
+# Judgment ID: JUD-ECP-E0.2.2-0001
+# Subject: ECP-RP-v0.1.0-E0.2.2 (Reference Primitive Specification)
+# ==============================================================================
+judgment:
+  id: "JUD-ECP-E0.2.2-0001"
+  type: acceptance_recommendation
+  subject:
+    artifact: "ECP-RP-v0.1.0-E0.2.2"
+    title: "Reference Primitive Specification"
+  produced_by:
+    entity: "EvaluationEngine"
+    role: "ComputationEngine"
+    authority: none
+  inputs:
+    evidence_bundle: "ECP-RP-v0.1.0-E0.2.2-ACCEPTANCE"
+    conformance_profile: "ECP-CP-v0.1.0-REFERENCE"
+  results:
+    all_checks: PASS
+    passed: 12
+    failed: 0
+    total: 12
+  recommendation: "READY_FOR_ACCEPTANCE"
+  rationale:
+    - "REF-001: source_id present and required ✓"
+    - "REF-002: source_uri present with uri format ✓"
+    - "REF-003: relationship type declared ✓"
+    - "REF-004: source endpoint conforms to identity shape ✓"
+    - "REF-005: target endpoint conforms to identity shape ✓"
+    - "REF-006: relationship type supports registry control ✓"
+    - "REF-007: no execution semantics detected ✓"
+    - "REF-008: no backend-specific fields detected ✓"
+    - "REF-009: no mutable state fields (immutable by design) ✓"
+    - "REF-010: no \$ref — dependency graph remains acyclic ✓"
+    - "REF-011: valid Draft 2020-12 schema ✓"
+    - "REF-012: all governance artifacts present ✓"
+  constitutional_limit:
+    statement: >
+      This judgment is a computational artifact. It evaluates conformance
+      against the defined profile and produces a recommendation. It cannot
+      and does not constitute a governance decision. Acceptance requires
+      Portfolio Authority decision authority.
+    source: "LEPRA-GM-v1.0 — Constitutional Law 0"
+  effective_date: "2026-07-23"

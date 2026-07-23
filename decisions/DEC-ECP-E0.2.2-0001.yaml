@@ -1,0 +1,41 @@
+# ==============================================================================
+# PORTFOLIO AUTHORITY DECISION
+# Decision ID: DEC-ECP-E0.2.2-0001
+# ==============================================================================
+decision:
+  id: "DEC-ECP-E0.2.2-0001"
+  type: acceptance
+  authority: "PortfolioAuthority"
+  produced_by:
+    entity: "PortfolioAuthority"
+    role: "GovernanceAuthority"
+    authority: constitutional
+  subject:
+    artifact: "ECP-RP-v0.1.0-E0.2.2"
+    title: "Reference Primitive Specification"
+    parent: "ECP-RP-v0.1.0-E0.2"
+  inputs:
+    evidence_bundle: "ECP-RP-v0.1.0-E0.2.2-ACCEPTANCE"
+    judgment: "JUD-ECP-E0.2.2-0001"
+    recommendation: "READY_FOR_ACCEPTANCE"
+  outcome: "ACCEPTED"
+  effective_date: "2026-07-23"
+  constitutional_invariants:
+    dependency_invariant: satisfied
+    ownership_invariant: satisfied
+    specification_invariant: satisfied
+    execution_invariant: satisfied
+  rationale:
+    - "All 12 conformance checks pass"
+    - "Six constitutional properties established and verified"
+    - "L0 isolation maintained — zero \$ref dependencies"
+    - "Judgment from EvaluationEngine confirms READY_FOR_ACCEPTANCE"
+    - "Source and target endpoints conform to ratified Identity Primitive"
+    - "Relationship type provides registry-controlled extensibility"
+    - "No execution semantics leak into constitutional layer"
+    - "Constitutional invariants: all satisfied"
+    - "E0.2.3 (Ownership Primitive) is now authorized for implementation"
+  progression:
+    next_artifact: "ECP-RP-v0.1.0-E0.2.3"
+    next_title: "Ownership Primitive Specification"
+    authorization: true

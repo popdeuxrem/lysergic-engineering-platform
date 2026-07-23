@@ -12,9 +12,10 @@ primitives:
     artifact: "ECP-RP-v0.1.0-E0.2.1"
   reference:
     level: L0
-    status: draft
+    status: accepted
     artifact: "ECP-RP-v0.1.0-E0.2.2"
     depends_on: ["identity"]
+    decision: "DEC-ECP-E0.2.2-0001"
     schema: "https://specs.lysergic.dev/primitives/v1/reference.schema.json"
   ownership:
     level: L1

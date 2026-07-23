@@ -17,3 +17,9 @@ profiles:
     artifact: "ECP-RP-v0.1.0-E0.2.1"
     checks: 12
     status: active
+  ECP-CP-v0.1.0-REFERENCE:
+    title: "Reference Primitive Conformance"
+    version: "0.1.0"
+    artifact: "ECP-RP-v0.1.0-E0.2.2"
+    checks: 12
+    status: active

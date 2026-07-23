@@ -24,9 +24,10 @@ schemas:
     version: "0.1.0"
     level: L0
     uri: "https://specs.lysergic.dev/primitives/v1/reference.schema.json"
-    status: draft
+    status: accepted
     artifact: "ECP-RP-v0.1.0-E0.2.2"
     dependencies: ["identity"]
+    decision: "DEC-ECP-E0.2.2-0001"
   ownership:
     id: ownership
     version: "0.1.0"
