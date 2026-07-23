@@ -1,0 +1,7 @@
+# ==============================================================================
+# ECP SCHEMA REGISTRY
+# Registry ID: ECP-REG-v0.1.0-SCHEMA
+# Purpose: Declarative registration of all canonical schemas
+# ==============================================================================
+registry_version: "0.1.0"
+schemas: []

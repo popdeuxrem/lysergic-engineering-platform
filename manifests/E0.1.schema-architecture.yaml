@@ -12,10 +12,11 @@ identity:
   version: "0.1.0"
   uri: "https://specs.lysergic.dev/ecp/E0.1"
 lifecycle:
-  state: READY_FOR_ACCEPTANCE
+  state: ACCEPTED
   transitions:
     DRAFT: 2026-07-23
     READY_FOR_ACCEPTANCE: 2026-07-23
+    ACCEPTED: 2026-07-23
 governance:
   governing_documents:
     reference_architecture: "LEPRA-RA-v1.0"

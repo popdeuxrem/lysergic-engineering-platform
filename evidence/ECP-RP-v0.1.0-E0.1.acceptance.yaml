@@ -87,10 +87,12 @@ evaluation:
     - "Validation boundaries are explicit."
     - "Normative authority precedence is defined."
 decision:
-  status: "PENDING_PORTFOLIO_AUTHORITY"
+  status: "ACCEPTED"
   constitutional_rule:
     "Computation may produce judgments. Authority alone may produce decisions."
-  decision_record: null
+  decision_record: "decisions/DEC-ECP-E0.1-0001.yaml"
+  decision_id: "DEC-ECP-E0.1-0001"
+  effective_date: "2026-07-23"
 outstanding_change_proposals:
   - id: "ACP-E0.1-001"
     title: "Separate Artifact Identity from Version"

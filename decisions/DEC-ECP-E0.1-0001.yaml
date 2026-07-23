@@ -1,0 +1,26 @@
+# ==============================================================================
+# PORTFOLIO AUTHORITY DECISION
+# Decision ID: DEC-ECP-E0.1-0001
+# ==============================================================================
+decision:
+  id: "DEC-ECP-E0.1-0001"
+  type: acceptance
+  authority: "PortfolioAuthority"
+  subject:
+    artifact: "ECP-RP-v0.1.0-E0.1"
+    title: "Schema Architecture Foundation"
+  inputs:
+    evidence_bundle: "ECP-RP-v0.1.0-E0.1-ACCEPTANCE"
+    judgment: "READY_FOR_ACCEPTANCE"
+  outcome: "ACCEPTED"
+  effective_date: "2026-07-23"
+  rationale:
+    - "Constitutional specification complete"
+    - "Governance manifest complete"
+    - "Conformance profile complete"
+    - "Acceptance evidence complete"
+    - "Constitutional invariants satisfied"
+  progression:
+    next_artifact: "ECP-RP-v0.1.0-E0.2"
+    next_title: "Primitive Schema Foundation"
+    authorization: true
