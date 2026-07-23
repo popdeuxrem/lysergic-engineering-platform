@@ -1,0 +1,124 @@
+# ==============================================================================
+# ECP GOVERNANCE MANIFEST
+# Artifact ID: ECP-RP-v0.1.0-E0.2.2
+# Primitive: Reference
+# ==============================================================================
+manifest_version: "1.0.0"
+identity:
+  id: "ECP-RP-v0.1.0-E0.2.2"
+  uri: "https://specs.lysergic.dev/ecp/artifacts/ECP-RP-v0.1.0-E0.2.2"
+  immutable: true
+artifact:
+  type: "primitive_specification"
+  primitive: "reference"
+  title: "Reference Primitive"
+  version: "0.1.0"
+  layer: "L0"
+  domain: "Shared Specifications"
+  program: "Engineering Control Plane"
+authority:
+  type: "PortfolioAuthority"
+  governing_specification: "LEPRA-v1.0-draft"
+  constitutional_model: "LEPRA-GM-v1.0"
+ownership:
+  owner: "Shared Specifications Domain"
+  stewardship: "Portfolio Architecture"
+  mutable_by: []
+  delegated_authority: false
+lifecycle:
+  state: "accepted_for_implementation"
+  previous_state: "draft"
+  next_expected_state: "validated"
+  approval_required: true
+status:
+  implementation: "complete"
+  validation: "pending"
+  acceptance: "pending"
+compatibility:
+  requires:
+    specifications: ">=0.1.0,<1.0.0"
+    identity_primitive: "ECP-RP-v0.1.0-E0.2.1"
+  provides:
+    primitive: "reference"
+    layer: "L0"
+dependencies:
+  upstream:
+    - primitive: "identity"
+      required: true
+  downstream:
+    - primitive: "ownership"
+    - primitive: "lifecycle"
+    - primitive: "metadata"
+    - primitive: "artifact"
+    - primitive: "capability"
+    - primitive: "validation-profile"
+    - primitive: "execution-ir"
+    - primitive: "evidence"
+    - primitive: "judgment"
+lineage:
+  parent_artifact: "ECP-RP-v0.1.0-E0.2"
+  derived_from:
+    - "ECP-RP-v0.1.0-E0.1"
+  supersedes: []
+  superseded_by: null
+deliverables:
+  specification:
+    path: "docs/specifications/primitives/reference/E0.2.2-reference-primitive.md"
+    status: "complete"
+  schema:
+    path: "schemas/primitives/reference/reference.schema.json"
+    status: "complete"
+  manifest:
+    path: "schemas/primitives/reference/manifest.yaml"
+    status: "complete"
+  conformance:
+    path: "schemas/primitives/reference/conformance.yaml"
+    status: "complete"
+acceptance_criteria:
+  - id: "REF-001"
+    description: "Reference exposes immutable logical identity."
+  - id: "REF-002"
+    description: "Reference exposes immutable canonical URI."
+  - id: "REF-003"
+    description: "Reference declares semantic relationship type."
+  - id: "REF-004"
+    description: "Source endpoint conforms to Identity Primitive."
+  - id: "REF-005"
+    description: "Target endpoint conforms to Identity Primitive."
+  - id: "REF-006"
+    description: "Relationship type is registry controlled."
+  - id: "REF-007"
+    description: "Reference contains no execution semantics."
+  - id: "REF-008"
+    description: "Reference contains no backend-specific fields."
+  - id: "REF-009"
+    description: "Reference does not permit mutation after creation."
+  - id: "REF-010"
+    description: "Reference dependency graph remains acyclic."
+  - id: "REF-011"
+    description: "Schema validates under JSON Schema Draft 2020-12."
+  - id: "REF-012"
+    description: "Reference primitive conforms to the E0.1 Schema Architecture Foundation."
+constitutional_bindings:
+  law_0:
+    name: "Computation may produce judgments. Authority alone may produce decisions."
+  dependency_invariant:
+    value: "Downward-only dependency graph."
+  ownership_invariant:
+    value: "Every artifact has exactly one owner."
+  specification_invariant:
+    value: "Programs consume specifications. Specifications never depend on programs."
+  execution_invariant:
+    value: "Execution systems implement specifications but never redefine them."
+evolution_control:
+  requires_acp: true
+  governance_domain: "Portfolio"
+  invariant_changes_require: "Architecture Change Proposal"
+  semantic_versioning: true
+evidence:
+  implementation_complete: true
+  validation_complete: false
+  acceptance_complete: false
+decision:
+  judgment: null
+  authority_decision: null

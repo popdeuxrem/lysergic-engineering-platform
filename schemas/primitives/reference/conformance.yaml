@@ -1,0 +1,76 @@
+# ==============================================================================
+# REFERENCE PRIMITIVE — CONFORMANCE PROFILE
+# Artifact ID: ECP-CP-v0.1.0-REFERENCE
+# Parent: ECP-RP-v0.1.0-E0.2.2
+# ==============================================================================
+profile_version: "1.0.0"
+identity:
+  id: "ECP-CP-v0.1.0-REFERENCE"
+  artifact: "ECP-RP-v0.1.0-E0.2.2"
+  title: "Reference Primitive Conformance"
+  version: "0.1.0"
+checks:
+  - id: "REF-001"
+    description: "Reference exposes immutable logical identity"
+    target: "schemas/primitives/reference/reference.schema.json"
+    scope: schema
+    check: "properties.source_id.type == string, required includes source_id"
+    required: true
+  - id: "REF-002"
+    description: "Reference exposes immutable canonical URI"
+    scope: schema
+    check: "properties.source_uri.format == uri, required includes source_uri"
+    required: true
+  - id: "REF-003"
+    description: "Reference declares semantic relationship type"
+    scope: schema
+    check: "properties.relationship.type == string, required includes relationship"
+    required: true
+  - id: "REF-004"
+    description: "Source endpoint conforms to Identity Primitive"
+    scope: schema
+    check: "source_id (string) + source_uri (uri) mirror identity shape"
+    required: true
+  - id: "REF-005"
+    description: "Target endpoint conforms to Identity Primitive"
+    scope: schema
+    check: "target_id (string) + target_uri (uri) mirror identity shape"
+    required: true
+  - id: "REF-006"
+    description: "Relationship type is registry controlled"
+    scope: schema
+    check: "properties.relationship.type == string (enum or external registry)"
+    required: true
+  - id: "REF-007"
+    description: "Reference contains no execution semantics"
+    scope: schema
+    check: "no action, handler, callback, or exec fields present"
+    required: true
+  - id: "REF-008"
+    description: "Reference contains no backend-specific fields"
+    scope: schema
+    check: "all properties are semantic, not infrastructure"
+    required: true
+  - id: "REF-009"
+    description: "Reference does not permit mutation after creation"
+    scope: schema
+    check: "all required fields are fixed; no mutable state fields"
+    required: true
+  - id: "REF-010"
+    description: "Reference dependency graph remains acyclic"
+    scope: registry
+    check: "L0: reference depends on identity, no cyclic $ref"
+    required: true
+  - id: "REF-011"
+    description: "Schema validates under JSON Schema Draft 2020-12"
+    scope: schema
+    check: "$schema == https://json-schema.org/draft/2020-12/schema"
+    required: true
+  - id: "REF-012"
+    description: "Conforms to E0.1 Schema Architecture Foundation"
+    scope: governance
+    check: "manifest, spec, schema, conformance all present"
+    required: true
+validation:
+  strategy: "All 12 required checks must pass"
+  failure_action: "BLOCK_ACCEPTANCE"

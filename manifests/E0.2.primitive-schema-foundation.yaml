@@ -37,7 +37,7 @@ primitives:
       title: "Reference Primitive Specification"
       level: L0
       depends_on: ["identity"]
-      state: READY_TO_START
+      state: DRAFT
     - id: "ECP-RP-v0.1.0-E0.2.3"
       title: "Ownership Primitive Specification"
       level: L1
@@ -132,6 +132,22 @@ deliverables:
     path: "decisions/DEC-ECP-E0.2.1-0001.yaml"
     required: true
     status: complete
+  reference_specification:
+    path: "docs/specifications/primitives/reference/E0.2.2-reference-primitive.md"
+    required: true
+    status: complete
+  reference_schema:
+    path: "schemas/primitives/reference/reference.schema.json"
+    required: true
+    status: complete
+  reference_manifest:
+    path: "schemas/primitives/reference/manifest.yaml"
+    required: true
+    status: complete
+  reference_conformance:
+    path: "schemas/primitives/reference/conformance.yaml"
+    required: true
+    status: complete
 dependencies:
   - artifact: "ECP-RP-v0.1.0-E0.1"
     type: constitutional
@@ -145,7 +161,6 @@ dependencies:
   - artifact: "LEPRA-ER-v1.0"
     type: constitutional
 next_artifact:
-  id: "ECP-RP-v0.1.0-E0.2.2"
-  title: "Reference Primitive Specification"
-  state: READY_TO_START
-  unlocked_by: "DEC-ECP-E0.2.1-0001"
+  id: "ECP-RP-v0.1.0-E0.2.3"
+  title: "Ownership Primitive Specification"
+  state: BLOCKED

@@ -24,7 +24,7 @@ schemas:
     version: "0.1.0"
     level: L0
     uri: "https://specs.lysergic.dev/primitives/v1/reference.schema.json"
-    status: pending
+    status: draft
     artifact: "ECP-RP-v0.1.0-E0.2.2"
     dependencies: ["identity"]
   ownership:

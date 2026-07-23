@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://specs.lysergic.dev/primitives/v1/reference.schema.json",
+  "title": "Reference Primitive",
+  "description": "Typed reference connecting source and target governed objects. Both endpoints conform to the Identity Primitive shape. Reference is immutable after creation and carries no execution semantics.",
+  "type": "object",
+  "properties": {
+    "source_id": {
+      "type": "string",
+      "description": "Logical identity of the source object. Conforms to the Identity Primitive id field."
+    },
+    "source_uri": {
+      "type": "string",
+      "format": "uri",
+      "description": "Canonical URI of the source object. Conforms to the Identity Primitive uri field."
+    },
+    "relationship": {
+      "type": "string",
+      "description": "Registry-controlled semantic relationship type from source to target. Must be registered before use."
+    },
+    "target_id": {
+      "type": "string",
+      "description": "Logical identity of the target object. Conforms to the Identity Primitive id field."
+    },
+    "target_uri": {
+      "type": "string",
+      "format": "uri",
+      "description": "Canonical URI of the target object. Conforms to the Identity Primitive uri field."
+    }
+  },
+  "required": ["source_id", "source_uri", "relationship", "target_id", "target_uri"],
+  "additionalProperties": false
+}
