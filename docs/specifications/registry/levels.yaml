@@ -37,3 +37,12 @@ level_rules:
     description: "A schema at level N may only reference schemas at level ≤ N"
     enforcement: "static_registry_check"
     failure_action: "BLOCK_REGISTRATION"
+canonical_uri_template:
+  pattern: "https://specs.lysergic.dev/{domain}/{kind}/{name}"
+  domains:
+    primitives: "Canonical JSON Schema definitions"
+    ecp: "ECP governance artifacts"
+    evidence: "Evidence and acceptance packages"
+  constitutional: true
+  amendment_authority: "PortfolioAuthority"
+  description: "All canonical URIs must conform to this template. Published URIs are immutable and must not change upon repository reorganization."

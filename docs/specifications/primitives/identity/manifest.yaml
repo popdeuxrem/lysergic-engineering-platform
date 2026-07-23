@@ -27,24 +27,47 @@ governance:
     accept: "ECPTechnicalAuthority"
     amend: "PortfolioAuthority"
     reject: "PortfolioAuthority"
+  constitutional_properties:
+    - "Dual identity model (id/uri)"
+    - "Orthogonal versioning"
+    - "Immutability (const: true)"
+    - "Lineage tracking"
+    - "Canonical URI template"
 deliverables:
   specification:
     path: "docs/specifications/primitives/identity/E0.2.1-identity-primitive.md"
     required: true
-    status: pending
+    status: complete
   json_schema:
     path: "docs/specifications/primitives/identity/identity.schema.json"
     required: true
-    status: pending
+    status: complete
   governance_manifest:
     path: "docs/specifications/primitives/identity/manifest.yaml"
     required: true
     status: complete
-  conformance_evidence:
+  conformance_profile:
     path: "docs/specifications/primitives/identity/conformance.yaml"
+    required: true
+    status: complete
+  acceptance_evidence:
+    path: "evidence/ECP-RP-v0.1.0-E0.2.1.acceptance.yaml"
     required: true
     status: pending
 dependencies: []
+acceptance_criteria:
+  - "Valid Draft 2020-12 schema"
+  - "Zero external dependencies"
+  - "No $ref outside L0"
+  - "Stable canonical $id"
+  - "Immutable identity semantics"
+  - "Separate logical ID from URI"
+  - "Separate identity from version"
+  - "Explicit lineage model"
+  - "Registry entry present"
+  - "Conformance profile passes"
+  - "Pydantic v2 model generation succeeds"
+  - "Acceptance evidence recorded"
 next_artifact:
   id: "ECP-RP-v0.1.0-E0.2.2"
   title: "Reference Primitive Specification"

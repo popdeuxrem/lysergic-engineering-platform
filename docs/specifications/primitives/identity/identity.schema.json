@@ -2,11 +2,55 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://specs.lysergic.dev/primitives/v1/identity.schema.json",
   "title": "Identity Primitive",
-  "description": "Immutable identifiers and canonical URIs for governed objects",
+  "description": "Immutable identifiers and canonical URIs for governed objects. Constitutional properties: dual identity (id/uri), orthogonal versioning, immutability, lineage tracking, and canonical URI template conformance.",
   "type": "object",
-  "version": "0.1.0",
   "properties": {
+    "id": {
+      "type": "string",
+      "description": "Stable logical identifier for internal references. Does not require full URI resolution."
+    },
+    "uri": {
+      "type": "string",
+      "format": "uri",
+      "description": "Canonical globally unique identifier conforming to RFC 3986. Resolves to the authoritative representation of the governed object."
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "description": "Semantic version (MAJOR.MINOR.PATCH) of the identified object. Version is orthogonal to identity — changing version does not change identity."
+    },
+    "immutable": {
+      "type": "boolean",
+      "const": true,
+      "description": "Constitutional invariant. Once published, identity can never change. Identity mutation requires a new artifact, new URI, and new lineage."
+    },
+    "lineage": {
+      "type": "object",
+      "description": "Provenance and succession history. Enables governance traceability without polluting identity.",
+      "properties": {
+        "parent": {
+          "type": ["string", "null"],
+          "format": "uri",
+          "description": "URI of the parent object from which this identity was derived. null for root objects."
+        },
+        "supersedes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          },
+          "description": "URIs of objects that this identity replaces."
+        },
+        "superseded_by": {
+          "type": ["string", "null"],
+          "format": "uri",
+          "description": "URI of the object that supersedes this identity. null if active."
+        }
+      },
+      "required": ["parent", "supersedes", "superseded_by"],
+      "additionalProperties": false
+    }
   },
-  "required": [],
+  "required": ["id", "uri", "immutable"],
   "additionalProperties": false
 }

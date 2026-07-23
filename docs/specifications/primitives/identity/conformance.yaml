@@ -23,13 +23,13 @@ checks:
     target: "docs/specifications/primitives/identity/manifest.yaml"
     required: true
   - id: "IDENTITY-004"
-    description: "Conformance evidence exists"
+    description: "Conformance profile exists"
     target: "docs/specifications/primitives/identity/conformance.yaml"
     required: true
   - id: "IDENTITY-005"
     description: "Schema is valid Draft 2020-12"
     scope: schema
-    check: "jsonschema validation"
+    check: "jsonschema meta-validation"
     required: true
   - id: "IDENTITY-006"
     description: "Canonical $id URI is defined"
@@ -37,12 +37,12 @@ checks:
     check: "$id == https://specs.lysergic.dev/primitives/v1/identity.schema.json"
     required: true
   - id: "IDENTITY-007"
-    description: "No prohibited relative $ref"
+    description: "Zero external $ref dependencies"
     scope: schema
-    check: "all $ref values are absolute or within-registry"
+    check: "no $ref present — L0 isolation"
     required: true
   - id: "IDENTITY-008"
-    description: "Level constraint satisfied"
+    description: "L0 level constraint satisfied"
     scope: registry
     check: "L0 schema references only built-in vocabularies"
     required: true
@@ -51,6 +51,21 @@ checks:
     scope: registry
     check: "entry exists with status != pending"
     required: true
+  - id: "IDENTITY-010"
+    description: "immutable: true enforced with const"
+    scope: schema
+    check: "properties.immutable.const == true"
+    required: true
+  - id: "IDENTITY-011"
+    description: "id and uri are both required"
+    scope: schema
+    check: "required array includes id, uri, and immutable"
+    required: true
+  - id: "IDENTITY-012"
+    description: "Explicit lineage model declared"
+    scope: schema
+    check: "lineage object with parent, supersedes, superseded_by"
+    required: true
 validation:
-  strategy: "All required checks must pass"
+  strategy: "All 12 required checks must pass"
   failure_action: "BLOCK_ACCEPTANCE"
