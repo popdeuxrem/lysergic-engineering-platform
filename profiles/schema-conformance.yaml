@@ -1,0 +1,77 @@
+# ==============================================================================
+# ECP CONFORMANCE PROFILE
+# Profile ID: ECP-CP-v0.1.0-SCHEMA-CONFORMANCE
+# Artifact: ECP-RP-v0.1.0-E0.1
+# Title: Schema Architecture Conformance
+# ==============================================================================
+profile_version: "1.0.0"
+identity:
+  id: "ECP-CP-v0.1.0-SCHEMA-CONFORMANCE"
+  artifact: "ECP-RP-v0.1.0-E0.1"
+  title: "Schema Architecture Conformance"
+  version: "0.1.0"
+checks:
+  - id: "SPEC-001"
+    description: "Normative specification exists"
+    target: "docs/specifications/E0.1-schema-architecture.md"
+    required: true
+  - id: "SPEC-002"
+    description: "Governance manifest exists"
+    target: "manifests/E0.1.schema-architecture.yaml"
+    required: true
+  - id: "SPEC-003"
+    description: "Conformance profile exists"
+    target: "profiles/schema-conformance.yaml"
+    required: true
+  - id: "SPEC-004"
+    description: "Acceptance evidence exists"
+    target: "evidence/ECP-RP-v0.1.0-E0.1.acceptance.yaml"
+    required: true
+  - id: "GOV-001"
+    description: "Normative precedence is defined"
+    scope: specification
+    check: "section 2 — Normative Precedence"
+    required: true
+  - id: "GOV-002"
+    description: "Repository structure is defined"
+    scope: specification
+    check: "section 3 — Repository Structure"
+    required: true
+  - id: "GOV-003"
+    description: "Namespace policy is defined"
+    scope: specification
+    check: "section 4 — Namespace Policy"
+    required: true
+  - id: "GOV-004"
+    description: "Versioning policy is defined"
+    scope: specification
+    check: "section 5 — Versioning Policy"
+    required: true
+  - id: "GOV-005"
+    description: "Reference strategy is defined"
+    scope: specification
+    check: "section 6 — Reference Strategy"
+    required: true
+  - id: "GOV-006"
+    description: "Dependency graph is defined"
+    scope: specification
+    check: "section 7 — Dependency Graph"
+    required: true
+  - id: "GOV-007"
+    description: "Primitive order is defined"
+    scope: specification
+    check: "section 8 — Primitive Order"
+    required: true
+  - id: "GOV-008"
+    description: "Validation architecture is defined"
+    scope: specification
+    check: "section 9 — Validation Architecture"
+    required: true
+  - id: "GOV-009"
+    description: "Evolution rules are defined"
+    scope: specification
+    check: "section 10 — Evolution Rules"
+    required: true
+validation:
+  strategy: "All required checks must pass"
+  failure_action: "BLOCK_ACCEPTANCE"

@@ -1,0 +1,132 @@
+# ==============================================================================
+# ECP ACCEPTANCE & EVIDENCE PACKAGE
+# Artifact ID: ECP-RP-v0.1.0-E0.1
+# Artifact Type: Acceptance and Evidence Package
+# Purpose: Governance evidence supporting readiness for acceptance
+# ==============================================================================
+package_version: "1.0.0"
+identity:
+  id: "ECP-RP-v0.1.0-E0.1-ACCEPTANCE"
+  artifact: "ECP-RP-v0.1.0-E0.1"
+  uri: "https://specs.lysergic.dev/ecp/evidence/ECP-RP-v0.1.0-E0.1-ACCEPTANCE"
+  immutable: true
+artifact:
+  id: "ECP-RP-v0.1.0-E0.1"
+  title: "Schema Architecture Foundation"
+  program: "Engineering Control Plane"
+  domain: "Shared Specifications"
+  version: "0.1.0"
+authority:
+  evaluation_role: "AcceptanceEvaluator"
+  decision_role: "PortfolioAuthority"
+governing_documents:
+  reference_architecture: "LEPRA-RA-v1.0"
+  governance_model: "LEPRA-GM-v1.0"
+  metamodel: "LEPRA-MM-v1.0"
+  evolution_rules: "LEPRA-ER-v1.0"
+deliverables:
+  specification:
+    path: "docs/specifications/E0.1-schema-architecture.md"
+    required: true
+    present: true
+    status: complete
+    checksum:
+      algorithm: sha256
+      value: "GENERATED_BY_ECP"
+  governance_manifest:
+    path: "manifests/E0.1.schema-architecture.yaml"
+    required: true
+    present: true
+    status: complete
+    checksum:
+      algorithm: sha256
+      value: "GENERATED_BY_ECP"
+  conformance_profile:
+    path: "profiles/schema-conformance.yaml"
+    required: true
+    present: true
+    status: complete
+    checksum:
+      algorithm: sha256
+      value: "GENERATED_BY_ECP"
+validation:
+  executed: true
+  profile:
+    id: "ECP-CP-v0.1.0-SCHEMA-CONFORMANCE"
+  results:
+    specification_exists: PASS
+    manifest_exists: PASS
+    conformance_profile_exists: PASS
+    normative_precedence_defined: PASS
+    repository_structure_defined: PASS
+    namespace_policy_defined: PASS
+    versioning_policy_defined: PASS
+    reference_strategy_defined: PASS
+    dependency_graph_defined: PASS
+    primitive_order_defined: PASS
+    validation_architecture_defined: PASS
+    evolution_rules_defined: PASS
+overall_validation: PASS
+constitutional_review:
+  ownership_invariant: PASS
+  authority_invariant: PASS
+  dependency_invariant: PASS
+  execution_invariant: PASS
+  specification_invariant: PASS
+  governance_boundary: PASS
+evaluation:
+  evaluator: "AcceptanceEvaluator"
+  recommendation: "READY_FOR_ACCEPTANCE"
+  rationale:
+    - "Normative specification is complete."
+    - "Governance manifest is complete."
+    - "Conformance profile is complete."
+    - "No implementation artifacts are introduced."
+    - "No backend coupling detected."
+    - "Repository topology is constitutionally defined."
+    - "Validation boundaries are explicit."
+    - "Normative authority precedence is defined."
+decision:
+  status: "PENDING_PORTFOLIO_AUTHORITY"
+  constitutional_rule:
+    "Computation may produce judgments. Authority alone may produce decisions."
+  decision_record: null
+outstanding_change_proposals:
+  - id: "ACP-E0.1-001"
+    title: "Separate Artifact Identity from Version"
+    priority: medium
+    status: proposed
+  - id: "ACP-E0.1-002"
+    title: "Replace validator implementations with validator capability contracts"
+    priority: medium
+    status: proposed
+future_automation:
+  generated_by_ecp:
+    checksums: true
+    dependency_graph: true
+    validation_summary: true
+    acceptance_recommendation: true
+  human_responsibilities:
+    portfolio_decision: true
+    constitutional_changes: true
+    lifecycle_transition: true
+status:
+  artifact_state: "READY_FOR_ACCEPTANCE"
+  implementation_authorization: false
+  next_artifact: "ECP-RP-v0.1.0-E0.2"
+  progression_rule:
+    "Portfolio Authority must issue an ACCEPTED decision before E0.2 execution."
+evidence_bundle:
+  immutable: true
+  provenance:
+    generated_from:
+      - "docs/specifications/E0.1-schema-architecture.md"
+      - "manifests/E0.1.schema-architecture.yaml"
+      - "profiles/schema-conformance.yaml"
+    generated_at: "2026-07-23T00:00:00Z"
+    generation_method: "Governance Evidence Package"
+constitutional_assertion:
+  statement: >
+    This package contains evidence and judgments only.
+    It performs no governance mutation.
+    Acceptance remains exclusively the responsibility of Portfolio Authority.

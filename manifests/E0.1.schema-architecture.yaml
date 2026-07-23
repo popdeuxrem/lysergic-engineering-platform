@@ -1,0 +1,58 @@
+# ==============================================================================
+# ECP GOVERNANCE MANIFEST
+# Artifact ID: ECP-RP-v0.1.0-E0.1
+# Title: Schema Architecture Foundation
+# ==============================================================================
+manifest_version: "1.0.0"
+identity:
+  id: "ECP-RP-v0.1.0-E0.1"
+  title: "Schema Architecture Foundation"
+  program: "Engineering Control Plane"
+  domain: "Shared Specifications"
+  version: "0.1.0"
+  uri: "https://specs.lysergic.dev/ecp/E0.1"
+lifecycle:
+  state: READY_FOR_ACCEPTANCE
+  transitions:
+    DRAFT: 2026-07-23
+    READY_FOR_ACCEPTANCE: 2026-07-23
+governance:
+  governing_documents:
+    reference_architecture: "LEPRA-RA-v1.0"
+    governance_model: "LEPRA-GM-v1.0"
+    metamodel: "LEPRA-MM-v1.0"
+    evolution_rules: "LEPRA-ER-v1.0"
+  authority:
+    accept: "PortfolioAuthority"
+    amend: "PortfolioAuthority"
+    reject: "PortfolioAuthority"
+deliverables:
+  specification:
+    path: "docs/specifications/E0.1-schema-architecture.md"
+    required: true
+    status: complete
+  governance_manifest:
+    path: "manifests/E0.1.schema-architecture.yaml"
+    required: true
+    status: complete
+  conformance_profile:
+    path: "profiles/schema-conformance.yaml"
+    required: true
+    status: complete
+  acceptance_evidence:
+    path: "evidence/ECP-RP-v0.1.0-E0.1.acceptance.yaml"
+    required: true
+    status: complete
+dependencies:
+  - artifact: "LEPRA-RA-v1.0"
+    type: constitutional
+  - artifact: "LEPRA-GM-v1.0"
+    type: constitutional
+  - artifact: "LEPRA-MM-v1.0"
+    type: constitutional
+  - artifact: "LEPRA-ER-v1.0"
+    type: constitutional
+next_artifact:
+  id: "ECP-RP-v0.1.0-E0.2"
+  title: "Primitive Schema Foundation"
+  state: DRAFT
