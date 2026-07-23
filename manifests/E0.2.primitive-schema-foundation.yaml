@@ -1,0 +1,100 @@
+# ==============================================================================
+# ECP GOVERNANCE MANIFEST
+# Artifact ID: ECP-RP-v0.1.0-E0.2
+# Title: Primitive Schema Foundation
+# ==============================================================================
+manifest_version: "1.0.0"
+identity:
+  id: "ECP-RP-v0.1.0-E0.2"
+  title: "Primitive Schema Foundation"
+  program: "Engineering Control Plane"
+  domain: "Shared Specifications"
+  version: "0.1.0"
+  uri: "https://specs.lysergic.dev/ecp/E0.2"
+lifecycle:
+  state: DRAFT
+  transitions:
+    DRAFT: 2026-07-23
+governance:
+  governing_documents:
+    reference_architecture: "LEPRA-RA-v1.0"
+    governance_model: "LEPRA-GM-v1.0"
+    metamodel: "LEPRA-MM-v1.0"
+    evolution_rules: "LEPRA-ER-v1.0"
+  authority:
+    accept: "PortfolioAuthority"
+    amend: "PortfolioAuthority"
+    reject: "PortfolioAuthority"
+primitives:
+  execution_order:
+    - id: "ECP-RP-v0.1.0-E0.2.1"
+      title: "Identity Primitive Specification"
+      level: L0
+      depends_on: []
+    - id: "ECP-RP-v0.1.0-E0.2.2"
+      title: "Reference Primitive Specification"
+      level: L0
+      depends_on: ["identity"]
+    - id: "ECP-RP-v0.1.0-E0.2.3"
+      title: "Ownership Primitive Specification"
+      level: L1
+      depends_on: ["identity"]
+    - id: "ECP-RP-v0.1.0-E0.2.4"
+      title: "Lifecycle Primitive Specification"
+      level: L1
+      depends_on: ["identity"]
+    - id: "ECP-RP-v0.1.0-E0.2.5"
+      title: "Metadata Primitive Specification"
+      level: L1
+      depends_on: ["identity", "reference"]
+    - id: "ECP-RP-v0.1.0-E0.2.6"
+      title: "Artifact Primitive Specification"
+      level: L2
+      depends_on: ["identity", "reference", "ownership", "lifecycle", "metadata"]
+  acceptance_criteria:
+    - "Valid JSON Schema Draft 2020-12"
+    - "Canonical $id URI"
+    - "No prohibited relative $ref"
+    - "References only same-level or lower-level primitives"
+    - "Passes jsonschema validation"
+    - "Passes Pydantic v2 code generation (if applicable)"
+    - "Registered in schema-registry.yaml"
+    - "Included in dependency topology"
+    - "Covered by conformance profile"
+deliverables:
+  specification:
+    path: "docs/specifications/primitives/"
+    required: true
+    status: pending
+  governance_manifest:
+    path: "manifests/E0.2.primitive-schema-foundation.yaml"
+    required: true
+    status: complete
+  conformance_profile:
+    path: "profiles/schema-conformance.yaml"
+    required: true
+    status: inherited
+  registry_levels:
+    path: "docs/specifications/registry/levels.yaml"
+    required: true
+    status: pending
+  schema_registry:
+    path: "docs/specifications/registry/schema-registry.yaml"
+    required: true
+    status: pending
+dependencies:
+  - artifact: "ECP-RP-v0.1.0-E0.1"
+    type: constitutional
+    relationship: "ratified_constraint"
+  - artifact: "LEPRA-RA-v1.0"
+    type: constitutional
+  - artifact: "LEPRA-GM-v1.0"
+    type: constitutional
+  - artifact: "LEPRA-MM-v1.0"
+    type: constitutional
+  - artifact: "LEPRA-ER-v1.0"
+    type: constitutional
+next_artifact:
+  id: "ECP-RP-v0.1.0-E0.2.1"
+  title: "Identity Primitive Specification"
+  state: DRAFT

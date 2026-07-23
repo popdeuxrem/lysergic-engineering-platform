@@ -1,0 +1,51 @@
+# ==============================================================================
+# IDENTITY PRIMITIVE — GOVERNANCE MANIFEST
+# Artifact ID: ECP-RP-v0.1.0-E0.2.1
+# Title: Identity Primitive Specification
+# ==============================================================================
+manifest_version: "1.0.0"
+identity:
+  id: "ECP-RP-v0.1.0-E0.2.1"
+  title: "Identity Primitive Specification"
+  program: "Engineering Control Plane"
+  domain: "Shared Specifications"
+  version: "0.1.0"
+  uri: "https://specs.lysergic.dev/ecp/E0.2.1"
+  parent: "ECP-RP-v0.1.0-E0.2"
+lifecycle:
+  state: DRAFT
+  transitions:
+    DRAFT: 2026-07-23
+governance:
+  governing_documents:
+    schema_architecture: "ECP-RP-v0.1.0-E0.1"
+    reference_architecture: "LEPRA-RA-v1.0"
+    governance_model: "LEPRA-GM-v1.0"
+    evolution_rules: "LEPRA-ER-v1.0"
+  schema_level: L0
+  authority:
+    accept: "ECPTechnicalAuthority"
+    amend: "PortfolioAuthority"
+    reject: "PortfolioAuthority"
+deliverables:
+  specification:
+    path: "docs/specifications/primitives/identity/E0.2.1-identity-primitive.md"
+    required: true
+    status: pending
+  json_schema:
+    path: "docs/specifications/primitives/identity/identity.schema.json"
+    required: true
+    status: pending
+  governance_manifest:
+    path: "docs/specifications/primitives/identity/manifest.yaml"
+    required: true
+    status: complete
+  conformance_evidence:
+    path: "docs/specifications/primitives/identity/conformance.yaml"
+    required: true
+    status: pending
+dependencies: []
+next_artifact:
+  id: "ECP-RP-v0.1.0-E0.2.2"
+  title: "Reference Primitive Specification"
+  state: BLOCKED

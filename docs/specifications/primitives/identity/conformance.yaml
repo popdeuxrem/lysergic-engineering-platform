@@ -1,0 +1,56 @@
+# ==============================================================================
+# IDENTITY PRIMITIVE — CONFORMANCE PROFILE
+# Artifact ID: ECP-CP-v0.1.0-IDENTITY
+# Parent: ECP-RP-v0.1.0-E0.2.1
+# ==============================================================================
+profile_version: "1.0.0"
+identity:
+  id: "ECP-CP-v0.1.0-IDENTITY"
+  artifact: "ECP-RP-v0.1.0-E0.2.1"
+  title: "Identity Primitive Conformance"
+  version: "0.1.0"
+checks:
+  - id: "IDENTITY-001"
+    description: "Normative specification exists"
+    target: "docs/specifications/primitives/identity/E0.2.1-identity-primitive.md"
+    required: true
+  - id: "IDENTITY-002"
+    description: "JSON Schema Draft 2020-12 exists"
+    target: "docs/specifications/primitives/identity/identity.schema.json"
+    required: true
+  - id: "IDENTITY-003"
+    description: "Governance manifest exists"
+    target: "docs/specifications/primitives/identity/manifest.yaml"
+    required: true
+  - id: "IDENTITY-004"
+    description: "Conformance evidence exists"
+    target: "docs/specifications/primitives/identity/conformance.yaml"
+    required: true
+  - id: "IDENTITY-005"
+    description: "Schema is valid Draft 2020-12"
+    scope: schema
+    check: "jsonschema validation"
+    required: true
+  - id: "IDENTITY-006"
+    description: "Canonical $id URI is defined"
+    scope: schema
+    check: "$id == https://specs.lysergic.dev/primitives/v1/identity.schema.json"
+    required: true
+  - id: "IDENTITY-007"
+    description: "No prohibited relative $ref"
+    scope: schema
+    check: "all $ref values are absolute or within-registry"
+    required: true
+  - id: "IDENTITY-008"
+    description: "Level constraint satisfied"
+    scope: registry
+    check: "L0 schema references only built-in vocabularies"
+    required: true
+  - id: "IDENTITY-009"
+    description: "Registered in schema-registry.yaml"
+    scope: registry
+    check: "entry exists with status != pending"
+    required: true
+validation:
+  strategy: "All required checks must pass"
+  failure_action: "BLOCK_ACCEPTANCE"

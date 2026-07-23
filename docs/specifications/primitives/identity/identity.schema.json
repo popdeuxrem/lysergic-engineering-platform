@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://specs.lysergic.dev/primitives/v1/identity.schema.json",
+  "title": "Identity Primitive",
+  "description": "Immutable identifiers and canonical URIs for governed objects",
+  "type": "object",
+  "version": "0.1.0",
+  "properties": {
+  },
+  "required": [],
+  "additionalProperties": false
+}

@@ -4,4 +4,92 @@
 # Purpose: Declarative registration of all canonical schemas
 # ==============================================================================
 registry_version: "0.1.0"
-schemas: []
+schemas:
+  identity:
+    id: identity
+    version: "0.1.0"
+    level: L0
+    uri: "https://specs.lysergic.dev/primitives/v1/identity.schema.json"
+    status: pending
+    artifact: "ECP-RP-v0.1.0-E0.2.1"
+    dependencies: []
+  reference:
+    id: reference
+    version: "0.1.0"
+    level: L0
+    uri: "https://specs.lysergic.dev/primitives/v1/reference.schema.json"
+    status: pending
+    artifact: "ECP-RP-v0.1.0-E0.2.2"
+    dependencies: ["identity"]
+  ownership:
+    id: ownership
+    version: "0.1.0"
+    level: L1
+    uri: "https://specs.lysergic.dev/primitives/v1/ownership.schema.json"
+    status: pending
+    artifact: "ECP-RP-v0.1.0-E0.2.3"
+    dependencies: ["identity"]
+  lifecycle:
+    id: lifecycle
+    version: "0.1.0"
+    level: L1
+    uri: "https://specs.lysergic.dev/primitives/v1/lifecycle.schema.json"
+    status: pending
+    artifact: "ECP-RP-v0.1.0-E0.2.4"
+    dependencies: ["identity"]
+  metadata:
+    id: metadata
+    version: "0.1.0"
+    level: L1
+    uri: "https://specs.lysergic.dev/primitives/v1/metadata.schema.json"
+    status: pending
+    artifact: "ECP-RP-v0.1.0-E0.2.5"
+    dependencies: ["identity", "reference"]
+  artifact:
+    id: artifact
+    version: "0.1.0"
+    level: L2
+    uri: "https://specs.lysergic.dev/primitives/v1/artifact.schema.json"
+    status: pending
+    artifact: "ECP-RP-v0.1.0-E0.2.6"
+    dependencies: ["identity", "reference", "ownership", "lifecycle", "metadata"]
+  capability:
+    id: capability
+    version: "0.1.0"
+    level: L2
+    uri: "https://specs.lysergic.dev/primitives/v1/capability.schema.json"
+    status: pending
+    artifact: "TBD"
+    dependencies: ["identity", "reference"]
+  validation-profile:
+    id: validation-profile
+    version: "0.1.0"
+    level: L2
+    uri: "https://specs.lysergic.dev/primitives/v1/validation-profile.schema.json"
+    status: pending
+    artifact: "TBD"
+    dependencies: ["identity", "reference"]
+  execution-ir:
+    id: execution-ir
+    version: "0.1.0"
+    level: L3
+    uri: "https://specs.lysergic.dev/primitives/v1/execution-ir.schema.json"
+    status: blocked
+    artifact: "TBD"
+    dependencies: ["identity", "reference", "artifact"]
+  evidence:
+    id: evidence
+    version: "0.1.0"
+    level: L3
+    uri: "https://specs.lysergic.dev/primitives/v1/evidence.schema.json"
+    status: blocked
+    artifact: "TBD"
+    dependencies: ["identity", "reference", "artifact"]
+  judgment:
+    id: judgment
+    version: "0.1.0"
+    level: L3
+    uri: "https://specs.lysergic.dev/primitives/v1/judgment.schema.json"
+    status: blocked
+    artifact: "TBD"
+    dependencies: ["identity", "reference", "artifact", "evidence"]

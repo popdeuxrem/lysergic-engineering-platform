@@ -1,0 +1,39 @@
+# ==============================================================================
+# ECP SCHEMA LEVELS
+# Registry ID: ECP-REG-v0.1.0-LEVELS
+# Purpose: Define schema levels for automatic acyclic dependency enforcement
+# ==============================================================================
+registry_version: "0.1.0"
+levels:
+  L0:
+    description: "Foundation primitives — no dependencies on other schemas"
+    schemas:
+      - identity
+      - reference
+    constraint: "May only reference built-in JSON Schema vocabularies"
+  L1:
+    description: "Structural primitives — depend only on L0"
+    schemas:
+      - ownership
+      - lifecycle
+      - metadata
+    constraint: "May only reference L0 or built-in vocabularies"
+  L2:
+    description: "Composite primitives — depend on L0 and L1"
+    schemas:
+      - artifact
+      - capability
+      - validation-profile
+    constraint: "May only reference L0, L1, or built-in vocabularies"
+  L3:
+    description: "Execution artifacts — depend on all lower levels"
+    schemas:
+      - execution-ir
+      - evidence
+      - judgment
+    constraint: "May only reference L0, L1, L2, or built-in vocabularies"
+level_rules:
+  acyclic_dependency:
+    description: "A schema at level N may only reference schemas at level ≤ N"
+    enforcement: "static_registry_check"
+    failure_action: "BLOCK_REGISTRATION"
