@@ -103,7 +103,7 @@ def test_application_does_not_import_infrastructure() -> None:
 
 
 def test_domain_package_exports() -> None:
-    from src.domain import DomainException, Entity, ValueObject
+    from src.domain import Entity, ValueObject
 
     assert Entity is not None
     assert ValueObject is not None
