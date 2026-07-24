@@ -1,0 +1,21 @@
+profile:
+  id: urn:lep:profile:extensions.extension
+  version: 1.0.0
+  target: urn:lep:contract:extensions.sdk
+validator:
+  contract: urn:ecp:contract:json-schema:draft2020-12
+rules:
+  - id: ext-validate-manifest-schema
+    description: Extension manifest validates against extension.schema.json
+  - id: ext-sdk-compatibility
+    description: Extension declares compatible SDK version range
+  - id: ext-package-integrity
+    description: Extension package integrity is verified
+  - id: ext-acyclic-deps
+    description: Extension dependency graph contains no cycles
+  - id: ext-capability-conflicts
+    description: No two extensions register conflicting providers for the same capability
+  - id: ext-lifecycle-correctness
+    description: Extension lifecycle transitions follow the defined state machine
+  - id: ext-duplicate-providers
+    description: No duplicate capability providers for the same version

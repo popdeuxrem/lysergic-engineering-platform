@@ -1,0 +1,56 @@
+contract:
+  id: urn:lep:contract:extensions.sdk
+  version: 1.0.0
+  name: LEP Extension SDK Contract
+sdk:
+  version: 1.0.0
+  baseline: LEP-ARCH-v0.1.0
+interfaces:
+  - Extension
+  - ExtensionManifest
+  - ExtensionLoader
+  - ExtensionRegistry
+  - CapabilityRegistry
+  - DependencyResolver
+  - ValidationEngine
+  - CompatibilityChecker
+lifecycle:
+  states:
+    - discovered
+    - validated
+    - loading
+    - ready
+    - failed
+    - stopping
+    - stopped
+    - removed
+  transitions:
+    discovered: [validated, failed, removed]
+    validated: [loading, failed, removed]
+    loading: [ready, failed]
+    ready: [stopping, failed]
+    failed: [removed]
+    stopping: [stopped, failed]
+    stopped: [removed, discovered]
+    removed: []
+events:
+  - ExtensionDiscovered
+  - ExtensionValidated
+  - ExtensionLoaded
+  - ExtensionReady
+  - ExtensionFailed
+  - ExtensionStopped
+  - ExtensionRemoved
+validation:
+  tier_1:
+    - manifest_schema
+    - sdk_compatibility
+    - package_integrity
+  tier_2:
+    - dependency_graph
+    - capability_conflicts
+    - lifecycle_correctness
+    - duplicate_providers
+conformance:
+  schema: "urn:lep:schema:extensions.extension"
+  validation_profile: "urn:lep:profile:extensions.extension"
