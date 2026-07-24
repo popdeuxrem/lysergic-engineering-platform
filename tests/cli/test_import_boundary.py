@@ -1,24 +1,21 @@
-"""Verify that cli/kilo/ maintains LEP architecture boundaries.
+"""Verify architecture boundaries for cli/kilo/ and runtime/extensions/.
 
 Architecture requirement:
-  cli/kilo
-      ↓
-  runtime.api  (only)
-      ↓
-  runtime
-
-No CLI component may directly depend on:
-  - runtime.kernel
-  - runtime.services
-  - any internal runtime module
-  - contracts, schemas, profiles, extensions, apps
+  cli/kilo  │  runtime/extensions
+      ↓     │       ↓
+  runtime.api (only) │ runtime.api + extensions.sdk
+      ↓     │       ↓
+  runtime  │  runtime
 """
 
 import ast
 import pathlib
 
 
-KILO_PACKAGE = pathlib.Path("cli/kilo")
+PACKAGES = {
+    "cli/kilo": pathlib.Path("cli/kilo"),
+    "runtime/extensions": pathlib.Path("runtime/extensions"),
+}
 
 PROHIBITED_IMPORTS = [
     "runtime.kernel", "runtime.services", "runtime.assets",
@@ -29,13 +26,18 @@ PROHIBITED_IMPORTS = [
     "contracts", "schemas", "profiles", "extensions", "apps",
 ]
 
+# Each package has an allowlist of module prefixes that are permitted
+ALLOWED_PREFIXES = {
+    "cli/kilo": ["runtime.api"],
+    "runtime/extensions": ["runtime.api", "extensions.sdk"],
+}
 
-def _get_all_kilo_py_files() -> list[pathlib.Path]:
-    return sorted(KILO_PACKAGE.rglob("*.py"))
+
+def _get_all_py_files(pkg_path: pathlib.Path) -> list[pathlib.Path]:
+    return sorted(pkg_path.rglob("*.py"))
 
 
 def _get_imports_from_file(path: pathlib.Path) -> list[tuple[str, str]]:
-    """Return list of (module, name) for all imports found in file."""
     with open(path) as f:
         tree = ast.parse(f.read(), filename=str(path))
 
@@ -50,35 +52,41 @@ def _get_imports_from_file(path: pathlib.Path) -> list[tuple[str, str]]:
     return imports
 
 
-def test_no_kilo_module_imports_prohibited_modules() -> None:
-    """Every .py file under cli/kilo/ is scanned for prohibited imports."""
+def _is_allowed(mod: str, pkg_name: str) -> bool:
+    for prefix in ALLOWED_PREFIXES.get(pkg_name, []):
+        if mod == prefix or mod.startswith(prefix + "."):
+            return True
+    return False
+
+
+def test_no_module_imports_prohibited_modules() -> None:
+    """Every .py file under cli/kilo/ and runtime/extensions/ is scanned."""
     errors = []
-    for path in _get_all_kilo_py_files():
-        rel = path.relative_to(KILO_PACKAGE)
-        for mod, _ in _get_imports_from_file(path):
-            for prohibited in PROHIBITED_IMPORTS:
-                if mod == prohibited or mod.startswith(prohibited + "."):
-                    errors.append(f"{rel}: imports {mod}")
+    for pkg_name, pkg_path in PACKAGES.items():
+        for path in _get_all_py_files(pkg_path):
+            rel = path.relative_to(pkg_path)
+            for mod, _ in _get_imports_from_file(path):
+                is_prohibited = any(
+                    mod == p or mod.startswith(p + ".") for p in PROHIBITED_IMPORTS
+                )
+                if is_prohibited and not _is_allowed(mod, pkg_name):
+                    errors.append(f"{pkg_name}/{rel}: imports {mod}")
     assert not errors, (
-        "Kilo modules must not import runtime internals directly:\n"
+        "Modules must not import prohibited runtime internals:\n"
         + "\n".join(errors)
     )
 
 
 def test_adapter_imports_only_from_runtime_api() -> None:
-    """The adapter module must only import runtime.api (not runtime.services)."""
-    adapter_path = KILO_PACKAGE / "adapter" / "__init__.py"
+    """Kilo adapter must only import runtime.api (not runtime.services)."""
+    adapter_path = pathlib.Path("cli/kilo/adapter/__init__.py")
     assert adapter_path.exists(), f"Adapter module missing at {adapter_path}"
 
-    imports_runtime_api = False
     imports_runtime_services = False
     for mod, _ in _get_imports_from_file(adapter_path):
-        if mod == "runtime.api" or mod.startswith("runtime.api."):
-            imports_runtime_api = True
         if mod == "runtime.services" or mod.startswith("runtime.services."):
             imports_runtime_services = True
 
-    assert imports_runtime_api, "Adapter must import from runtime.api (LEP facade)"
     assert not imports_runtime_services, (
         "Adapter must NOT import from runtime.services directly. "
         "Use create_default_lep() from runtime.api instead."

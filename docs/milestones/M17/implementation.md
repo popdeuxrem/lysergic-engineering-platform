@@ -47,8 +47,26 @@ runtime/extensions/
 ```
 
 The runtime layer imports `extensions.sdk.*` for manifest model and compatibility
-checking. It imports `runtime.api.LEP` for facade access. Event publishing uses
-`EventBus` from `runtime.services.events`.
+checking. It imports only from `runtime.api.*` for facade access. Event publishing
+uses `runtime.api.publish_event()`. Status reporting uses `runtime.api.RuntimeStatus`.
+
+### Import Boundary (Final, Resolved)
+
+```
+runtime/extensions/
+    │
+    ├── runtime.api (LEP, RuntimeStatus, publish_event) — ✅
+    ├── extensions.sdk (manifest, compatibility) — ✅
+    └── stdlib — ✅
+```
+
+**Resolved boundary issue:** The original implementation imported directly from
+`runtime.services.events` (EventBus) and `runtime.services.registry` (ServiceStatus).
+Two new public API facades were added to `runtime.api`:
+- `runtime.api.events.publish_event()` — wraps EventBus publishing
+- `runtime.api.status.RuntimeStatus` — minimal status enum
+
+This allowed the Extension Runtime to remove all `runtime.services.*` imports.
 
 ### Frozen Baseline
 

@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from extensions.sdk.manifest import ExtensionManifest
-from runtime.api import LEP
+from runtime.api import LEP, RuntimeStatus
 from runtime.extensions.discovery import FilesystemDiscovery
 from runtime.extensions.lifecycle import (
     ExtensionRuntimeLifecycle,
@@ -11,7 +11,6 @@ from runtime.extensions.manifest import ExtensionManifestLoader
 from runtime.extensions.registry import ExtensionRuntimeRecord, ExtensionRuntimeRegistry
 from runtime.extensions.snapshot import ExtensionRuntimeSnapshot
 from runtime.extensions.validator import ExtensionRuntimeValidator
-from runtime.services.registry import ServiceStatus
 
 
 class ExtensionRuntimeManager:
@@ -42,8 +41,8 @@ class ExtensionRuntimeManager:
         return self._snapshot
 
     @property
-    def manager_status(self) -> ServiceStatus:
-        return ServiceStatus.READY if self._initialized else ServiceStatus.PENDING
+    def manager_status(self) -> RuntimeStatus:
+        return RuntimeStatus.READY if self._initialized else RuntimeStatus.PENDING
 
     def initialize(self) -> None:
         if self._initialized:
