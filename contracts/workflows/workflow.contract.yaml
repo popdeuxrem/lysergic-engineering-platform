@@ -1,0 +1,43 @@
+contract:
+  id: urn:lep:contract:workflow
+  version: 1.0.0
+  name: LEP Workflow Contract
+workflow:
+  lifecycle:
+    states:
+      - created
+      - validated
+      - ready
+      - running
+      - completed
+      - failed
+      - stopped
+    transitions:
+      created: [validated, failed]
+      validated: [ready, failed]
+      ready: [running]
+      running: [completed, failed, stopped]
+      completed: []
+      failed: [created]
+      stopped: [created]
+  requirements:
+    - unique_workflow_id
+    - at_least_one_step
+    - unique_step_ids
+capabilities:
+  - deterministic_execution
+  - step_lifecycle_events
+  - history_tracking
+  - snapshot_isolation
+events:
+  - WorkflowCreated
+  - WorkflowValidated
+  - WorkflowStarted
+  - WorkflowStepStarted
+  - WorkflowStepCompleted
+  - WorkflowCompleted
+  - WorkflowFailed
+  - WorkflowStopped
+conformance:
+  schema: urn:lep:schema:workflow
+  validation_profile: urn:lep:profile:workflow

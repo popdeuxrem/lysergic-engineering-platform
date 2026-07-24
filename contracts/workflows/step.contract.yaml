@@ -1,0 +1,18 @@
+contract:
+  id: urn:lep:contract:workflow.step
+  version: 1.0.0
+  name: LEP Workflow Step Contract
+step:
+  types:
+    - task
+    - conditional
+    - parallel
+    - sub_workflow
+  requirements:
+    - unique_step_id
+    - valid_step_type
+    - deterministic_execution
+capabilities:
+  - step_execution
+  - result_capture
+  - timeout_support

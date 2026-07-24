@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://specs.lysergic.dev/workflows/v1/workflow.schema.json",
+  "title": "LEP Workflow Schema",
+  "description": "Schema for LEP workflow definitions.",
+  "type": "object",
+  "properties": {
+    "name": { "type": "string" },
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "description": { "type": "string" },
+    "owner": { "type": "string" }
+  },
+  "required": ["name", "version"],
+  "additionalProperties": false
+}

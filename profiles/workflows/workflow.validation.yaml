@@ -1,0 +1,19 @@
+profile:
+  id: urn:lep:profile:workflow
+  version: 1.0.0
+  target: urn:lep:contract:workflow
+validator:
+  contract: urn:ecp:contract:json-schema:draft2020-12
+rules:
+  - id: wf-validate-schema
+    description: Workflow validates against workflow.schema.json
+  - id: wf-step-schema
+    description: Steps validate against step.schema.json
+  - id: wf-metadata-correctness
+    description: Workflow metadata is complete
+  - id: wf-dependency-validation
+    description: Workflow dependencies resolve correctly
+  - id: wf-capability-validation
+    description: Workflow required capabilities are available
+  - id: wf-execution-constraints
+    description: Workflow execution constraints are satisfied

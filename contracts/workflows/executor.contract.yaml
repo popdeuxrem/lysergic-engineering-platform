@@ -1,0 +1,18 @@
+contract:
+  id: urn:lep:contract:workflow.executor
+  version: 1.0.0
+  name: LEP Workflow Executor Contract
+executor:
+  responsibilities:
+    - execute_workflow_steps
+    - invoke_step_contracts
+    - capture_results
+    - update_lifecycle_state
+    - publish_events
+  constraints:
+    - no_ai_behavior
+    - no_autonomous_planning
+    - deterministic_execution
+  outputs:
+    - WorkflowResult
+    - StepResult
