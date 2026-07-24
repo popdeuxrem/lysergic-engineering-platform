@@ -1,0 +1,38 @@
+contract:
+  id: urn:lep:contract:platform-service
+  version: 1.0.0
+  name: LEP Platform Service Contract
+service:
+  lifecycle:
+    states:
+      - pending
+      - initializing
+      - ready
+      - failed
+      - stopping
+      - stopped
+    transitions:
+      pending: [initializing]
+      initializing: [ready, failed]
+      ready: [stopping, failed]
+      stopping: [stopped, failed]
+      failed: [stopped]
+      stopped: []
+  requirements:
+    - unique_service_id
+    - declarative_dependencies
+    - idempotent_initialize
+    - idempotent_shutdown
+  dependencies:
+    resolution: topological
+    acyclic: true
+    optional: false
+capabilities:
+  - health_reporting
+  - event_dispatch
+  - service_discovery
+  - lifecycle_management
+  - dependency_injection
+conformance:
+  schema: "urn:lep:schema:platform-service"
+  validation_profile: "urn:lep:profile:service-validation"

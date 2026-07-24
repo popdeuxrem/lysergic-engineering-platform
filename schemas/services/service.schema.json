@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://specs.lysergic.dev/services/v1/service.schema.json",
+  "title": "Platform Service Schema",
+  "description": "Describes a registered platform service including identity, dependencies, lifecycle state, and health metadata.",
+  "type": "object",
+  "properties": {
+    "service_id": {
+      "type": "string",
+      "description": "Unique identifier for the service."
+    },
+    "dependencies": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Service IDs this service depends on."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["pending", "initializing", "ready", "failed", "stopping", "stopped"],
+      "description": "Current lifecycle state of the service."
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Arbitrary metadata key-value pairs.",
+      "additionalProperties": true
+    },
+    "singleton": {
+      "type": "boolean",
+      "description": "Whether the service is a singleton instance."
+    }
+  },
+  "required": ["service_id", "dependencies", "status"],
+  "additionalProperties": false
+}

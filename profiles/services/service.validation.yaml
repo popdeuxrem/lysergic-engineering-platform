@@ -1,0 +1,21 @@
+profile:
+  id: urn:lep:profile:service-validation
+  version: 1.0.0
+  target: urn:lep:contract:platform-service
+validator:
+  contract: urn:ecp:contract:json-schema:draft2020-12
+rules:
+  - id: svc-validate-schema
+    description: Service definitions validate against service.schema.json
+  - id: svc-unique-ids
+    description: No two registered services share the same service_id
+  - id: svc-acyclic-deps
+    description: Service dependency graph contains no cycles
+  - id: svc-resolved-deps
+    description: All declared dependency service_ids are registered
+  - id: svc-idempotent-init
+    description: initialize() can be called multiple times without side effects
+  - id: svc-idempotent-shutdown
+    description: shutdown() can be called multiple times without side effects
+  - id: svc-state-machine
+    description: Service transitions follow the defined lifecycle
