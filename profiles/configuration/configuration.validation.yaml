@@ -1,0 +1,17 @@
+profile:
+  id: urn:lep:profile:configuration
+  version: 1.0.0
+  target: urn:lep:contract:configuration
+validator:
+  contract: urn:ecp:contract:json-schema:draft2020-12
+rules:
+  - id: cfg-validate-schema
+    description: Configuration validates against config.schema.json
+  - id: cfg-valid-sources
+    description: Configuration sources follow defined precedence ordering
+  - id: cfg-no-merge-conflicts
+    description: Layered configuration merge produces no conflicts
+  - id: cfg-snapshot-immutable
+    description: Committed configuration snapshots are immutable
+  - id: cfg-provider-resolvable
+    description: All registered providers resolve without errors

@@ -1,0 +1,35 @@
+contract:
+  id: urn:lep:contract:configuration
+  version: 1.0.0
+  name: LEP Configuration Runtime Contract
+sources:
+  - DEFAULT
+  - PROFILE
+  - ENVIRONMENT
+  - PROVIDER
+  - RUNTIME_OVERRIDE
+layers:
+  ordering:
+    - DEFAULT
+    - PROFILE
+    - ENVIRONMENT
+    - PROVIDER
+    - RUNTIME_OVERRIDE
+  resolution: higher_precedence_wins
+capabilities:
+  - immutable_snapshots
+  - profile_management
+  - provider_registration
+  - schema_validation
+  - runtime_overrides
+  - change_watching
+  - deep_merge
+  - environment_loading
+conformance:
+  schema: "urn:lep:schema:configuration"
+  validation_profile: "urn:lep:profile:configuration"
+events:
+  - config.initialized
+  - config.reloaded
+  - config.validation_failed
+  - config.stopped

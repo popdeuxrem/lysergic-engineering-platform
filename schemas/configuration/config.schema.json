@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://specs.lysergic.dev/configuration/v1/config.schema.json",
+  "title": "LEP Configuration Schema",
+  "description": "Schema for LEP configuration values.",
+  "type": "object",
+  "properties": {
+    "platform": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+        "architecture": { "type": "string" }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "type": "object",
+          "properties": {
+            "dialect": { "type": "string", "enum": ["draft2020-12", "draft2019-09"] }
+          }
+        }
+      }
+    },
+    "governance": {
+      "type": "object",
+      "properties": {
+        "enabled": { "type": "boolean" }
+      }
+    },
+    "runtime": {
+      "type": "object",
+      "properties": {
+        "execution_model": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean" }
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}
