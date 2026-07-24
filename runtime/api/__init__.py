@@ -8,6 +8,7 @@ from runtime.api.knowledge import KnowledgeAPI as KnowledgeAPI
 from runtime.api.knowledge import KnowledgeEntry as KnowledgeEntry
 from runtime.api.lep import LEP as LEP
 from runtime.api.lep import LEPService as LEPService
+from runtime.api.lep import create_default_lep as create_default_lep
 from runtime.api.lep import create_lep as create_lep
 from runtime.api.projects import ProjectAPI as ProjectAPI
 from runtime.api.projects import ProjectManifest as ProjectManifest

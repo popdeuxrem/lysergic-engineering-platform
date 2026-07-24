@@ -98,3 +98,19 @@ class LEP:
 
 def create_lep(manager: ServiceManager) -> LEP:
     return LEP(manager)
+
+
+def create_default_lep() -> LEP:
+    from runtime.services.events import EventBus
+    from runtime.services.health import HealthService
+    from runtime.services.manager import ServiceManager
+    from runtime.services.registry import ServiceRegistry
+    from runtime.services.resolver import DependencyResolver
+    registry = ServiceRegistry()
+    resolver = DependencyResolver()
+    health = HealthService()
+    event_bus = EventBus()
+    manager = ServiceManager(registry=registry, resolver=resolver, health=health, event_bus=event_bus)
+    lep = LEP(manager)
+    lep.start()
+    return lep
