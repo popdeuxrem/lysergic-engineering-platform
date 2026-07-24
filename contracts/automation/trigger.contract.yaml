@@ -1,0 +1,17 @@
+contract:
+  id: urn:lep:contract:automation.trigger
+  version: 1.0.0
+  name: LEP Automation Trigger Contract
+trigger:
+  types:
+    - event
+    - schedule
+    - manual
+  constraints:
+    - emit_execution_requests_only
+    - no_direct_execution
+    - validated_triggers_only
+capabilities:
+  - event_detection
+  - schedule_evaluation
+  - manual_invocation

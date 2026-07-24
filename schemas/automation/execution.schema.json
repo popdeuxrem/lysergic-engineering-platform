@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://specs.lysergic.dev/automation/v1/execution.schema.json",
+  "title": "LEP Automation Execution Schema",
+  "description": "Schema for LEP automation executions.",
+  "type": "object",
+  "properties": {
+    "execution_id": { "type": "string" },
+    "automation_id": { "type": "string" },
+    "trigger_type": { "type": "string" },
+    "status": { "type": "string", "enum": ["pending", "running", "completed", "failed"] }
+  },
+  "required": ["execution_id", "automation_id", "status"],
+  "additionalProperties": false
+}

@@ -1,0 +1,44 @@
+contract:
+  id: urn:lep:contract:automation
+  version: 1.0.0
+  name: LEP Automation Contract
+automation:
+  lifecycle:
+    states:
+      - created
+      - validated
+      - ready
+      - enabled
+      - executing
+      - disabled
+      - archived
+      - failed
+    transitions:
+      created: [validated, failed, archived]
+      validated: [ready, failed, archived]
+      ready: [enabled, disabled, archived, failed]
+      enabled: [executing, disabled, failed]
+      executing: [enabled, disabled, failed]
+      disabled: [enabled, archived, failed, ready]
+      archived: [created]
+      failed: [created, archived]
+  triggers:
+    - event
+    - schedule
+    - manual
+  actions:
+    - workflow
+    - ai
+    - plugin
+events:
+  - AutomationCreated
+  - AutomationValidated
+  - AutomationEnabled
+  - AutomationTriggered
+  - AutomationStarted
+  - AutomationCompleted
+  - AutomationFailed
+  - AutomationDisabled
+conformance:
+  schema: urn:lep:schema:automation
+  validation_profile: urn:lep:profile:automation

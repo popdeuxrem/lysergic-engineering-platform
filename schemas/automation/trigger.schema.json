@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://specs.lysergic.dev/automation/v1/trigger.schema.json",
+  "title": "LEP Automation Trigger Schema",
+  "description": "Schema for LEP automation triggers.",
+  "type": "object",
+  "properties": {
+    "trigger_id": { "type": "string" },
+    "trigger_type": { "type": "string", "enum": ["event", "schedule", "manual"] },
+    "source": { "type": "string" }
+  },
+  "required": ["trigger_id", "trigger_type"],
+  "additionalProperties": false
+}

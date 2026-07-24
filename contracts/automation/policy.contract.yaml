@@ -1,0 +1,14 @@
+contract:
+  id: urn:lep:contract:automation.policy
+  version: 1.0.0
+  name: LEP Automation Policy Contract
+policy:
+  model: deny_by_default
+  controls:
+    - allowed_capabilities
+    - approval_requirements
+    - execution_limits
+    - environment_restrictions
+  enforcement:
+    - pre_execution_check
+    - reject_on_violation

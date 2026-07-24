@@ -1,0 +1,17 @@
+contract:
+  id: urn:lep:contract:automation.execution
+  version: 1.0.0
+  name: LEP Automation Execution Contract
+execution:
+  targets:
+    - WorkflowRuntime
+    - AIRuntime
+    - PluginRuntime
+  requirements:
+    - validated_requests_only
+    - permission_enforced
+    - results_recorded
+  constraints:
+    - no_bypass_permissions
+    - no_bypass_validation
+    - no_bypass_lifecycle

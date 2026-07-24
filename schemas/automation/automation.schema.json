@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://specs.lysergic.dev/automation/v1/automation.schema.json",
+  "title": "LEP Automation Schema",
+  "description": "Schema for LEP automation definitions.",
+  "type": "object",
+  "properties": {
+    "automation_id": { "type": "string" },
+    "name": { "type": "string" },
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "description": { "type": "string" },
+    "owner": { "type": "string" }
+  },
+  "required": ["automation_id", "name", "version"],
+  "additionalProperties": false
+}

@@ -1,0 +1,19 @@
+profile:
+  id: urn:lep:profile:automation
+  version: 1.0.0
+  target: urn:lep:contract:automation
+validator:
+  contract: urn:ecp:contract:json-schema:draft2020-12
+rules:
+  - id: auto-validate-schema
+    description: Automation validates against automation.schema.json
+  - id: auto-metadata-validation
+    description: Automation metadata is complete
+  - id: auto-trigger-validation
+    description: Automation triggers are valid
+  - id: auto-permissions
+    description: Automation permissions are correctly configured
+  - id: auto-dependencies
+    description: Automation dependencies resolve correctly
+  - id: auto-capability-access
+    description: Automation capability access is authorized
