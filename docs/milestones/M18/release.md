@@ -3,6 +3,7 @@
 **Architecture Baseline:** LEP-ARCH-v0.1.0 (Frozen)
 **Target:** `ecp-runtime-v0.1.0-alpha`
 **ECP Baseline:** ECP-RP-v0.1.0 (Accepted governance artifacts)
+**Status:** Alpha Approved — PASS WITH CONDITIONS
 
 ---
 
@@ -143,23 +144,44 @@ extensions/ecp/
 
 ## 7. Release Checklist
 
-- [ ] `extensions/ecp/` implemented with all modules
-- [ ] ECP schemas created (entity, relationship, reference)
-- [ ] ECP contracts created (graph, permission)
-- [ ] AST import boundary test covers `extensions/ecp/`
-- [ ] `ruff check extensions/ecp/` passes
-- [ ] `mypy extensions/ecp/` passes
-- [ ] ECP unit tests pass
-- [ ] Integration tests pass
-- [ ] Combined regression tests pass (891+)
-- [ ] `git diff runtime/` is empty (frozen baseline preserved)
-- [ ] Architecture review completed
-- [ ] ECP governance review completed
-- [ ] Tag `ecp-runtime-v0.1.0-alpha` created
+- [x] `extensions/ecp/` implemented with all modules
+- [x] ECP schemas created (entity, relationship, reference)
+- [x] ECP contracts created (graph, permission)
+- [x] AST import boundary test covers `extensions/ecp/`
+- [x] `ruff check extensions/ecp/` passes
+- [x] `mypy extensions/ecp/` passes
+- [x] ECP unit tests pass
+- [x] Integration tests pass
+- [x] Combined regression tests pass (891+)
+- [x] `git diff runtime/` is empty (frozen baseline preserved)
+- [x] Architecture review completed
+- [x] ECP governance review completed
+- [x] Tag `ecp-runtime-v0.1.0-alpha` created
 
 ---
 
-## 8. Rollback Considerations
+## 8. Known Conditions
+
+| Condition | Description | Resolution Milestone |
+|-----------|-------------|---------------------|
+| Event publishing integration | `runtime.api.publish_event()` wiring for `ecp.*` governance events is not implemented | M18 Beta |
+| Semantic validation stub | `Tier2Validator.validate_semantic()` returns `valid=True` with no rules | M18 Beta |
+
+---
+
+## 9. Deferred Capabilities
+
+| Capability | Description | Target Phase |
+|------------|-------------|--------------|
+| Governance event publishing | Wire `ecp.EntityCreated`, `ecp.EntityValidated`, `ecp.RelationshipCreated`, `ecp.GraphValidated`, `ecp.GovernanceDecisionRecorded`, `ecp.EvidencePackageGenerated` through `runtime.api.publish_event()` | `ecp-runtime-v0.1.0a2` |
+| Semantic validation rules | Implement constitutional invariant enforcement (Law 0, dependency/ownership/specification/execution invariants) in `Tier2Validator` | `ecp-runtime-v0.1.0a2` |
+| Persistence hooks | Persist graph state to `decisions/`, `evidence/`, `judgments/` | `ecp-runtime-v0.1.0a2` |
+| Graph database backend | Replace dict-based registries with graph database storage | Future |
+| Kilo CLI commands | Add `lep ecp` subcommands for governance operations | `ecp-runtime-v0.1.0a3` |
+
+---
+
+## 10. Rollback Considerations
 
 | Scenario | Rollback Action |
 |----------|-----------------|

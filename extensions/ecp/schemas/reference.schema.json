@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://specs.lysergic.dev/ecp/v1/reference.schema.json",
+  "title": "ECP Reference Schema",
+  "description": "Schema for ECP governed references (L0).",
+  "type": "object",
+  "properties": {
+    "ref_type": { "type": "string" },
+    "target_type": { "type": "string" },
+    "target_id": { "type": "string" }
+  },
+  "required": ["ref_type", "target_type", "target_id"],
+  "additionalProperties": false
+}

@@ -1,0 +1,16 @@
+extension_id: ecp
+name: Engineering Control Plane
+version: 0.1.0
+owner: PortfolioAuthority
+description: >
+  The Engineering Control Plane provides governance graph semantics
+  for the LEP platform, including entity management, relationship
+  management, reference resolution, and graph validation.
+runtime_compatibility: ">=0.1.0,<1.0.0"
+capabilities:
+  - ecp.graph.manage
+  - ecp.graph.validate
+  - ecp.graph.resolve
+  - ecp.governance.evidence
+  - ecp.governance.decision
+dependencies: []

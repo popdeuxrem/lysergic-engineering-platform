@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://specs.lysergic.dev/ecp/v1/entity.schema.json",
+  "title": "ECP Entity Schema",
+  "description": "Schema for ECP governed entities (L2).",
+  "type": "object",
+  "properties": {
+    "name": { "type": "string" },
+    "entity_type": { "type": "string" },
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" }
+  },
+  "required": ["name", "entity_type", "version"],
+  "additionalProperties": false
+}
