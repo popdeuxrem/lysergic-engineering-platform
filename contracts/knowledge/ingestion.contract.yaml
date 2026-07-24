@@ -1,0 +1,17 @@
+contract:
+  id: urn:lep:contract:knowledge.ingestion
+  version: 1.0.0
+  name: LEP Knowledge Ingestion Contract
+ingestion:
+  sources:
+    - direct
+    - asset
+    - project
+    - external
+  requirements:
+    - source_metadata_required
+    - provenance_generated
+    - deterministic_result
+  boundaries:
+    - no_filesystem_coupling
+    - no_database_coupling

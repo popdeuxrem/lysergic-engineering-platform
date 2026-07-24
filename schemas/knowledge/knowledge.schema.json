@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://specs.lysergic.dev/knowledge/v1/knowledge.schema.json",
+  "title": "LEP Knowledge Schema",
+  "description": "Schema for LEP knowledge items.",
+  "type": "object",
+  "properties": {
+    "knowledge_id": { "type": "string" },
+    "title": { "type": "string" },
+    "kind": { "type": "string" },
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "description": { "type": "string" },
+    "author": { "type": "string" }
+  },
+  "required": ["knowledge_id", "title", "kind", "version"],
+  "additionalProperties": false
+}

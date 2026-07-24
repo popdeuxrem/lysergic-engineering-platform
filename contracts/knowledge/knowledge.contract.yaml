@@ -1,0 +1,35 @@
+contract:
+  id: urn:lep:contract:knowledge
+  version: 1.0.0
+  name: LEP Knowledge Contract
+knowledge:
+  lifecycle:
+    states:
+      - created
+      - ingested
+      - validated
+      - available
+      - deprecated
+      - archived
+      - failed
+    transitions:
+      created: [ingested, failed, archived]
+      ingested: [validated, failed, archived]
+      validated: [available, failed, archived]
+      available: [deprecated, archived, failed]
+      deprecated: [archived, failed]
+      archived: [available]
+      failed: [created, archived]
+  identity:
+    format: urn:lep:knowledge:{kind}:{id}
+events:
+  - KnowledgeCreated
+  - KnowledgeIngested
+  - KnowledgeValidated
+  - KnowledgePublished
+  - KnowledgeDeprecated
+  - KnowledgeArchived
+  - KnowledgeFailed
+conformance:
+  schema: urn:lep:schema:knowledge
+  validation_profile: urn:lep:profile:knowledge

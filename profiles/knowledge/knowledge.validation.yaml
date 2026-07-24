@@ -1,0 +1,19 @@
+profile:
+  id: urn:lep:profile:knowledge
+  version: 1.0.0
+  target: urn:lep:contract:knowledge
+validator:
+  contract: urn:ecp:contract:json-schema:draft2020-12
+rules:
+  - id: kn-validate-schema
+    description: Knowledge validates against knowledge.schema.json
+  - id: kn-metadata-validation
+    description: Knowledge metadata is complete
+  - id: kn-format-validation
+    description: Knowledge content format is valid
+  - id: kn-provenance-validation
+    description: Knowledge provenance is tracked
+  - id: kn-source-validation
+    description: Knowledge source is valid
+  - id: kn-dependency-validation
+    description: Knowledge dependencies resolve correctly

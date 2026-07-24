@@ -1,0 +1,17 @@
+contract:
+  id: urn:lep:contract:knowledge.retrieval
+  version: 1.0.0
+  name: LEP Knowledge Retrieval Contract
+retrieval:
+  methods:
+    - identity_resolution
+    - keyword_search
+    - tag_search
+    - kind_filtering
+  constraints:
+    - no_embeddings
+    - no_vector_databases
+    - no_ai_retrieval
+  outputs:
+    - KnowledgeItem
+    - knowledge_metadata
