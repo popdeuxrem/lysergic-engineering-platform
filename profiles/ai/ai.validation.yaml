@@ -1,0 +1,17 @@
+profile:
+  id: urn:lep:profile:ai
+  version: 1.0.0
+  target: urn:lep:contract:ai.agent
+validator:
+  contract: urn:ecp:contract:json-schema:draft2020-12
+rules:
+  - id: ai-validate-schema
+    description: Agent validates against agent.schema.json
+  - id: ai-metadata-validation
+    description: Agent metadata is complete
+  - id: ai-permission-validation
+    description: Agent permissions are properly configured
+  - id: ai-dependency-validation
+    description: Agent dependencies resolve correctly
+  - id: ai-capability-validation
+    description: Agent capabilities are valid and non-conflicting

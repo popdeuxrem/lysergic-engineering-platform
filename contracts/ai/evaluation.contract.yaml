@@ -1,0 +1,16 @@
+contract:
+  id: urn:lep:contract:ai.evaluation
+  version: 1.0.0
+  name: LEP AI Evaluation Contract
+evaluation:
+  hooks:
+    - execution_result
+    - validation_outcome
+    - quality_metrics
+    - feedback_references
+  outputs:
+    - EvaluationResult
+capabilities:
+  - execution_evaluation
+  - quality_tracking
+  - feedback_collection

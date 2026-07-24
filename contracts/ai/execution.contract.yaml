@@ -1,0 +1,20 @@
+contract:
+  id: urn:lep:contract:ai.execution
+  version: 1.0.0
+  name: LEP AI Execution Contract
+execution:
+  provider:
+    interface:
+      - execute
+      - model_name
+    constraints:
+      - no_vendor_lockin
+      - pluggable_providers
+  boundaries:
+    - no_uncontrolled_execution
+    - permission_enforced
+    - telemetry_required
+capabilities:
+  - model_execution
+  - provider_abstraction
+  - execution_tracking

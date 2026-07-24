@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://specs.lysergic.dev/ai/v1/capability.schema.json",
+  "title": "LEP AI Capability Schema",
+  "description": "Schema for LEP AI agent capabilities.",
+  "type": "object",
+  "properties": {
+    "capability_id": { "type": "string" },
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "description": { "type": "string" }
+  },
+  "required": ["capability_id"],
+  "additionalProperties": false
+}

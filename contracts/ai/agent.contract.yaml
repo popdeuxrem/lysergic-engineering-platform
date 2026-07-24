@@ -1,0 +1,45 @@
+contract:
+  id: urn:lep:contract:ai.agent
+  version: 1.0.0
+  name: LEP AI Agent Contract
+agent:
+  lifecycle:
+    states:
+      - created
+      - registered
+      - validated
+      - ready
+      - running
+      - paused
+      - stopped
+      - archived
+      - failed
+    transitions:
+      created: [registered, failed, archived]
+      registered: [validated, failed, archived]
+      validated: [ready, failed, archived]
+      ready: [running, stopped, failed, archived]
+      running: [paused, stopped, failed]
+      paused: [running, stopped, failed]
+      stopped: [ready, archived, failed]
+      archived: [created]
+      failed: [created, archived]
+  capabilities:
+    - controlled_execution
+    - tool_access_boundary
+    - knowledge_access
+    - workflow_integration
+    - evaluation_hooks
+    - telemetry
+events:
+  - AgentCreated
+  - AgentRegistered
+  - AgentValidated
+  - AgentStarted
+  - AgentExecutionStarted
+  - AgentExecutionCompleted
+  - AgentFailed
+  - AgentStopped
+conformance:
+  schema: urn:lep:schema:ai.agent
+  validation_profile: urn:lep:profile:ai

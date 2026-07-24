@@ -1,0 +1,20 @@
+contract:
+  id: urn:lep:contract:ai.tool
+  version: 1.0.0
+  name: LEP AI Tool Contract
+tool:
+  source:
+    - PluginRuntime
+    - MCPExtension
+    - CustomProvider
+  requirements:
+    - capability_lookup
+    - invocation_contract
+    - result_handling
+  security:
+    - deny_by_default
+    - explicit_permissions_only
+capabilities:
+  - tool_registration
+  - permission_enforcement
+  - invocation_boundary

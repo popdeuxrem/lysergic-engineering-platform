@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://specs.lysergic.dev/ai/v1/agent.schema.json",
+  "title": "LEP AI Agent Schema",
+  "description": "Schema for LEP AI agent definitions.",
+  "type": "object",
+  "properties": {
+    "agent_id": { "type": "string" },
+    "name": { "type": "string" },
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "model": { "type": "string" },
+    "description": { "type": "string" },
+    "owner": { "type": "string" }
+  },
+  "required": ["agent_id", "name", "version"],
+  "additionalProperties": false
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://specs.lysergic.dev/ai/v1/execution.schema.json",
+  "title": "LEP AI Execution Schema",
+  "description": "Schema for LEP AI agent executions.",
+  "type": "object",
+  "properties": {
+    "execution_id": { "type": "string" },
+    "agent_id": { "type": "string" },
+    "status": { "type": "string", "enum": ["pending", "running", "completed", "failed"] },
+    "duration_ms": { "type": "number", "minimum": 0 }
+  },
+  "required": ["execution_id", "agent_id", "status"],
+  "additionalProperties": false
+}
