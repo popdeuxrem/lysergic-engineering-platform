@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://specs.lysergic.dev/assets/v1/asset.schema.json",
+  "title": "LEP Asset Schema",
+  "description": "Schema for LEP engineering assets.",
+  "type": "object",
+  "properties": {
+    "asset_id": { "type": "string", "description": "Unique asset identifier." },
+    "asset_type": { "type": "string", "description": "Asset type classification." },
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "owner": { "type": "string" },
+    "description": { "type": "string" },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "checksum": { "type": "string" },
+    "origin": { "type": "string" }
+  },
+  "required": ["asset_id", "asset_type", "version"],
+  "additionalProperties": false
+}

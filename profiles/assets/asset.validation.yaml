@@ -1,0 +1,19 @@
+profile:
+  id: urn:lep:profile:asset
+  version: 1.0.0
+  target: urn:lep:contract:asset
+validator:
+  contract: urn:ecp:contract:json-schema:draft2020-12
+rules:
+  - id: ast-validate-schema
+    description: Asset validates against asset.schema.json
+  - id: ast-metadata-completeness
+    description: Asset metadata includes all required fields
+  - id: ast-identity-format
+    description: Asset identity follows URN format
+  - id: ast-dependency-graph
+    description: Asset dependency graph contains no cycles
+  - id: ast-version-compatibility
+    description: Asset version matches expected dependency versions
+  - id: ast-ownership
+    description: Asset declares a valid owner

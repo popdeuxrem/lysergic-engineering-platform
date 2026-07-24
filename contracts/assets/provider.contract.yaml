@@ -1,0 +1,14 @@
+contract:
+  id: urn:lep:contract:asset.provider
+  version: 1.0.0
+  name: LEP Asset Provider Contract
+provider:
+  interface:
+    - load
+    - resolve
+  requirements:
+    - deterministic_load
+    - idempotent_resolution
+  capabilities:
+    - content_loading
+    - identity_resolution

@@ -1,0 +1,52 @@
+contract:
+  id: urn:lep:contract:asset
+  version: 1.0.0
+  name: LEP Asset Contract
+asset:
+  identity:
+    format: urn:lep:asset:{type}:{id}
+    immutable: true
+  lifecycle:
+    states:
+      - registered
+      - validated
+      - available
+      - deprecated
+      - removed
+    transitions:
+      registered: [validated, removed]
+      validated: [available, deprecated, removed]
+      available: [deprecated, validated, removed]
+      deprecated: [removed, available]
+      removed: []
+  metadata:
+    required:
+      - asset_id
+      - asset_type
+      - version
+    optional:
+      - owner
+      - description
+      - tags
+      - checksum
+validation:
+  tier_1:
+    - metadata_completeness
+    - identity_format
+  tier_2:
+    - dependency_graph
+    - version_compatibility
+    - ownership
+capabilities:
+  - identity_resolution
+  - dependency_management
+  - content_loading
+  - lifecycle_management
+  - snapshot_isolation
+events:
+  - AssetRegistered
+  - AssetValidated
+  - AssetAvailable
+  - AssetDeprecated
+  - AssetRemoved
+  - AssetFailed
