@@ -119,3 +119,61 @@ unmodified.
 | Missing runtime API for CLI needs | Medium | Medium | Add to `runtime.api.*` if justified |
 | Python version compatibility | Low | Medium | Test on Python 3.12+ in CI |
 | Slow LEP initialization | Medium | Low | Lazy initialization, progress indicator |
+
+---
+
+## 7. Release Record — kilo-v0.1.0-alpha
+
+**Release date:** 2026-07-24
+**Release tag:** `kilo-v0.1.0-alpha`
+**Architecture baseline:** LEP-ARCH-v0.1.0 (Frozen)
+
+### Git References
+
+| Ref | Hash |
+|-----|------|
+| Release tag | `kilo-v0.1.0-alpha` |
+| Kilo CLI implementation | `2ae26f0` |
+| Architecture boundary resolution | `0d95e14` |
+| M15 Runtime Freeze | `36c8b24` |
+
+### Commit History (Kilo CLI)
+
+| Commit | Message |
+|--------|---------|
+| `2ae26f0` | `kilo(cli): implement alpha with version/doctor/inspect/validate commands` |
+| `0d95e14` | `kilo(cli): resolve architecture boundary - adapter uses runtime.api only` |
+
+### Supported Commands
+
+| Command | Description | Flags |
+|---------|-------------|-------|
+| `lep version` | Show platform version, name, architecture | `--format text\|json` |
+| `lep doctor` | Run platform diagnostics (health, services, lifecycle, errors) | `--format text\|json` |
+| `lep inspect` | Inspect platform state (summary, telemetry, services, uptime) | `--format text\|json` |
+| `lep validate` | Validate platform readiness (valid/ready/health/issues) | `--format text\|json` |
+
+All commands support auto-format detection: JSON when piped, text on TTY.
+
+### Validation Results
+
+| Gate | Result | Detail |
+|------|--------|--------|
+| Import boundary (AST scan) | **PASS** | 0 prohibited imports across all `cli/kilo/*.py` files |
+| Adapter boundary | **PASS** | Imports only from `runtime.api` |
+| Ruff | **PASS** | 0 errors |
+| Mypy (production) | **PASS** | 0 errors |
+| CLI unit tests | **PASS** | 21/21 |
+| Combined runtime tests | **PASS** | 858/858 (837 runtime + 21 CLI) |
+| Runtime unmodified | **PASS** | No frozen runtime behavior changed |
+
+### Known Limitations
+
+| Limitation | Impact | Planned Resolution |
+|------------|--------|-------------------|
+| No interactive mode | Commands are single-shot only | kilo-v0.1.0a2 |
+| No config file support | CLI always loads `lep.yaml` from CWD | kilo-v0.1.0a2 |
+| 4 commands only | Project, asset, workflow, extension, knowledge, plugin, AI, automation, and operations commands not yet implemented | kilo-v0.1.0a2 |
+| No plugin-based command loading | All commands are statically registered | kilo-v0.1.0a3 |
+| Startup latency | `create_default_lep()` initializes full runtime each invocation | Optimize with lazy init in kilo-v0.1.0a2 |
+| No Python package build | `python -m build` not yet configured | Package setup pending M16 finalization |
