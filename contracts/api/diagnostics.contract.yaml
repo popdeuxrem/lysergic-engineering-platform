@@ -1,0 +1,17 @@
+contract:
+  id: urn:lep:contract:api.diagnostics
+  version: 1.0.0
+  name: LEP Diagnostics API Contract
+api:
+  domain: diagnostics
+  version: 1.0.0
+  methods:
+    - snapshot
+    - service_count
+    - list_service_ids
+    - is_healthy
+capabilities:
+  - system_diagnostics
+  - health_disclosure
+conformance:
+  schema: "urn:lep:schema:api.diagnostics"

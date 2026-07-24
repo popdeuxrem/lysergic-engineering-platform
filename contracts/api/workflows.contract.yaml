@@ -1,0 +1,35 @@
+contract:
+  id: urn:lep:contract:api.workflows
+  version: 1.0.0
+  name: LEP Workflows API Contract
+api:
+  domain: workflows
+  version: 1.0.0
+  methods:
+    - create
+    - get
+    - list
+    - start
+    - complete
+    - fail
+    - cancel
+    - count
+capabilities:
+  - workflow_lifecycle
+  - workflow_discovery
+  - workflow_state_machine
+status_machine:
+  states:
+    - pending
+    - running
+    - completed
+    - failed
+    - cancelled
+  transitions:
+    pending: [running, cancelled]
+    running: [completed, failed, cancelled]
+    completed: []
+    failed: []
+    cancelled: []
+conformance:
+  schema: "urn:lep:schema:api.workflows"

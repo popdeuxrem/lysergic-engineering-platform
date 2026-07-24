@@ -1,0 +1,22 @@
+contract:
+  id: urn:lep:contract:api.runtime
+  version: 1.0.0
+  name: LEP Runtime API Contract
+api:
+  domain: runtime
+  version: 1.0.0
+  methods:
+    - platform_name
+    - platform_version
+    - architecture_id
+    - architecture_status
+    - schema_dialect
+    - service_ids
+    - service_count
+    - summary
+capabilities:
+  - platform_information
+  - service_discovery
+  - architecture_disclosure
+conformance:
+  schema: "urn:lep:schema:api.runtime"

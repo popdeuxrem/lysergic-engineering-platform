@@ -1,0 +1,20 @@
+contract:
+  id: urn:lep:contract:api.assets
+  version: 1.0.0
+  name: LEP Assets API Contract
+api:
+  domain: assets
+  version: 1.0.0
+  methods:
+    - store
+    - get
+    - list
+    - remove
+    - count
+    - tag
+capabilities:
+  - asset_storage
+  - asset_discovery
+  - asset_tagging
+conformance:
+  schema: "urn:lep:schema:api.assets"

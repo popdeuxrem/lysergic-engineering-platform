@@ -1,0 +1,18 @@
+contract:
+  id: urn:lep:contract:api.extensions
+  version: 1.0.0
+  name: LEP Extensions API Contract
+api:
+  domain: extensions
+  version: 1.0.0
+  methods:
+    - list
+    - get
+    - register
+    - unregister
+    - count
+capabilities:
+  - extension_discovery
+  - extension_lifecycle
+conformance:
+  schema: "urn:lep:schema:api.extensions"

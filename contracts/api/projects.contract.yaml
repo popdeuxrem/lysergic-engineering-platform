@@ -1,0 +1,18 @@
+contract:
+  id: urn:lep:contract:api.projects
+  version: 1.0.0
+  name: LEP Projects API Contract
+api:
+  domain: projects
+  version: 1.0.0
+  methods:
+    - create
+    - get
+    - list
+    - remove
+    - count
+capabilities:
+  - project_lifecycle
+  - project_discovery
+conformance:
+  schema: "urn:lep:schema:api.projects"

@@ -1,0 +1,17 @@
+contract:
+  id: urn:lep:contract:api.validation
+  version: 1.0.0
+  name: LEP Validation API Contract
+api:
+  domain: validation
+  version: 1.0.0
+  methods:
+    - validate
+    - set_validator
+    - dialect
+    - is_validator_set
+capabilities:
+  - schema_validation
+  - validator_configuration
+conformance:
+  schema: "urn:lep:schema:api.validation"

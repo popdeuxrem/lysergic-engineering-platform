@@ -1,0 +1,19 @@
+contract:
+  id: urn:lep:contract:api.knowledge
+  version: 1.0.0
+  name: LEP Knowledge API Contract
+api:
+  domain: knowledge
+  version: 1.0.0
+  methods:
+    - add
+    - get
+    - search
+    - remove
+    - count
+capabilities:
+  - knowledge_storage
+  - knowledge_discovery
+  - knowledge_search
+conformance:
+  schema: "urn:lep:schema:api.knowledge"
