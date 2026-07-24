@@ -1,0 +1,19 @@
+profile:
+  id: urn:lep:profile:operations
+  version: 1.0.0
+  target: urn:lep:contract:operations
+validator:
+  contract: urn:ecp:contract:json-schema:draft2020-12
+rules:
+  - id: ops-validate-schema
+    description: Operation validates against operation.schema.json
+  - id: ops-metadata-validation
+    description: Operation metadata is complete
+  - id: ops-step-validation
+    description: Operation steps are valid
+  - id: ops-capability-validation
+    description: Operation capabilities are available
+  - id: ops-permission-validation
+    description: Operation permissions are configured
+  - id: ops-dependency-validation
+    description: Operation dependencies resolve correctly

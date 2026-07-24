@@ -1,0 +1,15 @@
+contract:
+  id: urn:lep:contract:operations.report
+  version: 1.0.0
+  name: LEP Operations Report Contract
+report:
+  fields:
+    - operation_identity
+    - execution_timeline
+    - invoked_capabilities
+    - gate_results
+    - produced_artifacts
+    - failures
+  requirements:
+    - deterministic_format
+    - immutable_after_generation

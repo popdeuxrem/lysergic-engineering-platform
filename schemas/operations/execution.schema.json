@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://specs.lysergic.dev/operations/v1/execution.schema.json",
+  "title": "LEP Operations Execution Schema",
+  "description": "Schema for LEP operations executions.",
+  "type": "object",
+  "properties": {
+    "execution_id": { "type": "string" },
+    "operation_id": { "type": "string" },
+    "status": { "type": "string", "enum": ["pending", "running", "completed", "failed"] }
+  },
+  "required": ["execution_id", "operation_id", "status"],
+  "additionalProperties": false
+}

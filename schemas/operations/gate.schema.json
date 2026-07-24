@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://specs.lysergic.dev/operations/v1/gate.schema.json",
+  "title": "LEP Operations Gate Schema",
+  "description": "Schema for LEP engineering operation validation gates.",
+  "type": "object",
+  "properties": {
+    "gate_id": { "type": "string" },
+    "gate_type": { "type": "string", "enum": ["schema", "test", "security", "documentation", "architecture"] },
+    "required": { "type": "boolean" },
+    "description": { "type": "string" }
+  },
+  "required": ["gate_id", "gate_type"],
+  "additionalProperties": false
+}

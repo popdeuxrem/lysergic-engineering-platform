@@ -1,0 +1,18 @@
+contract:
+  id: urn:lep:contract:operations.execution
+  version: 1.0.0
+  name: LEP Operations Execution Contract
+execution:
+  targets:
+    - WorkflowRuntime
+    - AutomationRuntime
+    - AIRuntime
+    - PluginRuntime
+  requirements:
+    - validation_gates_enforced
+    - permissions_enforced
+    - execution_tracked
+  constraints:
+    - no_hidden_state
+    - no_duplicated_workflow_logic
+    - no_direct_plugin_implementation

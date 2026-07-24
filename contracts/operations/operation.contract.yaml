@@ -1,0 +1,42 @@
+contract:
+  id: urn:lep:contract:operations
+  version: 1.0.0
+  name: LEP Engineering Operations Contract
+operation:
+  lifecycle:
+    states:
+      - created
+      - defined
+      - validated
+      - ready
+      - executing
+      - completed
+      - archived
+      - failed
+    transitions:
+      created: [defined, failed, archived]
+      defined: [validated, failed, archived]
+      validated: [ready, failed, archived]
+      ready: [executing, archived, failed]
+      executing: [completed, failed]
+      completed: [archived]
+      archived: [created]
+      failed: [created, archived]
+  gates:
+    - schema
+    - test
+    - security
+    - documentation
+    - architecture
+events:
+  - OperationCreated
+  - OperationValidated
+  - OperationPrepared
+  - OperationStarted
+  - OperationGatePassed
+  - OperationGateFailed
+  - OperationCompleted
+  - OperationFailed
+conformance:
+  schema: urn:lep:schema:operations
+  validation_profile: urn:lep:profile:operations

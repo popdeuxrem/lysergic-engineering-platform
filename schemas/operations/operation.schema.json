@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://specs.lysergic.dev/operations/v1/operation.schema.json",
+  "title": "LEP Engineering Operation Schema",
+  "description": "Schema for LEP engineering operation definitions.",
+  "type": "object",
+  "properties": {
+    "operation_id": { "type": "string" },
+    "name": { "type": "string" },
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "description": { "type": "string" },
+    "owner": { "type": "string" }
+  },
+  "required": ["operation_id", "name", "version"],
+  "additionalProperties": false
+}
