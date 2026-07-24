@@ -7,14 +7,29 @@ from runtime.services.registry import ServiceDefinition, ServiceStatus
 from runtime.validator.interface import SchemaValidator, ValidationResult
 
 
-class ValidationAPIProtocol(Protocol):
-    def validate(self, schema: dict[str, Any], instance: Any) -> ValidationResult: ...
+class ValidationReport:
+    def __init__(self) -> None:
+        self.results: list[dict[str, Any]] = []
 
-    def set_validator(self, validator: SchemaValidator) -> None: ...
+    def add(self, category: str, result: ValidationResult) -> None:
+        self.results.append({"category": category, "valid": result.valid, "errors": list(result.errors), "warnings": list(result.warnings)})
 
     @property
-    def dialect(self) -> str | None: ...
+    def all_valid(self) -> bool:
+        return all(r["valid"] for r in self.results)
 
+    def to_dict(self) -> dict[str, Any]:
+        return {"all_valid": self.all_valid, "checks": len(self.results), "results": self.results}
+
+
+class ValidationAPIProtocol(Protocol):
+    def validate_schema(self, schema: dict[str, Any], instance: Any) -> ValidationResult: ...
+    def validate_contract(self, contract: dict[str, Any], instance: Any) -> ValidationResult: ...
+    def validate_profile(self, profile: dict[str, Any], instance: Any) -> ValidationResult: ...
+    def aggregated_report(self, checks: list[tuple[str, dict[str, Any], Any]]) -> dict[str, Any]: ...
+    def set_validator(self, validator: SchemaValidator) -> None: ...
+    @property
+    def dialect(self) -> str | None: ...
     def is_validator_set(self) -> bool: ...
 
 
@@ -36,26 +51,37 @@ class ValidationAPI:
     def shutdown(self) -> None:
         self._validator = None
 
-    def validate(self, schema: dict[str, Any], instance: Any) -> ValidationResult:
-        if self._validator is None:
-            return ValidationResult.fail(errors=("No validator configured",))
-        return self._validator.validate(schema, instance)
+    def validate_schema(self, schema: dict[str, Any], instance: Any) -> ValidationResult:
+        return self._validate(schema, instance)
+
+    def validate_contract(self, contract: dict[str, Any], instance: Any) -> ValidationResult:
+        return self._validate(contract, instance)
+
+    def validate_profile(self, profile: dict[str, Any], instance: Any) -> ValidationResult:
+        return self._validate(profile, instance)
+
+    def aggregated_report(self, checks: list[tuple[str, dict[str, Any], Any]]) -> dict[str, Any]:
+        report = ValidationReport()
+        for category, schema, instance in checks:
+            result = self._validate(schema, instance)
+            report.add(category, result)
+        return report.to_dict()
 
     def set_validator(self, validator: SchemaValidator) -> None:
         self._validator = validator
 
     @property
     def dialect(self) -> str | None:
-        if self._validator is None:
-            return None
-        return self._validator.dialect
+        return None if self._validator is None else self._validator.dialect
 
     def is_validator_set(self) -> bool:
         return self._validator is not None
 
+    def _validate(self, schema: dict[str, Any], instance: Any) -> ValidationResult:
+        if self._validator is None:
+            return ValidationResult.fail(errors=("No validator configured",))
+        return self._validator.validate(schema, instance)
+
 
 def create_validation_api(manager: ServiceManager) -> ServiceDefinition:
-    return ServiceDefinition(
-        service_id="api.validation",
-        factory=lambda: ValidationAPI(manager),
-    )
+    return ServiceDefinition(service_id="api.validation", factory=lambda: ValidationAPI(manager))

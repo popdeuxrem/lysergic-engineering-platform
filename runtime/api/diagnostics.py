@@ -9,16 +9,12 @@ from runtime.services.registry import ServiceDefinition, ServiceStatus
 
 class DiagnosticsAPIProtocol(Protocol):
     def snapshot(self) -> dict[str, Any]: ...
-
     def record_error(self, source: str, message: str) -> None: ...
-
     def clear_errors(self) -> None: ...
-
+    def telemetry_summary(self) -> dict[str, Any]: ...
     @property
     def service_count(self) -> int: ...
-
     def list_service_ids(self) -> tuple[str, ...]: ...
-
     def is_healthy(self) -> bool: ...
 
 
@@ -28,6 +24,7 @@ class DiagnosticsAPI:
 
     def __init__(self, manager: ServiceManager) -> None:
         self._manager = manager
+        self._errors: list[dict[str, str]] = []
 
     @property
     def status(self) -> ServiceStatus:
@@ -37,16 +34,12 @@ class DiagnosticsAPI:
         pass
 
     def shutdown(self) -> None:
-        pass
+        self._errors.clear()
 
     def snapshot(self) -> dict[str, Any]:
         report = self._manager.health_report()
         return {
-            "health": {
-                "overall": report.overall.value,
-                "ready": report.ready_count,
-                "total": report.total_count,
-            },
+            "health": {"overall": report.overall.value, "ready": report.ready_count, "total": report.total_count},
             "services": {
                 "registered": list(self._manager.registry.definitions.keys()),
                 "instances": list(self._manager.registry.instances.keys()),
@@ -54,17 +47,24 @@ class DiagnosticsAPI:
             },
             "lifecycle": self._manager.lifecycle.state.value,
             "ready": self._manager.is_ready(),
+            "errors": list(self._errors),
         }
 
     def record_error(self, source: str, message: str) -> None:
+        self._errors.append({"source": source, "message": message})
         self._manager.event_bus.publish(Event(
-            event_type="diagnostics.error",
-            payload={"source": source, "message": message},
-            source=source,
+            event_type="diagnostics.error", payload={"source": source, "message": message}, source=source,
         ))
 
     def clear_errors(self) -> None:
-        pass
+        self._errors.clear()
+
+    def telemetry_summary(self) -> dict[str, Any]:
+        return {
+            "event_count": len(self._manager.event_bus.history),
+            "subscriber_count": self._manager.event_bus.subscriber_count,
+            "errors": list(self._errors),
+        }
 
     @property
     def service_count(self) -> int:
@@ -78,7 +78,4 @@ class DiagnosticsAPI:
 
 
 def create_diagnostics_api(manager: ServiceManager) -> ServiceDefinition:
-    return ServiceDefinition(
-        service_id="api.diagnostics",
-        factory=lambda: DiagnosticsAPI(manager),
-    )
+    return ServiceDefinition(service_id="api.diagnostics", factory=lambda: DiagnosticsAPI(manager))

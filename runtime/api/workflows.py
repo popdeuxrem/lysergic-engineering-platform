@@ -15,6 +15,7 @@ class WorkflowStatus(Enum):
     COMPLETED = "completed"
     FAILED = "failed"
     CANCELLED = "cancelled"
+    SCHEDULED = "scheduled"
 
 
 @dataclass
@@ -25,26 +26,24 @@ class WorkflowRecord:
     steps: tuple[str, ...] = ()
     current_step: int = 0
     created_at: datetime = field(default_factory=lambda: datetime.now(UTC))
+    started_at: datetime | None = None
     completed_at: datetime | None = None
+    scheduled_at: datetime | None = None
     error: str = ""
     metadata: dict[str, Any] = field(default_factory=dict)
 
 
 class WorkflowAPIProtocol(Protocol):
     def create(self, workflow_id: str, name: str, steps: tuple[str, ...] = ()) -> WorkflowRecord: ...
-
     def get(self, workflow_id: str) -> WorkflowRecord | None: ...
-
     def list(self, status: WorkflowStatus | None = None) -> tuple[WorkflowRecord, ...]: ...
-
     def start(self, workflow_id: str) -> WorkflowRecord | None: ...
-
     def complete(self, workflow_id: str) -> WorkflowRecord | None: ...
-
     def fail(self, workflow_id: str, error: str) -> WorkflowRecord | None: ...
-
     def cancel(self, workflow_id: str) -> WorkflowRecord | None: ...
-
+    def schedule(self, workflow_id: str, scheduled_at: datetime) -> WorkflowRecord | None: ...
+    def history(self) -> tuple[WorkflowRecord, ...]: ...
+    def list_scheduled(self) -> tuple[WorkflowRecord, ...]: ...
     def count(self) -> int: ...
 
 
@@ -55,6 +54,7 @@ class WorkflowAPI:
     def __init__(self, manager: ServiceManager) -> None:
         self._manager = manager
         self._workflows: dict[str, WorkflowRecord] = {}
+        self._history: list[WorkflowRecord] = []
 
     @property
     def status(self) -> ServiceStatus:
@@ -65,6 +65,7 @@ class WorkflowAPI:
 
     def shutdown(self) -> None:
         self._workflows.clear()
+        self._history.clear()
 
     def create(self, workflow_id: str, name: str, steps: tuple[str, ...] = ()) -> WorkflowRecord:
         record = WorkflowRecord(workflow_id=workflow_id, name=name, steps=steps)
@@ -81,16 +82,13 @@ class WorkflowAPI:
 
     def start(self, workflow_id: str) -> WorkflowRecord | None:
         record = self._workflows.get(workflow_id)
-        if record is None or record.status != WorkflowStatus.PENDING:
+        if record is None or record.status not in (WorkflowStatus.PENDING, WorkflowStatus.SCHEDULED):
             return None
         self._workflows[workflow_id] = WorkflowRecord(
-            workflow_id=record.workflow_id,
-            name=record.name,
-            status=WorkflowStatus.RUNNING,
-            steps=record.steps,
-            current_step=0,
-            created_at=record.created_at,
-            metadata=record.metadata,
+            workflow_id=record.workflow_id, name=record.name,
+            status=WorkflowStatus.RUNNING, steps=record.steps, current_step=0,
+            created_at=record.created_at, started_at=datetime.now(UTC),
+            scheduled_at=record.scheduled_at, metadata=record.metadata,
         )
         return self._workflows[workflow_id]
 
@@ -98,53 +96,65 @@ class WorkflowAPI:
         record = self._workflows.get(workflow_id)
         if record is None or record.status != WorkflowStatus.RUNNING:
             return None
-        self._workflows[workflow_id] = WorkflowRecord(
-            workflow_id=record.workflow_id,
-            name=record.name,
-            status=WorkflowStatus.COMPLETED,
-            steps=record.steps,
-            current_step=len(record.steps),
-            created_at=record.created_at,
-            completed_at=datetime.now(UTC),
-            metadata=record.metadata,
+        record = WorkflowRecord(
+            workflow_id=record.workflow_id, name=record.name,
+            status=WorkflowStatus.COMPLETED, steps=record.steps,
+            current_step=len(record.steps), created_at=record.created_at,
+            started_at=record.started_at, completed_at=datetime.now(UTC),
+            scheduled_at=record.scheduled_at, metadata=record.metadata,
         )
-        return self._workflows[workflow_id]
+        self._workflows[workflow_id] = record
+        self._history.append(record)
+        return record
 
     def fail(self, workflow_id: str, error: str) -> WorkflowRecord | None:
         record = self._workflows.get(workflow_id)
         if record is None or record.status not in (WorkflowStatus.RUNNING, WorkflowStatus.PENDING):
             return None
-        self._workflows[workflow_id] = WorkflowRecord(
-            workflow_id=record.workflow_id,
-            name=record.name,
-            status=WorkflowStatus.FAILED,
-            steps=record.steps,
-            created_at=record.created_at,
-            error=error,
-            metadata=record.metadata,
+        record = WorkflowRecord(
+            workflow_id=record.workflow_id, name=record.name,
+            status=WorkflowStatus.FAILED, steps=record.steps,
+            created_at=record.created_at, started_at=record.started_at,
+            scheduled_at=record.scheduled_at, error=error, metadata=record.metadata,
         )
-        return self._workflows[workflow_id]
+        self._workflows[workflow_id] = record
+        self._history.append(record)
+        return record
 
     def cancel(self, workflow_id: str) -> WorkflowRecord | None:
         record = self._workflows.get(workflow_id)
-        if record is None or record.status not in (WorkflowStatus.PENDING, WorkflowStatus.RUNNING):
+        if record is None or record.status not in (WorkflowStatus.PENDING, WorkflowStatus.RUNNING, WorkflowStatus.SCHEDULED):
+            return None
+        record = WorkflowRecord(
+            workflow_id=record.workflow_id, name=record.name,
+            status=WorkflowStatus.CANCELLED, steps=record.steps,
+            created_at=record.created_at, started_at=record.started_at,
+            scheduled_at=record.scheduled_at, metadata=record.metadata,
+        )
+        self._workflows[workflow_id] = record
+        self._history.append(record)
+        return record
+
+    def schedule(self, workflow_id: str, scheduled_at: datetime) -> WorkflowRecord | None:
+        record = self._workflows.get(workflow_id)
+        if record is None or record.status != WorkflowStatus.PENDING:
             return None
         self._workflows[workflow_id] = WorkflowRecord(
-            workflow_id=record.workflow_id,
-            name=record.name,
-            status=WorkflowStatus.CANCELLED,
-            steps=record.steps,
-            created_at=record.created_at,
-            metadata=record.metadata,
+            workflow_id=record.workflow_id, name=record.name,
+            status=WorkflowStatus.SCHEDULED, steps=record.steps,
+            created_at=record.created_at, scheduled_at=scheduled_at, metadata=record.metadata,
         )
         return self._workflows[workflow_id]
+
+    def history(self) -> tuple[WorkflowRecord, ...]:
+        return tuple(self._history)
+
+    def list_scheduled(self) -> tuple[WorkflowRecord, ...]:
+        return self.list(WorkflowStatus.SCHEDULED)
 
     def count(self) -> int:
         return len(self._workflows)
 
 
 def create_workflow_api(manager: ServiceManager) -> ServiceDefinition:
-    return ServiceDefinition(
-        service_id="api.workflows",
-        factory=lambda: WorkflowAPI(manager),
-    )
+    return ServiceDefinition(service_id="api.workflows", factory=lambda: WorkflowAPI(manager))
